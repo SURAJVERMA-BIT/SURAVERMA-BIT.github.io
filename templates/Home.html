@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XiteAI.com</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Baskerville&family=Garamond&family=Avenir&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; width: 100vw; overflow-x: hidden; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none; background-color: #060606; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+    .page { width: 100vw; display: none; position: relative; }
+    .page.active { display: block; }
+    header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: rgba(255, 255, 255, 0.005); z-index: 1000; box-sizing: border-box; transition: transform 0.8s ease, opacity 1s ease; opacity: 0; }
+    header.show { opacity: 1; transform: translateY(0); }
+    header.hide { transform: translateY(-100%); }
+    header img.logo { width: 28px; height: auto; }
+    header nav { display: flex; gap: 35px; }
+    header nav a { color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 400; font-family: "Helvetica World", "Helvetica Neue", Arial, sans-serif; transition: color 0.3s; }
+    header nav a:hover { color: #7c7c7c; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1100; }
+    .hamburger span { width: 25px; height: 3px; background: white; border-radius: 2px; transition: all 0.4s ease; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    @media (max-width: 756px) { header nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; max-width: 300px; background: rgba(20, 20, 20, 0.95); flex-direction: column; justify-content: center; align-items: center; gap: 30px; transition: right 0.5s ease, opacity 0.5s ease; opacity: 0; z-index: 1000; } }
+    @media (max-width: 756px) { header nav.open { right: 0; opacity: 1; } }
+    @media (max-width: 756px) { header .join-waitlist { margin-top: 20px; } }
+    @media (max-width: 756px) { .hamburger { display: flex; } }
+  </style>
+</head>
+<body>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.style.overflowX = 'hidden';
+      const header = document.querySelector('header');
+      setTimeout(() => header.classList.add('show'), 300);
+      let lastScroll = 0;
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        if (currentScroll > lastScroll) {
+          header.classList.add('hide');
+        } else {
+          header.classList.remove('hide');
+        }
+        lastScroll = currentScroll;
+      });
+      const hamburger = document.querySelector('.hamburger');
+      const nav = document.querySelector('header nav');
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('open');
+      });
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+            entry.target.classList.add('animated');
+            entry.target.style.animation = 'fadeInUp 2.5s cubic-bezier(0.33, 0, 0, 1) forwards';
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.page .heading-text, .page .subheading-text, .page .Page3-heading, .page .Page3-subheading, .page .Features-heading, .page .Features-subheading, .page .Page5-heading, .page .Page5-subheading, .page .Page5-column-heading, .Page5-column-subheading, .page .Page6-heading, .page .Page6-subheading, .page .Page7-heading, .page .Page7-subheading, .page .Page8-heading, .page .Page8-subheading, .page .Page9-heading, .page .Page9-subheading, .page .Page10-heading, .page .Page10-subheading, .page .Page11-heading, .page .Page11-subheading').forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(25px)';
+        observer.observe(element);
+      });
+    });
+  </script>
+
+  <!-- Header -->
+   <header>
+    <img src="static/images/Header/xiteai.png" alt="XiteAI Logo" class="logo">
+    <nav>
+      <a href="#Page1">Home</a>
+      <a href="#Features">Features</a>
+      <a href="#Page7">Pricing</a>
+      <a href="#Page8">Company</a>
+      <!-- <a href="#Blogs">Blog</a> -->
+    </nav>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </header>
+
+<!-- Page 1 -->
+<div id="page1" class="page active">
+  <div class="page1-flex-box">
+    <div class="heading-box">
+      <h1 class="heading-text">Intelligence Elevated. Productivity Refined. With XiteAI.</h1>
+    </div>
+    <div class="subheading-box">
+      <p class="subheading-text">XiteAI is your premium AI workspace—designed for teams, founders, and creators to unlock productivity, streamline work, and shape the future without limits</p>
+    </div>
+  </div>
+  <button class="btn" onclick="location.href='waitlist.html'">Join WaitingList</button>
+  <img src="static/images/Page1/Centre_Image.jpg" alt="Bottom Image" class="bottom-image">
+</div>
+
+<style>
+/* Page 1 CSS */
+#page1 { height: 128.9vh; background-image: url('static/images/Page1/page1_background.png'); background-size: cover; background-position: center; width: 100vw; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; animation: fadeInCorners 1s ease-in forwards; }
+.page1-flex-box { position: relative; width: 100%; max-width: 960px; height: clamp(200px, 242px, 25vh); display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 0; opacity: 1; visibility: visible; overflow: visible; border-radius: 0; margin-top: 40px; }
+.heading-box, .subheading-box { position: relative; width: 100%; flex: 1 1 auto; display: flex; justify-content: center; align-items: center; text-align: center; }
+.heading-box { height: clamp(120px, 154px, 16vh); flex-grow: 1; }
+.subheading-box { height: clamp(50px, 64px, 7vh); flex-grow: 1; }
+.heading-text { font-family: 'Inter', sans-serif; font-weight: 700; color: #ffffff; font-size: clamp(36px, 5vw, 64px); letter-spacing: -0.04em; line-height: 1.2em; margin: 0; }
+.subheading-text { font-family: 'Inter', sans-serif; font-weight: 400; color: #ffffff; font-size: clamp(16px, 2.5vw, 20px); letter-spacing: -0.02em; line-height: 1.6em; margin: 0; max-width: 720px; padding: 0 20px; box-sizing: border-box; }
+
+/* === Button CSS from user === */
+.btn {
+  background-color: transparent; 
+  color: #ffffff;
+  border: 1px solid #4a4a4a;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  transition: all 1s;
+  overflow: hidden;
+  border-radius: 7px;
+  margin-top: 40px;
+}
+
+.btn:hover {
+  color: #ffffff; 
+  background-color: #5a5a5a; 
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  top: 0;
+  left: -40px;
+  transform: skewX(45deg);
+  background-color: #4a4a4a;
+  z-index: -1;
+  transition: all 1s;
+}
+
+.btn:hover::before {
+  width: 160%;
+}
+
+.bottom-image { position: relative; width: 100%; max-width: clamp(480px, 62.5vw, 800px); height: auto; aspect-ratio: 1200 / 720; transform: scale(1.4); overflow: hidden; border-radius: 12px; animation: scaleIn 2.5s cubic-bezier(0.33, 0, 0, 1) forwards; margin-top: 140px; }
+@keyframes fadeInCorners { 0% { background-image: linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('static/images/Page1/page1_background.png'); opacity: 0; } 100% { background-image: url('static/images/Page1/page1_background.png'); opacity: 1; } }
+@keyframes scaleIn { 0% { opacity: 0; transform: scale(0.85); } 100% { opacity: 1; transform: scale(1.4); } }
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(25px); } 100% { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 1279px) and (min-width: 810px) { 
+  .bottom-image { max-width: clamp(480px, 56.25vw, 720px); aspect-ratio: 1200 / 720; transform: scale(1.5); animation: scaleIn 2.5s cubic-bezier(0.33, 0, 0, 1) forwards; } 
+  #page1 { height: 100vh; } 
+  .page1-flex-box { max-width: 780px; margin-top: 30px; } 
+  .heading-text { font-size: clamp(36px, 5vw, 48px); letter-spacing: -0.004em; line-height: 1.2em; } 
+}
+
+@media (max-width: 809px) { 
+  .bottom-image { max-width: clamp(280px, 48.44vw, 400px); aspect-ratio: 1200 / 720; transform: scale(1.5); animation: scaleIn 2.5s cubic-bezier(0.33, 0, 0, 1) forwards; } 
+  #page1 { height: 100vh; min-height: 600px; } 
+  .page1-flex-box { max-width: 77%; padding: 0 10px; gap: 16px; margin-top: 20px; } 
+  .heading-text { font-size: clamp(24px, 5vw, 36px); letter-spacing: -0.004em; line-height: 1.2em; } 
+  .subheading-text { font-size: clamp(14px, 2.5vw, 18px); line-height: 1.6em; padding: 0 15px; } 
+  .btn { font-size: clamp(12px, 1.5vw, 14px); padding: clamp(6px, 1vw, 8px) clamp(12px, 2vw, 16px); margin-top: 15px; } 
+}
+
+@media (max-width: 480px) { 
+  .page1-flex-box { max-width: 100%; gap: 12px; height: auto; min-height: 20px; margin-top: 100px; } 
+  .heading-box { height: auto; min-height: 100px; } 
+  .subheading-box { height: auto; min-height: 50px; } 
+  .heading-text { font-size: clamp(28px, 5vw, 36px); letter-spacing: -0.004em; line-height: 1.2em; } 
+  .subheading-text { font-size: clamp(12px, 2.5vw, 16px); line-height: 1.6em; padding: 0 10px; } 
+  .btn { font-size: clamp(10px, 1.5vw, 12px); padding: clamp(5px, 1vw, 6px) clamp(10px, 2vw, 12px); margin-top: 10px; } 
+  .bottom-image { margin-top: 60px; }
+  #page1 { height: 100vh; min-height: 500px; }
+}
+</style>
+
+
+ <!-- Page2 -->
+  <section id="Marquee">
+  <div class="Marquee-container">
+    <div class="Marquee-content">
+      <div class="Marquee-item"><img src="static/images/page2/ChatGPT.png" alt="ChatGPT"><span>Chatgpt</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Claude.png" alt="Claude"><span>Claude</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Copilot.png" alt="Copilot"><span>Copilot</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Deepseek.png" alt="Deepseek"><span>Deepseek</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Gemini.png" alt="Gemini"><span>Gemini</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Meta.png" alt="Meta"><span>Meta</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Minimax.png" alt="Minimax"><span>Minimax</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Mistral.png" alt="Mistral"><span>Mistral</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Perplexity.png" alt="Perplexity"><span>Perplexity</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Qwen.png" alt="Qwen"><span>Qwen</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Sonar.png" alt="Sonar"><span>Sonar</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/StarCoder.png" alt="StarCoder"><span>Starcoder</span></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="Marquee-item"><img src="static/images/page2/ChatGPT.png" alt="ChatGPT"><span>Chatgpt</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Claude.png" alt="Claude"><span>Claude</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Copilot.png" alt="Copilot"><span>Copilot</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Deepseek.png" alt="Deepseek"><span>Deepseek</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Gemini.png" alt="Gemini"><span>Gemini</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Meta.png" alt="Meta"><span>Meta</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Minimax.png" alt="Minimax"><span>Minimax</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Mistral.png" alt="Mistral"><span>Mistral</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Perplexity.png" alt="Perplexity"><span>Perplexity</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Qwen.png" alt="Qwen"><span>Qwen</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/Sonar.png" alt="Sonar"><span>Sonar</span></div>
+      <div class="Marquee-item"><img src="static/images/page2/StarCoder.png" alt="StarCoder"><span>Starcoder</span></div>
+    </div>
+  </div>
+  <style>
+  #Marquee { height: 18.5vh; background: #060606; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+  .Marquee-container { width: 65%; max-width: 1200px; height: 90%;background-image: url('static/images/page2/page2_Stars.png'); background-size: cover; background-position: center; border-radius: 12px; display: flex; align-items: center; overflow: hidden; position: relative; }
+  .Marquee-container { --mask: linear-gradient(to right, rgba(0,0,0,1) 0, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 95%, rgba(0,0,0,0) 100%) 50% 50% / 100% 100% repeat-y, linear-gradient(to bottom, rgba(0,0,0,1) 0, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 95%, rgba(0,0,0,0) 100%) 50% 50% / 100% 100% repeat-x; -webkit-mask: var(--mask); mask: var(--mask); }
+  .Marquee-content { display: flex; align-items: center; white-space: nowrap; animation: marquee 20s linear infinite; }
+  .Marquee-item { display: flex; align-items: center; margin-right: 40px; }
+  .Marquee-item img { width: 40px; height: 40px; margin-right: 10px; }
+  .Marquee-item span { color: #ffffff; font-family: 'Arial', sans-serif; font-size: 16px; letter-spacing: 1.5px; font-weight: 500; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .Marquee-content:hover { animation-play-state: paused; }
+  @media (max-width: 1279px) and (min-width: 810px) { #Marquee { height: 18.5vh; } .Marquee-container { width: 75%; max-width: 780px; height: 80%; } }
+  @media (max-width: 809px) { #Marquee { height: 16vh; } .Marquee-container { width: 85%; max-width: 100%; height: 80%; padding: 0 10px; } .Marquee-item { margin-right: 30px; } }
+  @media (max-width: 480px) { #Marquee { height: 14vh; min-height: 120px; } .Marquee-container { width: 90%; max-width: 100%; height: 75%; padding: 0 8px; } .Marquee-item { margin-right: 20px; } .Marquee-item img { width: 32px; height: 32px; } .Marquee-item span { font-size: 14px; } }
+  </style>
+</section>
+
+<!-- Page 3 -->
+<section id="Page3" class="page">
+  <div class="Page3-container">
+    <img src="static/images/page3/earth.png" alt="Earth Image" class="Page3-earth-image">
+    <h1 class="Page3-heading">A singular place for all top AI models</h1>
+    <p class="Page3-subheading">Switch seamlessly between GPT, Claude, Gemini, and more — all in one powerful platform.</p>
+    <button class="btn" onclick="location.href='waitlist.html'">Join WaitingList</button>
+  </div>
+</section>
+
+<style>
+#Page3 { height: 90vh; background: #060606 url('') no-repeat fixed center; background-size: cover; display: flex; justify-content: center; align-items: center; position: relative; }
+.Page3-container { width: 65%; max-width: 960px; background-image: url('static/images/page3/earth_stars.png'); background-size: cover; background-position: center; height: 80%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding-top: 60px; }
+.Page3-earth-image { width: 320px; height: 320px; object-fit: contain; margin-bottom: 20px; }
+.Page3-heading { font-family: 'Inter', sans-serif; font-weight: 700; color: #ffffff; font-size: clamp(28px, 4vw, 48px); letter-spacing: -0.02em; line-height: 1.2em; text-align: center; margin: 0; }
+.Page3-subheading { font-family: 'Inter', sans-serif; font-weight: 400; color: #ffffff; font-size: clamp(14px, 2vw, 18px); letter-spacing: -0.01em; line-height: 1.8em; text-align: center; max-width: 720px; margin: 0; }
+
+/* === Button CSS from user === */
+.btn {
+  background-color: transparent; 
+  color: #ffffff;
+  border: 1px solid #4a4a4a;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  transition: all 1s;
+  overflow: hidden;
+  border-radius: 7px;
+}
+
+.btn:hover {
+  color: #ffffff; 
+  background-color: #5a5a5a; 
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  top: 0;
+  left: -40px;
+  transform: skewX(45deg);
+  background-color: #4a4a4a;
+  z-index: -1;
+  transition: all 1s;
+}
+
+.btn:hover::before {
+  width: 160%;
+}
+
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(25px); } 100% { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 1279px) and (min-width: 810px) { 
+  #Page3 { height: 76vh; } 
+  .Page3-container { width: 75%; max-width: 780px; height: 80%; padding-top: 50px; } 
+  .Page3-earth-image { width: 200px; height: 200px; } 
+  .Page3-heading { font-size: clamp(24px, 4vw, 40px); } 
+  .Page3-subheading { font-size: clamp(12px, 2vw, 16px); line-height: 1.8em; } 
+}
+@media (max-width: 809px) { 
+  #Page3 { height: 70vh; min-height: 400px; } 
+  .Page3-container { width: 85%; max-width: 100%; height: 75%; padding: 0 10px; gap: 16px; padding-top: 40px; } 
+  .Page3-earth-image { width: 200px; height: 200px; } 
+  .Page3-heading { font-size: clamp(20px, 4vw, 32px); } 
+  .Page3-subheading { font-size: clamp(12px, 2vw, 14px); line-height: 1.8em; } 
+}
+@media (max-width: 480px) { 
+  #Page3 { height: 65vh; min-height: 350px; } 
+  .Page3-container { width: 90%; max-width: 100%; height: 70%; padding: 0 8px; gap: 12px; padding-top: 30px; } 
+  .Page3-earth-image { width: 130px; height: 130px; } 
+  .Page3-heading { font-size: clamp(18px, 4vw, 28px); } 
+  .Page3-subheading { font-size: clamp(10px, 2vw, 12px); line-height: 1.8em; } 
+}
+</style>
+
+<script>
+// Page 3 JavaScript (if needed)
+</script>
+
+
+<section id="Features" class="page">
+  <div class="Features-container">
+    <div class="Features-button">Features</div>
+    <h1 class="Features-heading">Powerful. Fast. Limitless.</h1>
+    <p class="Features-subheading">
+      XiteAI gives creators, professionals, and businesses the ultimate tools to explore ideas, build smarter, and unlock next-level productivity.
+    </p>
+    <div class="Features-cards">
+      <div class="Features-card-row">
+        <div class="Features-card">
+          <div class="Features-card-image" style="background-image: url('static/images/FEATURES/multi_ai.jpg');"></div>
+          <div class="Features-card-content">
+            <h2 class="Features-card-heading">Multi-Model Chat</h2>
+            <p class="Features-card-subheading">
+              Access 50+ premium models including GPT-5, Claude and more. Switch instantly for creativity, coding, or research.
+            </p>
+          </div>
+        </div>
+        <div class="Features-card">
+          <div class="Features-card-image" style="background-image: url('static/images/FEATURES/ai_doc.png');"></div>
+          <div class="Features-card-content">
+            <h2 class="Features-card-heading">File Intelligence</h2>
+            <p class="Features-card-subheading">
+              Upload PDFs, docs, or research papers and get instant summaries, deep analysis, and contextual insights.
+            </p>
+          </div>
+        </div>
+        <div class="Features-card">
+          <div class="Features-card-image" style="background-image: url('static/images/FEATURES/aiimage.jpg');"></div>
+          <div class="Features-card-content">
+            <h2 class="Features-card-heading">AI Images</h2>
+            <p class="Features-card-subheading">
+              Generate stunning visuals, concepts, and designs directly within XiteAI — no extra tools needed.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="Features-card-row">
+        <div class="Features-card">
+          <div class="Features-card-image" style="background-image: url('static/images/FEATURES/tokens.jpg');"></div>
+          <div class="Features-card-content">
+            <h2 class="Features-card-heading">High Token Limits</h2>
+            <p class="Features-card-subheading">
+              100K tokens/day with Prime. Long conversations, complex research, and deep thinking — without limits.
+            </p>
+          </div>
+        </div>
+        <div class="Features-card">
+          <div class="Features-card-image" style="background-image: url('static/images/FEATURES/web_search.jpg');"></div>
+          <div class="Features-card-content">
+            <h2 class="Features-card-heading">Web + Local Search</h2>
+            <p class="Features-card-subheading">
+              Research faster with real-time web results, or connect local files for hybrid intelligence.
+            </p>
+          </div>
+        </div>
+        <div class="Features-card">
+          <div class="Features-card-image" style="background-image: url('static/images/FEATURES/localstorage.jpg');"></div>
+          <div class="Features-card-content">
+            <h2 class="Features-card-heading">Cloud & Local Storage</h2>
+            <p class="Features-card-subheading">
+              Save chats, files, and insights securely. Access them anytime, anywhere for seamless workflow.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<style>
+#Features { 
+  height: clamp(100vh, 141vh, 160vh); 
+  background: #060606 url('') no-repeat fixed center; background-size: cover; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  position: relative; 
+}
+.Features-container { 
+  width: 75%; 
+  max-width: 1210px; 
+  height: 80%; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 24px; /* slightly bigger gap for premium feel */
+}
+.Features-button { 
+  font-family: 'Inter', sans-serif; 
+  font-weight: 600; 
+  color: #ffffff; 
+  font-size: clamp(12px, 1.5vw, 14px); 
+  background: #333333; 
+  border-radius: 24px; 
+  padding: 8px 16px; 
+  text-align: center; 
+  pointer-events: none; 
+  -webkit-user-select: none;
+  user-select: none; 
+}
+.Features-heading { 
+  font-family: 'Inter', sans-serif; 
+  font-weight: 700; 
+  color: #ffffff; 
+  font-size: clamp(28px, 3.5vw, 36px); /* smaller, elegant size */ 
+  letter-spacing: -0.02em; 
+  line-height: 1; 
+  text-align: center; 
+  margin: 0; 
+}
+.Features-subheading { 
+  font-family: 'Inter', sans-serif; 
+  font-weight: 400; 
+  color: #ffffff; 
+  font-size: clamp(16px, 2vw, 18px); /* smaller, tight hierarchy */ 
+  letter-spacing: -0.01em; 
+  line-height: 1.5; 
+  text-align: center; 
+  max-width: 720px; 
+  margin: 0; 
+}
+.Features-cards { 
+  width: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+  margin-top: 12px; 
+}
+.Features-card-row { 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 6px; 
+  width: 100%; 
+}
+.Features-card { 
+  width: clamp(580px, 62vw, 720px); 
+  height: clamp(400px, 50vw, 460px); 
+  background: #111111; 
+  border: 1px solid #151516; 
+  border-radius: 22px; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+}
+.Features-card-image { 
+  flex: 0 0 auto; 
+  height: clamp(200px, 25vw, 230px); 
+  background: #111111; 
+  border-radius: 22px 22px 0 0; 
+  background-size: contain; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  margin: 16px; 
+}
+.Features-card-content { 
+  padding: 16px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px; 
+  justify-content: flex-end; 
+}
+.Features-card-heading { 
+  font-family: 'Inter', sans-serif; 
+  font-weight: 600; 
+  color: #ffffff; 
+  font-size: clamp(14px, 1.8vw, 16px); /* premium, readable */ 
+  letter-spacing: -0.01em; 
+  line-height: 1.4; 
+  text-align: left; 
+  margin: 0; 
+}
+.Features-card-subheading { 
+  font-family: 'Inter', sans-serif; 
+  font-weight: 400; 
+  color: #cccccc; 
+  font-size: clamp(12px, 1.5vw, 14px); 
+  letter-spacing: -0.01em; 
+  line-height: 1.4; 
+  text-align: left; 
+  margin: 0; 
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1279px) and (min-width: 810px) { 
+  #Features { height: clamp(80vh, 90vh, 100vh); } 
+  .Features-container { width: 80%; max-width: 960px; height: 80%; gap: 16px; } 
+  .Features-button { font-size: clamp(10px, 1.3vw, 12px); padding: 6px 12px; }
+  .Features-heading { font-size: clamp(26px, 3vw, 32px); } 
+  .Features-subheading { font-size: clamp(14px, 1.8vw, 16px); } 
+  .Features-cards { gap: 6px; }
+  .Features-card-row { gap: 6px; }
+  .Features-card { width: clamp(460px, 52vw, 580px); height: clamp(340px, 42vw, 390px); } 
+  .Features-card-image { height: clamp(170px, 22vw, 200px); margin: 12px; }
+  .Features-card-heading { font-size: clamp(12px, 1.6vw, 14px); } 
+  .Features-card-subheading { font-size: clamp(10px, 1.3vw, 12px); } 
+}
+@media (max-width: 809px) { 
+  #Features { height: auto; min-height: clamp(400px, 50vw, 600px); padding: 40px 0; } 
+  .Features-container { width: 90%; max-width: 100%; height: auto; padding: 0 10px; gap: 12px; } 
+  .Features-button { font-size: clamp(10px, 1.3vw, 12px); padding: 6px 12px; }
+  .Features-heading { font-size: clamp(22px, 4vw, 28px); } 
+  .Features-subheading { font-size: clamp(12px, 2vw, 14px); } 
+  .Features-cards { flex-direction: column; gap: 6px; } 
+  .Features-card-row { flex-direction: column; align-items: center; gap: 6px; } 
+  .Features-card { width: clamp(580px, 68vw, 720px); height: clamp(400px, 50vw, 460px); } 
+  .Features-card-image { height: clamp(200px, 25vw, 230px); margin: 12px; }
+  .Features-card-heading { font-size: clamp(12px, 1.6vw, 14px); } 
+  .Features-card-subheading { font-size: clamp(10px, 1.3vw, 12px); } 
+}
+@media (max-width: 480px) { 
+  #Features { height: auto; min-height: clamp(350px, 45vw, 500px); padding: 32px 0; } 
+  .Features-container { width: 95%; max-width: 100%; height: auto; padding: 0 8px; gap: 10px; } 
+  .Features-button { font-size: clamp(8px, 1.2vw, 10px); padding: 6px 10px; }
+  .Features-heading { font-size: clamp(20px, 3.5vw, 24px); } 
+  .Features-subheading { font-size: clamp(10px, 2vw, 12px); } 
+  .Features-cards { gap: 6px; }
+  .Features-card-row { gap: 6px; }
+  .Features-card { width: 100%; max-width: clamp(580px, 62vw, 720px); height: clamp(400px, 50vw, 460px); } 
+  .Features-card-image { height: clamp(200px, 25vw, 230px); margin: 10px; }
+  .Features-card-heading { font-size: clamp(12px, 1.6vw, 14px); } 
+  .Features-card-subheading { font-size: clamp(10px, 1.3vw, 12px); } 
+}
+
+</style>
+
+
+<section id="Page5" class="page">
+  <div class="Page5-vertical-container">
+    <img src="static/images/SuperXite/main.JPG" alt="PDF Image" class="Page5-image">
+  </div>
+  <div class="Page5-container">
+    <h1 class="Page5-heading">SuperXite Lite: Brilliance Without Boundaries</h1>
+    <p class="Page5-subheading">A masterful fusion of AI ingenuity—delivering elite performance through intelligent orchestration, at a whisper of the cost.</p>
+    <div class="Page5-columns">
+      <div class="Page5-row">
+        <div class="Page5-column">
+          <h2 class="Page5-column-heading">The Art of Prompt Mastery</h2>
+          <p class="Page5-column-subheading">Before a single thought processes, our precision enhancer refines your query—unlocking depths of understanding and nuance.</p>
+          <img src="static/images/SuperXite/prompter.jpg" alt="Feature 1" class="Page5-column-image">
+        </div>
+        <div class="Page5-column">
+          <h2 class="Page5-column-heading">Harmony in Collaboration</h2>
+          <p class="Page5-column-subheading">Five elite, efficient models converge in parallel—each contributing its strength, curated by a discerning AI that selects the pinnacle of response.</p>
+          <img src="static/images/SuperXite/SUPER.jpg" alt="Feature 2" class="Page5-column-image">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+#Page5 {
+  height: 180.5vh;
+  background: #060606 url('') no-repeat fixed center; background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.Page5-vertical-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1282px;
+  height: 100%;
+  z-index: 1;
+}
+.Page5-container {
+  width: 65%;
+  max-width: 960px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px; /* increased from 12px for premium feel */
+  z-index: 2;
+}
+.Page5-heading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: clamp(28px, 3vw, 34px); /* slightly smaller, premium */
+  letter-spacing: -0.02em;
+  line-height: 1.3em;
+  text-align: center;
+  margin: 0 0 16px 0; /* added bottom margin for breathing */
+}
+.Page5-subheading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: clamp(16px, 1.8vw, 18px); /* smaller & premium */
+  letter-spacing: -0.01em;
+  line-height: 1.6em;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 0 32px 0; /* breathing room */
+}
+.Page5-image {
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  z-index: 1;
+  border-radius: 22px;
+}
+.Page5-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 32px; /* increased from 24px */
+  width: 200%;
+  max-width: 1200px;
+  margin-top: 82%; /* slightly more space */
+}
+.Page5-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px; /* increased from 24px */
+  width: 100%;
+}
+.Page5-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+}
+.Page5-column-image {
+  width: 100%;
+  max-width: 750px;
+  height: auto;
+  margin-bottom: 24px; /* slightly increased for spacing */
+  border-radius: 22px;
+}
+.Page5-column-heading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 22px; /* slightly smaller for premium hierarchy */
+  letter-spacing: -0.01em;
+  line-height: 1.4em;
+  text-align: left;
+  margin: 0 0 12px 0;
+}
+.Page5-column-subheading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.5em;
+  text-align: left;
+  margin: 0 0 24px 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1279px) and (min-width: 768px) {
+  #Page5 { height: 120vh; }
+  .Page5-vertical-container { width: 90%; max-width: 900px; }
+  .Page5-container { width: 80%; max-width: 800px; height: 85%; gap: 20px; }
+  .Page5-heading { font-size: 32px; line-height: 1.3em; margin-bottom: 16px; }
+  .Page5-subheading { font-size: 18px; line-height: 1.5em; max-width: 600px; margin-bottom: 24px; }
+  .Page5-image { top: 20%; max-width: 750px; border-radius: 16px; }
+  .Page5-columns { width: 100%; max-width: 800px; margin-top: 84%; gap: 28px; }
+  .Page5-row { gap: 24px; }
+  .Page5-column-image { max-width: 750px; border-radius: 16px; margin-top: 24px; }
+  .Page5-column-heading { font-size: 20px; line-height: 1.3em; }
+  .Page5-column-subheading { font-size: 15px; line-height: 1.4em; margin-bottom: 20px; }
+}
+@media (max-width: 767px) {
+  #Page5 { height: 150vh; min-height: 600px; }
+  .Page5-vertical-container { width: 100%; max-width: 100%; }
+  .Page5-container { width: 90%; max-width: 100%; height: 90%; padding: 0 16px; gap: 20px; } /* increased gap */
+  .Page5-heading { font-size: 28px; line-height: 1.25em; margin-bottom: 28px; } /* more space below heading */
+  .Page5-subheading { font-size: 16px; line-height: 1.45em; margin-bottom: 40px; } /* more space below subheading */
+  .Page5-image { top: 25%; max-width: 90%; border-radius: 12px; } /* move image slightly lower */
+  .Page5-columns { width: 100%; max-width: 100%; margin-top: 68%; gap: 32px; } /* more breathing in columns */
+  .Page5-row { flex-direction: column; gap: 20px; }
+  .Page5-column { margin-top: 20px; }
+  .Page5-column-image { max-width: 100%; border-radius: 12px; margin-bottom: 24px; }
+  .Page5-column-heading { font-size: 18px; }
+  .Page5-column-subheading { font-size: 14px; margin-bottom: 20px; }
+}
+
+@media (max-width: 480px) {
+  #Page5 { height: 150vh; min-height: 500px; }
+  .Page5-vertical-container { width: 100%; max-width: 100%; }
+  .Page5-container { width: 95%; max-width: 100%; height: 90%; padding: 0 8px; gap: 16px; } /* increased gap */
+  .Page5-heading { font-size: 22px; line-height: 1.25em; margin-bottom: 24px; } /* more space below heading */
+  .Page5-subheading { font-size: 14px; line-height: 1.4em; margin-bottom: 32px; } /* more space below subheading */
+  .Page5-image { top: 18%; max-width: 90%; border-radius: 10px; } /* slightly lower */
+  .Page5-columns { width: 100%; max-width: 100%; margin-top: 65%; gap: 24px; }
+  .Page5-row { flex-direction: column; gap: 16px; }
+  .Page5-column { margin-top: 16px; }
+  .Page5-column-image { max-width: 100%; border-radius: 10px; margin-bottom: 20px; }
+  .Page5-column-heading { font-size: 16px; }
+  .Page5-column-subheading { font-size: 14px; margin-bottom: 18px; }
+}
+</style>
+
+<!-- Page 6 -->
+<section id="Page6" class="page">
+  <div class="Page6-vertical-container"></div>
+  <div class="Page6-container">
+
+    <!-- Heading -->
+    <h1 class="Page6-heading">Persona Mode: Shape Your AI</h1>
+    <p class="Page6-subheading">
+      Customize roles, track tokens live, and generate tailored visuals for every chat—elegantly.
+    </p>
+
+    <!-- Card Grid -->
+    <div class="Page6-grid">
+      <div class="Page6-card">
+        <img src="static/images/persona/persona.jpg" alt="Persona Left" class="Page6-image">
+        <p class="Page6-card-sub">Left Persona Description</p>
+      </div>
+      <div class="Page6-card">
+        <img src="static/images/persona/persona.jpg" alt="Persona Center" class="Page6-image">
+        <p class="Page6-card-sub">Center Persona Description</p>
+      </div>
+      <div class="Page6-card">
+        <img src="static/images/persona/persona.jpg" alt="Persona Right" class="Page6-image">
+        <p class="Page6-card-sub">Right Persona Description</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+#Page6 {min-height:100vh;background:#060606 url('') no-repeat fixed center;background-size:cover;display:flex;justify-content:center;align-items:center;padding:60px 0;position:relative;}
+.Page6-vertical-container {position:absolute;top:0;left:50%;transform:translateX(-50%);width:1600px;height:100%;z-index:1;}
+.Page6-container {width:90%;max-width:1400px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:32px;z-index:2;}
+.Page6-heading {font-family:'Inter',sans-serif;font-weight:700;color:#ffffff;font-size:clamp(28px,3.2vw,38px);line-height:1.25em;margin:0;}
+.Page6-subheading {font-family:'Inter',sans-serif;font-weight:400;color:#cccccc;font-size:clamp(14px,1.8vw,16px);line-height:1.6em;max-width:600px;margin:0;}
+
+/* Grid Default (3 cards always) */
+.Page6-grid {display:flex;justify-content:center;align-items:flex-start;gap:8px;flex-wrap:nowrap;}
+.Page6-card {display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;max-width:380px;}
+.Page6-image {width:100%;max-width:360px;height:auto;border-radius:12px;}
+.Page6-card-sub {font-family:'Inter',sans-serif;font-weight:400;color:#b5b5b5;font-size:clamp(13px,1.6vw,15px);line-height:1.5;margin:0;}
+
+/* Tablet (still 3 cards, smaller size) */
+@media(max-width:1199px){
+  .Page6 {min-height: 40vh;}
+  .Page6-card{max-width:300px;}
+  .Page6-image{max-width:280px;}
+}
+
+/* Mobile (stacked full width) */
+@media(max-width:768px){
+  .Page6-grid{flex-direction:column;gap:18px;}
+  .Page6-card{max-width:100%;}
+  .Page6-image{width:100%;max-width:100%;}
+}
+
+</style>
+
+<script>
+// Page 6 Animation (subtle fade-up)
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+        entry.target.classList.add('animated');
+        entry.target.style.animation = 'fadeUp 1.2s ease forwards';
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.Page6-heading, .Page6-subheading, .Page6-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    observer.observe(el);
+  });
+});
+
+const styleSheet = document.createElement("style");
+styleSheet.innerText = `
+@keyframes fadeUp {from {opacity:0;transform:translateY(20px);}to {opacity:1;transform:translateY(0);}}
+`;
+document.head.appendChild(styleSheet);
+</script>
+
+
+<!-- Page 7 -->
+<section id="Page7" class="page">
+  <div class="container">
+    <div class="pricing-header">
+      <h1>Upgrade Your Plan</h1>
+      <p class="header-description">One subscription, infinite AI precision.</p>
+    </div>
+    <div class="toggle-container">
+      <span class="toggle-label monthly active">Monthly</span>
+      <div class="toggle-switch"></div>
+      <span class="toggle-label yearly">Annually</span>
+      <span class="savings-badge">Save up to 66%</span>
+    </div>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <div class="elegant-decorator" style="top: -15px; right: -15px;"></div>
+        <h3 class="tier-title">Essentials</h3>
+        <p class="tier-description">Free forever. Experience XiteAI’s foundation tier.</p>
+        <div class="price-container">
+          <span class="original-price">₹<span class="original-price-value">0</span></span>
+          <span class="price"><span class="price-currency">₹</span><span class="price-value">0</span></span>
+          <span class="price-period">/month</span>
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Access 50+ Premium Models</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Access Memory</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Limited Premium Conversations</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Limited Deep-End Research</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Limited File Uploads</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Basic Image Generation</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Limited Custom GPTs</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Access Local Storage</span></li>
+        </ul>
+        <button class="cta-button">Begin Your Journey</button>
+      </div>
+      <div class="pricing-card popular">
+        <div class="elegant-decorator" style="top: -30px; left: 50%; transform: translateX(-50%);"></div>
+        <span class="popular-badge">Most Popular</span>
+        <h3 class="tier-title">Prime</h3>
+        <p class="tier-description">Smart Edge. Unlock 25x More Power. Intelligence, refined for those who create. <strong>65% OFF</strong></p>
+        <div class="price-container">
+          <span class="original-price">₹<span class="original-price-value">1700</span></span>
+          <span class="price"><span class="price-currency">₹</span><span class="price-value">599</span></span>
+          <span class="price-period">/month</span>
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Access 50+ Premium Models</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Extended Premium Conversations</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Enhanced Memory & Context</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Extended Deep-End Research</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Extended File Uploads</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Fast Image Generation</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Unlimited Custom GPTs</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Priority Support</span></li>
+        </ul>
+        <button class="cta-button">Elevate Your Experience</button>
+      </div>
+      <div class="pricing-card">
+        <div class="elegant-decorator" style="bottom: -15px; left: -15px;"></div>
+        <h3 class="tier-title">Ultimate Power</h3>
+        <p class="tier-description">Unmatched Value. Unlock 250x Greater Impact. Nothing between you and possibility. <strong>23% OFF</strong></p>
+        <div class="price-container">
+          <span class="original-price">₹<span class="original-price-value">3000</span></span>
+          <span class="price"><span class="price-currency">₹</span><span class="price-value">2300</span></span>
+          <span class="price-period">/month</span>
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Access All Premium Models</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Unlimited Premium Conversations</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Full Memory & Context Access</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Unlimited Deep-End Research</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Unlimited File Uploads</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Higher Image Generation</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">Unlimited Custom GPTs</span></li>
+          <li class="feature-item"><span class="feature-icon">✦</span><span class="feature-text">VIP Support</span></li>
+        </ul>
+        <button class="cta-button">Indulge in Excellence</button>
+      </div>
+    </div>
+    <div class="guarantee"></div>
+  </div>
+</section>
+
+<style>
+#Page7{background:#060606 url('') no-repeat fixed center; background-size: cover;color:#fff;font-family:'Avenir','Montserrat',sans-serif;line-height:1.6;padding:1.5rem;min-height:55vh;display:flex;justify-content:center;align-items:center;overflow-x:hidden;}
+.container{max-width:900px;width:100%;margin:0 auto;}
+.pricing-header{text-align:center;margin-bottom:1.5rem;}
+h1{font-family:'Baskerville','Garamond',serif;font-weight:400;font-size:clamp(26px,4vw,44px);letter-spacing:-0.02em;margin-bottom:0.5rem;color:#fff;position:relative;display:inline-block;opacity:0;transform:translateY(20px);}
+.header-description{color:#a0a0a0;font-size:clamp(13px,2vw,16px);max-width:720px;margin:0 auto;font-weight:300;opacity:0;transform:translateY(20px);}
+.toggle-container{display:flex;justify-content:center;align-items:center;margin:1.75rem 0;gap:0.5rem;transform:translateX(40px);}
+.toggle-label{font-size:0.95rem;color:#a0a0a0;cursor:pointer;transition:color 0.2s ease;padding:0 0.25rem;}
+.toggle-label.active{color:#fff;font-weight:500;}
+.toggle-switch{position:relative;width:55px;height:26px;background:#4a4a4a;border-radius:30px;cursor:pointer;transition:background 0.2s ease;}
+.toggle-switch::after{content:'';position:absolute;width:20px;height:20px;left:3px;top:3px;background:#fff;border-radius:45%;transition:transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+.toggle-switch.yearly::after{transform:translateX(30px);}
+.savings-badge{background:#2a2a2a;color:#fff;font-size:0.85rem;padding:0.2rem 0.6rem;border-radius:0.5rem;opacity:0;transform:translateX(-10px);transition:opacity 0.3s,transform 0.3s;}
+.savings-badge.visible{opacity:1;transform:translateX(0);}
+.pricing-cards{margin-left:-140px;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
+.pricing-card{width:320px;background:#1a1a1a;border-radius:0.5rem;padding:1.5rem;box-shadow:0 2px 6px rgba(0,0,0,0.25);transition:transform 0.3s,box-shadow 0.3s;position:relative;overflow:hidden;min-height:440px;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(25px);}
+.pricing-card:hover{transform:translateY(-4px);box-shadow:0 5px 12px rgba(0,0,0,0.3);}
+.pricing-card.popular{background:#303030;transform:scale(1.02);border:1px solid #606060;box-shadow:0 12px 24px rgba(0,0,0,0.45);}
+.popular-badge{position:absolute;top:10px;right:10px;font-size:0.8rem;font-weight:600;text-transform:uppercase;color:#fff;background:#404040;padding:0.25rem 0.6rem;border-radius:0.25rem;opacity:0.9;}
+.tier-title{font-family:'Baskerville','Garamond',serif;font-size:1.55rem;margin-bottom:0.5rem;font-weight:600;}
+.tier-description{color:#a0a0a0;font-size:0.93rem;margin-bottom:1.5rem;min-height:55px;font-weight:300;}
+.price-container{margin-bottom:1.5rem;}
+.price{font-family:'Baskerville','Garamond',serif;font-size:2.6rem;display:inline-block;margin-right:4px;position:relative;font-weight:500;}
+.price-currency{position:absolute;font-size:1.25rem;top:0.4rem;left:-0.9rem;color:#a0a0a0;}
+.price-period{font-size:0.95rem;color:#a0a0a0;vertical-align:middle;}
+.original-price{text-decoration:line-through;font-size:1rem;color:#a0a0a0;margin-right:0.5rem;opacity:0;transition:opacity 0.3s;}
+.original-price.visible{opacity:1;}
+.feature-list{list-style:none;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.1);}
+.feature-item{display:flex;align-items:flex-start;margin-bottom:0.5rem;font-size:0.98rem;}
+.feature-icon{margin-left:-40px;width:16px;height:16px;margin-right:8px;color:#4a4a4a;opacity:0.8;flex-shrink:0;margin-top:3px;}
+.feature-text{line-height:1.5;font-weight:400;}
+.cta-button{width:100%;background:transparent;color:#fff;border:1px solid #4a4a4a;border-radius:0.25rem;padding:0.95rem 1.5rem;font-family:'Avenir','Montserrat',sans-serif;font-size:1.05rem;font-weight:500;cursor:pointer;transition:background 0.3s,color 0.3s,transform 0.2s;position:relative;overflow:hidden;margin-top:auto;}
+.cta-button::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:#4a4a4a;transition:transform 0.3s;z-index:-1;transform:skewX(-15deg);}
+.cta-button:hover::before{transform:translateX(100%) skewX(-15deg);}
+.cta-button:hover{color:#fff;background:#5a5a5a;}
+.cta-button:active{transform:scale(0.98);}
+.pricing-card.popular .cta-button{background:#606060;color:#fff;border-color:#606060;}
+.pricing-card.popular .cta-button:hover{background:#707070;border-color:#707070;}
+.guarantee{text-align:center;font-size:0.9rem;color:#a0a0a0;margin-top:1.5rem;opacity:0.8;font-weight:300;}
+.guarantee-highlight{text-decoration:underline;text-decoration-color:#4a4a4a;text-decoration-thickness:1px;text-underline-offset:2px;}
+.elegant-decorator{position:absolute;width:90px;height:90px;border-radius:50%;background:#4a4a4a;opacity:0.1;z-index:0;transition:transform 0.5s;}
+.pricing-card:hover .elegant-decorator{transform:scale(1.5);}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:translateY(0);}}
+
+/* Updated media queries for precise mobile and tablet responsiveness */
+@media (max-width: 480px) {
+  #Page7 { padding: clamp(0.75rem, 3.5vw, 1rem); min-height: auto; }
+  .container { max-width: 100%; padding: 0 clamp(0.5rem, 3vw, 0.75rem); }
+  .pricing-header { margin-bottom: clamp(0.75rem, 3vw, 1rem); }
+  h1 { font-size: clamp(18px, 5.5vw, 24px); letter-spacing: -0.01em; }
+  .header-description { font-size: clamp(11px, 3.2vw, 13px); max-width: 95%; }
+  .toggle-container { margin: clamp(0.75rem, 3vw, 1rem) 0; gap: clamp(0.3rem, 1.5vw, 0.5rem); transform: none; }
+  .toggle-label { font-size: clamp(0.8rem, 2.5vw, 0.9rem); }
+  .toggle-switch { width: clamp(36px, 10vw, 48px); height: clamp(18px, 5vw, 22px); }
+  .toggle-switch::after { width: clamp(14px, 3.5vw, 16px); height: clamp(14px, 3.5vw, 16px); left: 2px; top: 2px; }
+  .toggle-switch.yearly::after { transform: translateX(clamp(18px, 5vw, 24px)); }
+  .savings-badge { font-size: clamp(0.65rem, 2.2vw, 0.75rem); padding: clamp(0.1rem, 1vw, 0.15rem) clamp(0.3rem, 1.2vw, 0.4rem); }
+  .pricing-cards { grid-template-columns: 1fr; gap: clamp(0.5rem, 2.5vw, 0.75rem); margin-left: 0; margin-top: clamp(0.75rem, 3vw, 1rem); }
+  .pricing-card { width: clamp(260px, 92vw, 300px); min-height: clamp(340px, 95vw, 380px); padding: clamp(0.75rem, 3vw, 1rem); margin: 0 auto clamp(0.75rem, 3vw, 1rem); transform: none !important; }
+  .pricing-card.popular { transform: none !important; order: -1; border: 1px solid #606060; }
+  .tier-title { font-size: clamp(1.3rem, 4vw, 1.4rem); margin-bottom: clamp(0.3rem, 1.5vw, 0.4rem); }
+  .tier-description { font-size: clamp(0.75rem, 2.3vw, 0.85rem); min-height: auto; margin-bottom: clamp(0.75rem, 2.5vw, 1rem); }
+  .price { font-size: clamp(1.8rem, 5.5vw, 2.2rem); }
+  .price-currency { font-size: clamp(0.9rem, 2.5vw, 1rem); top: 0.2rem; left: -0.7rem; }
+  .price-period { font-size: clamp(0.7rem, 2.2vw, 0.8rem); }
+  .original-price { font-size: clamp(0.8rem, 2.2vw, 0.9rem); margin-right: clamp(0.3rem, 1vw, 0.4rem); }
+  .feature-list { margin-bottom: clamp(0.75rem, 2.5vw, 1rem); padding-bottom: clamp(0.75rem, 2.5vw, 1rem); }
+  .feature-item { font-size: clamp(0.8rem, 2.3vw, 0.9rem); margin-bottom: clamp(0.3rem, 1vw, 0.4rem); }
+  .feature-icon { margin-left: 0; width: clamp(12px, 3.5vw, 14px); height: clamp(12px, 3.5vw, 14px); margin-right: clamp(5px, 1.5vw, 7px); margin-top: 3px; }
+  .cta-button { font-size: clamp(0.85rem, 2.3vw, 0.95rem); padding: clamp(0.5rem, 2vw, 0.7rem) clamp(0.75rem, 2.5vw, 1rem); }
+  .elegant-decorator { width: clamp(50px, 15vw, 70px); height: clamp(50px, 15vw, 70px); }
+  .popular-badge { font-size: clamp(0.7rem, 2vw, 0.75rem); padding: clamp(0.2rem, 1vw, 0.25rem) clamp(0.4rem, 1.2vw, 0.5rem); }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  #Page7 { padding: clamp(1rem, 3vw, 1.25rem); }
+  .container { max-width: 98%; padding: 0 clamp(0.75rem, 2.5vw, 1rem); }
+  .pricing-header { margin-bottom: clamp(1rem, 2.5vw, 1.25rem); }
+  h1 { font-size: clamp(22px, 5vw, 28px); }
+  .header-description { font-size: clamp(12px, 3vw, 14px); max-width: 90%; }
+  .toggle-container { margin: clamp(1rem, 2.5vw, 1.25rem) 0; gap: clamp(0.4rem, 1.5vw, 0.6rem); transform: none; }
+  .toggle-label { font-size: clamp(0.85rem, 2.3vw, 0.95rem); }
+  .toggle-switch { width: clamp(42px, 9vw, 50px); height: clamp(20px, 4.5vw, 24px); }
+  .toggle-switch::after { width: clamp(16px, 3.5vw, 18px); height: clamp(16px, 3.5vw, 18px); left: 2px; top: 2px; }
+  .toggle-switch.yearly::after { transform: translateX(clamp(22px, 5vw, 28px)); }
+  .savings-badge { font-size: clamp(0.7rem, 2vw, 0.8rem); padding: clamp(0.15rem, 1vw, 0.2rem) clamp(0.4rem, 1.5vw, 0.5rem); }
+  .pricing-cards { grid-template-columns: 1fr; gap: clamp(0.75rem, 2.5vw, 1rem); margin-left: 0; margin-top: clamp(1rem, 2.5vw, 1.25rem); }
+  .pricing-card { width: clamp(300px, 85vw, 340px); min-height: clamp(360px, 90vw, 400px); padding: clamp(1rem, 2.5vw, 1.25rem); margin: 0 auto clamp(1rem, 2.5vw, 1.25rem); transform: none !important; }
+  .pricing-card.popular { transform: none !important; order: -1; border: 1px solid #606060; }
+  .tier-title { font-size: clamp(1.4rem, 3.5vw, 1.5rem); margin-bottom: clamp(0.4rem, 1.5vw, 0.5rem); }
+  .tier-description { font-size: clamp(0.8rem, 2.3vw, 0.9rem); min-height: auto; margin-bottom: clamp(1rem, 2.5vw, 1.25rem); }
+  .price { font-size: clamp(2rem, 5vw, 2.3rem); }
+  .price-currency { font-size: clamp(1rem, 2.5vw, 1.1rem); top: 0.25rem; left: -0.75rem; }
+  .price-period { font-size: clamp(0.8rem, 2.2vw, 0.9rem); }
+  .original-price { font-size: clamp(0.9rem, 2.2vw, 1rem); margin-right: clamp(0.3rem, 1vw, 0.4rem); }
+  .feature-list { margin-bottom: clamp(1rem, 2.5vw, 1.25rem); padding-bottom: clamp(1rem, 2.5vw, 1.25rem); }
+  .feature-item { font-size: clamp(0.85rem, 2.3vw, 0.95rem); margin-bottom: clamp(0.3rem, 1vw, 0.4rem); }
+  .feature-icon { margin-left: 0; width: clamp(14px, 3.5vw, 16px); height: clamp(14px, 3.5vw, 16px); margin-right: clamp(6px, 1.5vw, 8px); }
+  .cta-button { font-size: clamp(0.9rem, 2.3vw, 1rem); padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 2.5vw, 1.25rem); }
+  .elegant-decorator { width: clamp(60px, 15vw, 80px); height: clamp(60px, 15vw, 80px); }
+  .popular-badge { font-size: clamp(0.75rem, 2vw, 0.8rem); padding: clamp(0.25rem, 1vw, 0.3rem) clamp(0.4rem, 1.2vw, 0.5rem); }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  #Page7 { padding: clamp(1rem, 2.5vw, 1.5rem); }
+  .container { max-width: 95%; padding: 0 clamp(0.75rem, 2vw, 1rem); }
+  .pricing-header { margin-bottom: clamp(1.25rem, 2.5vw, 1.5rem); }
+  h1 { font-size: clamp(24px, 4.5vw, 32px); }
+  .header-description { font-size: clamp(13px, 2.2vw, 15px); max-width: 85%; }
+  .toggle-container { margin: clamp(1.25rem, 2.5vw, 1.5rem) 0; gap: clamp(0.5rem, 1.5vw, 0.75rem); transform: translateX(25px); }
+  .toggle-label { font-size: clamp(0.9rem, 2vw, 1rem); }
+  .toggle-switch { width: clamp(50px, 8vw, 56px); height: clamp(24px, 4vw, 26px); }
+  .toggle-switch::after { width: clamp(18px, 3.5vw, 20px); height: clamp(18px, 3.5vw, 20px); }
+  .toggle-switch.yearly::after { transform: translateX(clamp(26px, 4.5vw, 30px)); }
+  .savings-badge { font-size: clamp(0.75rem, 2vw, 0.85rem); }
+  .pricing-cards { grid-template-columns: repeat(2, 1fr); gap: clamp(0.75rem, 2vw, 1rem); margin-left: 0; margin-top: clamp(1.5rem, 2.5vw, 2rem); }
+  .pricing-card { width: clamp(280px, 47vw, 320px); min-height: clamp(400px, 48vw, 440px); padding: clamp(1.25rem, 2.5vw, 1.5rem); margin: 0 auto; }
+  .pricing-card.popular { transform: scale(1.02); }
+  .tier-title { font-size: clamp(1.4rem, 3vw, 1.6rem); }
+  .tier-description { font-size: clamp(0.85rem, 2vw, 0.95rem); min-height: clamp(50px, 10vw, 60px); }
+  .price { font-size: clamp(2.2rem, 4.5vw, 2.5rem); }
+  .price-currency { font-size: clamp(1.1rem, 2.2vw, 1.2rem); }
+  .price-period { font-size: clamp(0.9rem, 2vw, 1rem); }
+  .original-price { font-size: clamp(1rem, 2vw, 1.1rem); }
+  .feature-list { margin-bottom: clamp(1.25rem, 2.5vw, 1.5rem); }
+  .feature-item { font-size: clamp(0.9rem, 2vw, 1rem); }
+  .feature-icon { margin-left: -20px; width: clamp(16px, 3vw, 18px); height: clamp(16px, 3vw, 18px); }
+  .cta-button { font-size: clamp(1rem, 2vw, 1.1rem); padding: clamp(0.8rem, 2vw, 1rem) clamp(1.25rem, 2.5vw, 1.5rem); }
+  .elegant-decorator { width: clamp(80px, 15vw, 90px); height: clamp(80px, 15vw, 90px); }
+  .popular-badge { font-size: clamp(0.75rem, 2vw, 0.85rem); }
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleSwitch = document.querySelector('.toggle-switch');
+  const monthlyLabel = document.querySelector('.toggle-label.monthly');
+  const yearlyLabel = document.querySelector('.toggle-label.yearly');
+  const savingsBadge = document.querySelector('.savings-badge');
+  const priceElements = document.querySelectorAll('.price-value');
+  const originalPrices = document.querySelectorAll('.original-price');
+  const originalPriceValues = document.querySelectorAll('.original-price-value');
+  const periodElements = document.querySelectorAll('.price-period');
+  const monthlyPrices = [0, 599, 2300];
+  const yearlyPrices = [0, 6999, 27599];
+  const originalMonthlyPrices = [0, 1700, 3000];
+  const originalYearlyPrices = [0, 20400, 36000];
+  const discountText = ['', '65% OFF', '23% OFF'];
+  toggleSwitch.addEventListener('click', function() {
+    toggleSwitch.classList.toggle('yearly');
+    monthlyLabel.classList.toggle('active');
+    yearlyLabel.classList.toggle('active');
+    savingsBadge.classList.toggle('visible');
+    const isYearly = toggleSwitch.classList.contains('yearly');
+    priceElements.forEach((price, index) => {
+      const startValue = parseFloat(price.textContent);
+      const endValue = isYearly ? yearlyPrices[index] : monthlyPrices[index];
+      const duration = 400;
+      const startTime = performance.now();
+      function updatePrice(currentTime) {
+        const elapsedTime = currentTime - startTime;
+        if (elapsedTime < duration) {
+          const progress = elapsedTime / duration;
+          const currentValue = Math.round((startValue + (endValue - startValue) * progress) * 100) / 100;
+          price.textContent = index === 0 ? currentValue.toFixed(0) : currentValue.toFixed(0);
+          requestAnimationFrame(updatePrice);
+        } else {
+          price.textContent = index === 0 ? endValue.toFixed(0) : endValue.toFixed(0);
+        }
+      }
+      requestAnimationFrame(updatePrice);
+      periodElements[index].textContent = isYearly ? '/year' : '/month';
+      if (isYearly) {
+        originalPrices[index].classList.add('visible');
+        originalPriceValues[index].textContent = originalYearlyPrices[index];
+      } else {
+        originalPrices[index].classList.remove('visible');
+        originalPriceValues[index].textContent = originalMonthlyPrices[index];
+      }
+    });
+    document.querySelectorAll('.tier-description').forEach((desc, index) => {
+      const baseText = desc.textContent.split(' ').slice(0, -2).join(' ');
+      desc.innerHTML = isYearly
+        ? `${baseText} <strong>${index === 1 ? '66% OFF' : index === 2 ? '23% OFF' : ''}</strong>`
+        : `${baseText} <strong>${discountText[index]}</strong>`;
+    });
+  });
+  const pricingCards = document.querySelectorAll('.pricing-card');
+  pricingCards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      const ctaButton = this.querySelector('.cta-button');
+      ctaButton.style.transform = 'translateY(-2px)';
+    });
+    card.addEventListener('mouseleave', function() {
+      const ctaButton = this.querySelector('.cta-button');
+      ctaButton.style.transform = 'translateY(0)';
+    });
+  });
+  const buttons = document.querySelectorAll('.cta-button');
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple');
+      const diameter = Math.max(button.clientWidth, button.clientHeight);
+      const radius = diameter / 2;
+      ripple.style.width = ripple.style.height = `${diameter}px`;
+      ripple.style.left = `${e.clientX - button.getBoundingClientRect().left - radius}px`;
+      ripple.style.top = `${e.clientY - button.getBoundingClientRect().top - radius}px`;
+      this.appendChild(ripple);
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+      this.classList.add('selected');
+      setTimeout(() => {
+        this.classList.remove('selected');
+      }, 800);
+    });
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+        entry.target.classList.add('animated');
+        entry.target.style.animation = 'fadeInUp 2.5s cubic-bezier(0.33, 0, 0, 1) forwards';
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.pricing-card, h1, .header-description').forEach(element => {
+    observer.observe(element);
+  });
+});
+</script>
+
+<!-- Page 8 -->
+<section id="Page8" class="page">
+  <div class="Page8-container">
+
+    <!-- Single cube (desktop only) -->
+    <div class="Page8-image-box">
+      <div class="cube-container">
+        <div class="box">
+          <div class="cube"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <h1 class="Page8-heading">[ Mission ]</h1>
+
+    <!-- Text -->
+    <div class="Page8-text">
+      <p>Founded by AI and design pioneers, XiteAI blends cutting-edge technology with intuitive elegance to empower creators and innovators. Launched in 2025, our platform, featuring SuperXite Lite, delivers premium AI solutions with unmatched efficiency, redefining accessibility and impact for thousands worldwide.</p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* Base Section */
+#Page8 { height:auto; min-height:100vh; background:#060606 url('') no-repeat fixed center; background-size: cover; display:grid; place-items:center; padding:60px 0; box-sizing:border-box; }
+.Page8-container { width:100%; max-width:1100px; display:grid; gap:30px; padding:0 20px; box-sizing:border-box; grid-template-columns:1.5fr 1fr; grid-template-rows:auto 1fr; grid-template-areas:"heading heading" "text image"; align-items:center; }
+.Page8-heading { grid-area:heading; font-family:'Inter',sans-serif; font-weight:400; color:#7c7c7c; font-size:clamp(18px,2.5vw,24px); letter-spacing:-0.03em; line-height:1.2em; text-align:left; margin:0; }
+.Page8-text { grid-area:text; display:flex; flex-direction:column; gap:20px; }
+.Page8-text p { font-family:'Inter',sans-serif; font-weight:400; color:#d0d0d0; font-size:clamp(15px,2vw,18px); letter-spacing:-0.01em; line-height:1.6em; margin:0; }
+.Page8-image-box { grid-area:image; width:100%; max-width:300px; margin:0; justify-self:end; align-self:center; }
+.cube-container { position:relative; width:100%; transform:rotate(-35deg); }
+.cube-container .box { position:relative; left:40px; display:flex; justify-content:center; align-items:center; width:calc(100% + 400px); -webkit-box-reflect:below 1px linear-gradient(transparent,#000); animation:animateSurface 1.5s ease-in-out infinite; }
+.cube-container .box .cube { position:relative; width:200px; height:200px; background:#03e9f4; box-shadow:0 0 5px rgba(3,233,244,1),0 0 25px rgba(3,233,244,1),0 0 50px rgba(3,233,244,1),0 0 150px rgba(3,233,244,1); transform-origin:bottom right; animation:animate 1.5s ease-in-out infinite; }
+
+/* Animations */
+@keyframes fadeInUp { 0%{opacity:0; transform:translateY(20px);} 100%{opacity:1; transform:translateY(0);} }
+@keyframes animateSurface { 0%{transform:translateX(0);} 100%{transform:translateX(-200px);} }
+@keyframes animate { 0%{transform:rotate(0deg);} 60%,70%,80%,100%{transform:rotate(90deg);} 65%{transform:rotate(85deg);} 75%{transform:rotate(87.5deg);} }
+
+/* Tablet */
+@media (max-width:1279px) and (min-width:810px) {
+  #Page8 { min-height:80vh; padding:40px 0; }
+  .Page8-container { max-width:900px; gap:25px; grid-template-columns:1fr; grid-template-areas:"heading" "text"; }
+  .Page8-heading { font-size:clamp(30px,4.5vw,44px); }
+  .Page8-text p { font-size:clamp(14px,2.2vw,18px); }
+  .Page8-image-box { display:none; }
+}
+
+/* Small tablets */
+@media (max-width:809px) and (min-width:481px) {
+  #Page8 { min-height:600px; padding:30px 0; }
+  .Page8-container { max-width:90%; gap:20px; grid-template-columns:1fr; grid-template-areas:"heading" "text"; }
+  .Page8-heading { font-size:clamp(14px,2vw,18px); text-align:left; }
+  .Page8-image-box { display:none; }
+}
+
+/* Mobile */
+@media (max-width:480px) {
+  #Page8 { min-height:500px; padding:20px 0; }
+  .Page8-container { max-width:95%; gap:15px; grid-template-columns:1fr; grid-template-rows:auto auto; grid-template-areas:"heading" "text"; }
+  .Page8-heading { font-size:clamp(22px,4vw,32px); text-align:center; margin:10px 0; }
+  .Page8-text p { text-align:center; margin-top:10px; }
+  .Page8-image-box { display:none; }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{const elements=document.querySelectorAll('.Page8-image-box,.Page8-heading,.Page8-text p');elements.forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';});const observer=new IntersectionObserver((entries)=>{entries.forEach((entry,idx)=>{if(entry.isIntersecting&&!entry.target.classList.contains('animated')){entry.target.classList.add('animated');entry.target.style.animation=`fadeInUp 0.9s cubic-bezier(0.4,0,0.2,1) ${idx*0.12}s forwards`;}});},{threshold:0.25});elements.forEach(el=>observer.observe(el));});
+</script>
+
+
+
+<!-- Page 9 -->
+<section id="Page9" class="page">
+  <div class="Page9-vertical-container"></div>
+  <div class="Page9-container">
+    <img src="static/images/page9/ELEVATE.png" alt="Join XiteAI" class="Page9-image">
+    <h1 class="Page9-heading">Elevate Your World with XiteAI</h1>
+    <p class="Page9-subheading">Discover the platform where ambition meets intelligence—seamless, sophisticated, and ready to transform your every endeavor.</p>
+    <button class="btn" onclick="location.href='waitlist.html'">Join WaitingList</button>
+  </div>
+</section>
+
+<style>
+#Page9 { height: 100vh; background: #060606 url('') no-repeat fixed center; background-size: cover; display: flex; justify-content: center; align-items: center; position: relative; }
+.Page9-vertical-container { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1282px; height: 100%; /* ✅ Background only for the container */
+  background-image: url('static/images/page3/earth_stars.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 16px; /* optional for premium look */
+  padding: 60px 40px;
+   z-index: 1; }
+.Page9-container { width: 65%; max-width: 960px; height: 80%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; z-index: 2; }
+.Page9-heading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: #fff;
+  font-size: clamp(28px, 3.5vw, 36px); /* slightly bigger */
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  text-align: center;
+  margin: 0;
+}
+.Page9-subheading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #d0d0d0;
+  font-size: clamp(16px, 2vw, 18px); /* slightly bigger */
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 720px;
+  margin: 0;
+}
+.Page9-image { width: 40%; max-width: 120px; height: auto; object-fit: contain; border-radius: 24px; }
+
+/* === Button CSS from user === */
+.btn {
+  background-color: transparent; 
+  color: #ffffff;
+  border: 1px solid #4a4a4a;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  transition: all 1s;
+  overflow: hidden;
+  border-radius: 7px;
+}
+
+.btn:hover {
+  color: #ffffff; 
+  background-color: #5a5a5a; 
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  top: 0;
+  left: -40px;
+  transform: skewX(45deg);
+  background-color: #4a4a4a;
+  z-index: -1;
+  transition: all 1s;
+}
+
+.btn:hover::before {
+  width: 160%;
+}
+
+@media (max-width: 1279px) and (min-width: 810px) { 
+  #Page9 { height: 90vh; } 
+  .Page9-container { width: 75%; max-width: 780px; } 
+  .Page9-heading { font-size: clamp(24px, 4vw, 40px); } 
+  .Page9-subheading { font-size: clamp(12px, 2vw, 16px); } 
+  .Page9-image { max-width: 200px; } 
+}
+@media (max-width: 809px) { 
+  #Page9 { height: auto; min-height: 600px; padding: 32px 0; } 
+  .Page9-container { width: 85%; max-width: 100%; padding: 0 10px; gap: 16px; } 
+  .Page9-heading { font-size: clamp(20px, 4vw, 32px); } 
+  .Page9-subheading { font-size: clamp(12px, 2vw, 14px); } 
+  .Page9-image { max-width: 200px; } 
+}
+@media (max-width: 480px) { 
+  #Page9 { min-height: 500px; padding: 24px 0; } 
+  .Page9-container { width: 90%; max-width: 100%; padding: 0 8px; gap: 12px; } 
+  .Page9-heading { font-size: clamp(18px, 4vw, 28px); } 
+  .Page9-subheading { font-size: clamp(10px, 2vw, 12px); } 
+  .Page9-image { max-width: 130px; } 
+}
+</style>
+
+<script>
+// Page 9 JavaScript (Intersection Observer for animations)
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+        entry.target.classList.add('animated');
+        entry.target.style.animation = 'fadeInUp 2.5s cubic-bezier(0.33, 0, 0, 1) forwards';
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.Page9-heading, .Page9-subheading, .Page9-image, .btn').forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(25px)';
+    observer.observe(element);
+  });
+});
+</script>
+
+
+<!-- Page 10 -->
+<section id="Page10" class="page">
+  <div class="Page10-container">
+
+    <!-- Heading -->
+    <h1 class="Page10-heading">Join a Thriving Community</h1>
+    <p class="Page10-subheading">Thousands of creators, teams, and innovators worldwide are transforming their workflows with XiteAI’s unparalleled intelligence.</p>
+
+    <!-- Divider -->
+    <div class="Page10-divider"></div>
+
+    <!-- Stats -->
+    <div class="Page10-stats">
+      <div class="Page10-stat">
+        <h2 class="Page10-stat-number">10,000+</h2>
+        <p class="Page10-stat-text">Active Users</p>
+      </div>
+      <div class="Page10-stat">
+        <h2 class="Page10-stat-number">1M+</h2>
+        <p class="Page10-stat-text">Messages Sent</p>
+      </div>
+      <div class="Page10-stat">
+        <h2 class="Page10-stat-number">50,000+</h2>
+        <p class="Page10-stat-text">Images Generated</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+#Page10 {min-height:70vh;background:#060606 url('') no-repeat fixed center; background-size: cover;display:flex;justify-content:center;align-items:center;padding:80px 0;}
+.Page10-container {width:85%;max-width:1100px;display:flex;flex-direction:column;align-items:center;gap:40px;text-align:center}
+.Page10-heading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: #fff;
+  font-size: clamp(30px, 3.5vw, 38px); /* slightly bigger than Page9 heading for hierarchy */
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0;
+}
+.Page10-subheading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #d0d0d0;
+  font-size: clamp(16px, 2vw, 18px); /* same as Page9 subheading */
+  line-height: 1.5;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.Page10-divider {
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(100,100,100,0.2) 50%, transparent 100%);
+  margin: 20px 0;
+}
+.Page10-stats {display:flex;justify-content:center;gap:80px;width:100%;margin-top:20px;}
+.Page10-stat {display:flex;flex-direction:column;align-items:center;gap:8px;}
+.Page10-stat-number {font-family:'Inter',sans-serif;font-weight:700;color:#fff;font-size:clamp(24px,3vw,36px);margin:0;}
+.Page10-stat-text {font-family:'Inter',sans-serif;font-weight:400;color:#d0d0d0;font-size:clamp(14px,1.5vw,16px);margin:0;}
+
+/* Responsive */
+@media(max-width:1024px){.Page10-stats{gap:60px;}}
+@media(max-width:768px){.Page10-stats{flex-direction:column;gap:30px;}}
+@media(max-width:480px){.Page10-container{gap:30px;}.Page10-heading{font-size:clamp(22px,6vw,28px);}}
+
+/* Animation */
+@keyframes fadeInUp{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
+.animated{animation:fadeInUp 0.7s ease-out forwards;}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach((entry,i)=>{
+      if(entry.isIntersecting&&!entry.target.classList.contains('animated')){
+        entry.target.classList.add('animated');
+        entry.target.style.animationDelay=`${i*0.08}s`;
+      }
+    });
+  },{threshold:0.3});
+  document.querySelectorAll('.Page10-heading,.Page10-subheading,.Page10-stat-number,.Page10-stat-text')
+    .forEach(el=>{el.style.opacity='0';observer.observe(el);});
+});
+</script>
+
+<!-- Page 11 -->
+<section id="Page11" class="page">
+  <div class="Page11-container">
+
+    <!-- Subtle Divider -->
+    <div class="Page11-divider"></div>
+
+    <!-- Grid -->
+    <div class="Page11-content">
+      <div class="Page11-section">
+        <h2>Try XiteAI On</h2>
+        <a href="#" class="Page11-link">Web</a>
+      </div>
+      <div class="Page11-section">
+        <h2>Products</h2>
+        <a href="#" class="Page11-link">XiteAI</a>
+        <a href="#" class="Page11-link">SuperXite</a>
+      </div>
+      <div class="Page11-section">
+        <h2>Company</h2>
+        <a href="#" class="Page11-link">Careers</a>
+        <a href="#" class="Page11-link">Contact</a>
+        <a href="#" class="Page11-link">News</a>
+      </div>
+      <div class="Page11-section">
+        <h2>Resources</h2>
+        <a href="#" class="Page11-link">Documentation</a>
+        <a href="#" class="Page11-link">Privacy Policy</a>
+        <a href="#" class="Page11-link">Security</a>
+        <a href="#" class="Page11-link">Safety</a>
+        <a href="#" class="Page11-link">Legal</a>
+        <a href="#" class="Page11-link">Status</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer (true bottom) -->
+  <footer class="Page11-footer">
+    <p>© 2025 XiteAI Inc. All rights reserved.</p>
+  </footer>
+</section>
+
+<style>
+#Page11 {
+  min-height: 60vh;
+  background: #060606;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 80px 0 20px 0; /* bottom padding for breathing space */
+}
+.Page11-container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* Subtle Divider */
+.Page11-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #333, transparent);
+}
+
+/* Grid */
+.Page11-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 80px;
+}
+.Page11-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.Page11-section h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #fff;
+  font-size: clamp(18px, 2vw, 22px);
+  margin: 0;
+}
+.Page11-link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #b5b5b5;
+  font-size: clamp(14px, 1.4vw, 16px);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.Page11-link:hover {
+  color: #d0d0d0; /* subtle grey hover */
+}
+
+/* Footer */
+.Page11-footer {
+  text-align: center;
+  color: #777;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  margin-top: 40px;
+}
+.Page11-footer p {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .Page11-content { grid-template-columns: repeat(2, 1fr); gap: 60px; }
+}
+@media (max-width: 640px) {
+  #Page11 { padding: 60px 0 20px 0; }
+  .Page11-container { gap: 40px; }
+  .Page11-content { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(15px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animated {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const elements = document.querySelectorAll('.Page11-section h2, .Page11-link');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+        entry.target.classList.add('animated');
+        entry.target.style.animationDelay = `${i * 0.05}s`;
+      }
+    });
+  }, { threshold: 0.3 });
+  elements.forEach(el => { el.style.opacity = '0'; observer.observe(el); });
+});
+</script>

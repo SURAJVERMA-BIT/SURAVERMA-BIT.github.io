@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XiteAI Premium Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=IBM+Plex+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Montserrat', 'Poppins', sans-serif; background: black; color: #ffffff; line-height: 1.5; padding: 0; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; position: relative; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden; }
+.stars::before, .stars::after, .stars::before:nth-child(2), .stars::after:nth-child(2) { content: ''; position: absolute; width: 2px; height: 2px; background: rgba(255, 255, 255, 0.6); box-shadow: 5vw 10vh 0 0 rgba(255, 255, 255, 0.4), 20vw 30vh 0 0 rgba(255, 255, 255, 0.5), 40vw 50vh 0 0 rgba(255, 255, 255, 0.3), 60vw 20vh 0 0 rgba(255, 255, 255, 0.6), 80vw 70vh 0 0 rgba(255, 255, 255, 0.4); animation: fall 6s linear infinite; }
+.stars::after, .stars::after:nth-child(2) { animation-delay: 3s; }
+.stars::before:nth-child(2), .stars::after:nth-child(2) { animation-delay: 1.5s; box-shadow: 15vw 40vh 0 0 rgba(255, 255, 255, 0.5), 35vw 60vh 0 0 rgba(255, 255, 255, 0.4), 55vw 15vh 0 0 rgba(255, 255, 255, 0.6), 75vw 35vh 0 0 rgba(255, 255, 255, 0.3), 90vw 80vh 0 0 rgba(255, 255, 255, 0.5); }
+@keyframes fall { 0% { transform: translate(0, -10vh); opacity: 1; } 100% { transform: translate(30vw, 110vh); opacity: 0; } }
+.container { max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; position: relative; z-index: 1; flex-grow: 1; padding: 0 10px; min-height: calc(100vh - 40px); }
+.header { text-align: center; margin-bottom: 20px; animation: fadeInUp 1.2s ease-out; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+h1 { font-family: 'Montserrat', 'Poppins', sans-serif; font-weight: 600; font-size: clamp(1.3rem, 3.8vw, 2.6rem); letter-spacing: -0.02em; margin: 0 0 12px 0; background: linear-gradient(90deg, #4d4d4d 0%, #ffffff 50%, #4d4d4d 100%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s infinite linear; position: relative; }
+@keyframes shine { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
+.subtitle { font-size: clamp(0.65rem, 1.5vw, 0.9rem); color: #888; font-weight: 300; max-width: 350px; margin: 0 auto 6px auto; letter-spacing: 0.05em; opacity: 0; animation: fadeInUp 1.2s ease-out 0.3s forwards; }
+.subtext { font-size: clamp(0.6rem, 1.2vw, 0.7rem); color: #777; font-weight: 300; margin-top: 6px; opacity: 0; animation: fadeInUp 1.2s ease-out 0.6s forwards; }
+.toggle-container { margin: 10px 0; }
+.toggle-switch { position: relative; display: inline-flex; align-items: center; background: #222; border: 1px solid #444; border-radius: 20px; padding: 4px; cursor: pointer; transition: all 0.3s ease; }
+.toggle-switch:hover { background: #333; border-color: #555; }
+.toggle-switch .toggle-option { padding: 8px 16px; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; color: #fff; z-index: 2; transition: color 0.3s ease; position: relative; }
+.toggle-switch .toggle-slider { position: absolute; width: 50%; height: 100%; background: #fff; border-radius: 18px; top: 0; left: 0; transform: translateX(0); transition: transform 0.3s ease; z-index: 1; }
+.toggle-switch.active .toggle-slider { transform: translateX(100%); }
+.toggle-switch .toggle-option:not(.active) { color: #fff; }
+.toggle-switch .toggle-option.active { color: #000; }
+.toggle-switch .toggle-option:first-child { margin-right: 4px; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(380px, 1fr)); gap: 24px; align-items: stretch; margin-top: 20px; perspective: 1000px; }
+.plan { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 32px 40px; min-height: 600px; position: relative; transition: all 0.3s ease-out; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); transform: scale(0.98); transform-origin: center; opacity: 0; animation: slideInScale 0.8s ease-out forwards; display: flex; flex-direction: column; }
+.plan:nth-child(1) { animation-delay: 0.2s; }
+.plan:nth-child(2) { animation-delay: 0.4s; }
+.plan:nth-child(3) { animation-delay: 0.6s; }
+@keyframes slideInScale { from { opacity: 0; transform: scale(0.9) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.plan:hover { border-color: #444; transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); }
+.plan.featured { background: #1a1a1a; border: 2px solid #444; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.8); transform: scale(1); min-height: 600px; z-index: 10; }
+.plan.featured:hover { transform: translateY(-8px) scale(0.98); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.85); }
+.badge { position: absolute; top: -12px; right: 12px; background: #ffffff; color: #000; padding: 4px 14px; border-radius: 16px; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
+.plan-name { font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 500; margin: 0 0 12px 0; color: #ffffff; letter-spacing: 0.05em; text-transform: uppercase; }
+.plan-price { font-size: clamp(1.6rem, 3.5vw, 2rem); font-weight: 500; margin: 0 0 8px 0; letter-spacing: 0.02em; color: #ffffff; display: flex; align-items: baseline; gap: 8px; flex-wrap: nowrap; }
+.plan-period { color: #888; font-size: clamp(0.65rem, 1.2vw, 0.8rem); margin-bottom: 12px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.05em; }
+.plan-description { color: #ccc; font-size: clamp(0.75rem, 1.4vw, 0.9rem); margin-bottom: 14px; font-weight: 300; line-height: 1.4; letter-spacing: 0.02em; }
+.original-price { text-decoration: line-through; color: #888; margin-right: 8px; font-size: clamp(0.9rem, 1.8vw, 1.1rem); }
+.discounted-price { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2rem); font-weight: 500; letter-spacing: 0.02em; }
+.discount-badge { background: linear-gradient(45deg, #b0b0b0, #d3d3d3); color: #1a1a1a; padding: 3px 10px; border-radius: 12px; font-size: clamp(0.5rem, 0.9vw, 0.7rem); font-weight: 600; margin-left: 8px; text-transform: uppercase; box-shadow: 0 1px 2px rgba(179, 179, 179, 0.2); transition: all 0.3s ease; }
+.discount-badge:hover { background: #d3d3d3; box-shadow: 0 2px 4px rgba(179, 179, 179, 0.3); }
+.value-boost { background: #d3d3d3; color: #1a1a1a; padding: 6px 14px; border-radius: 10px; font-size: clamp(0.7rem, 1.3vw, 0.85rem); font-weight: 500; text-transform: uppercase; margin-bottom: 10px; text-align: center; border: 1px solid #b0b0b0; transition: all 0.3s ease; }
+.value-boost:hover { background: #ffffff; color: #1a1a1a; transform: translateY(-1px); box-shadow: 0 1px 2px rgba(179, 179, 179, 0.2); }
+.features { list-style: none; padding: 0; margin: 0 0 18px 0; flex-grow: 1; }
+.features li { padding: 10px 0; color: #fff; font-size: clamp(0.65rem, 1.1vw, 0.75rem); display: flex; align-items: center; gap: 10px; font-weight: 300; transition: all 0.3s ease; letter-spacing: 0.02em; }
+.features li:hover { color: #fff; transform: translateX(4px); background: rgba(255, 255, 255, 0.06); padding-left: 6px; border-radius: 3px; }
+.feature-icon { width: clamp(0.8rem, 1.3vw, 0.9rem); height: clamp(0.8rem, 1.3vw, 0.9rem); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+.features li:hover .feature-icon { transform: scale(1.1); }
+.cta-button { width: 100%; background: #222; color: #fff; border: 1px solid #444; padding: 12px 18px; border-radius: 8px; font-size: clamp(0.75rem, 1.2vw, 0.85rem); font-weight: 500; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: block; text-align: center; letter-spacing: 0.05em; text-transform: uppercase; margin-top: auto; }
+.cta-button:hover { background: #333; border-color: #555; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); }
+.plan.featured .cta-button { background: #ffffff; color: #000; border-color: #555; font-weight: 600; }
+.plan.featured .cta-button:hover { background: #f0f0f0; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); }
+.footer { position: relative; bottom: 0; left: 0; right: 0; display: flex; justify-content: center; align-items: center; padding: 6px 10px; font-size: 0.75rem; color: #777; font-weight: 300; text-align: center; margin-top: auto; }
+.location { display: flex; align-items: center; gap: 4px; font-weight: 400; margin-left: 6px; }
+.location::before { content: "🇮🇳"; font-size: 0.75rem; }
+.payment-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1000; align-items: center; justify-content: center; }
+.payment-modal-content { background: #1a1a1a; border-radius: 12px; padding: 20px; max-width: 400px; width: 90%; text-align: center; position: relative; }
+.close-modal { position: absolute; top: 10px; right: 10px; font-size: 1.5rem; cursor: pointer; color: #fff; }
+.payment-options { display: flex; flex-direction: column; gap: 20px; margin-top: 20px; }
+.qr-code img { max-width: 200px; margin: 0 auto; }
+.upi-id-input { padding: 10px; width: 100%; border: 1px solid #444; border-radius: 8px; background: #222; color: #fff; font-size: 0.9rem; }
+.payment-button { background: #ffffff; color: #000; padding: 10px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
+.payment-button:hover { background: #f0f0f0; }
+.payment-status { margin-top: 20px; font-size: 0.9rem; color: #ccc; }
+@media screen and (max-width: 1024px) { .container { max-width: 800px; padding: 0 8px; min-height: calc(100vh - 40px); } }
+@media screen and (max-width: 1024px) { .pricing-grid { grid-template-columns: repeat(3, minmax(220px, 1fr)); gap: 12px; } }
+@media screen and (max-width: 1024px) { .plan { padding: 14px 16px; min-height: 400px; } }
+@media screen and (max-width: 1024px) { .plan.featured { min-height: 400px; } }
+@media screen and (max-width: 1024px) { .discount-badge { white-space: nowrap; padding: 3px 8px; font-size: clamp(0.45rem, 0.9vw, 0.65rem); margin-left: 4px; } }
+@media screen and (max-width: 768px) { .container { padding: 0 10px; margin-right: 0; margin-left: 0; min-height: calc(100vh - 40px); } }
+@media screen and (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; gap: 20px; } }
+@media screen and (max-width: 768px) { .plan { padding: 20px 12px; margin: 0 5px; transform: scale(1.02); min-height: 460px; } }
+@media screen and (max-width: 768px) { .plan.featured { transform: scale(1.04); min-height: 480px; } }
+@media screen and (max-width: 480px) { .container { padding: 0 8px; } }
+@media screen and (max-width: 480px) { .pricing-grid { gap: 16px; } }
+@media screen and (max-width: 480px) { .plan { padding: 18px 10px; margin: 0 3px; transform: scale(1); min-height: 440px; } }
+@media screen and (max-width: 480px) { .plan.featured { transform: scale(1.02); min-height: 460px; } }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<div class="container">
+  <div class="header">
+    <h1>Upgrade your plan</h1>
+    <p class="subtitle">One Subscription, Infinite AI Precision</p>
+    <p class="subtext">Simply powerful</p>
+    <div class="toggle-container">
+      <div class="toggle-switch" data-plan="monthly">
+        <div class="toggle-option">Monthly</div>
+        <div class="toggle-option">Yearly</div>
+        <div class="toggle-slider"></div>
+      </div>
+    </div>
+  </div>
+  <div class="pricing-grid">
+    <div class="plan">
+      <h2 class="plan-name">Essentials</h2>
+      <div class="plan-price">₹0<span style="font-size: 0.85rem; font-weight: 400;">/Month</span></div>
+      <div class="plan-period">Free forever</div>
+      <p class="plan-description">Experience XiteAI’s foundation tier.</p>
+      <ul class="features">
+        <li><img src="PricingGateway/static/Access_50+_Premium_Models.svg" class="feature-icon" alt="Access 50+ Premium Models">Access 50+ Premium Models</li>
+        <li><img src="PricingGateway/static/Access_Memory.svg" class="feature-icon" alt="Access Memory">Access Memory</li>
+        <li><img src="PricingGateway/static/Limited_Premium_Conversations.svg" class="feature-icon" alt="Limited Premium Conversations">Limited Premium Conversations</li>
+        <li><img src="PricingGateway/static/Limited_Deep-End_Research.svg" class="feature-icon" style="fill: #9b9b9b;" alt="Limited Deep-End Research">Limited Deep-End Research</li>
+        <li><img src="PricingGateway/static/Limited_File_Uploads.svg" class="feature-icon" alt="Limited File Uploads">Limited File Uploads</li>
+        <li><img src="PricingGateway/static/Basic_Image_Generation.svg" class="feature-icon" alt="Basic Image Generation">Basic Image Generation</li>
+        <li><img src="PricingGateway/static/Limited_Custom_GPTs.svg" class="feature-icon" alt="Limited Custom GPTs">Limited Custom GPTs</li>
+        <li><img src="PricingGateway/static/Access_Local_Storage.svg" class="feature-icon" alt="Access Local Storage">Access Local Storage</li>
+      </ul>
+      <button class="cta-button" data-plan="Essentials" data-amount-monthly="0" data-amount-yearly="0">Get Started</button>
+    </div>
+    <div class="plan featured">
+      <div class="badge">Most Popular</div>
+      <h2 class="plan-name">Prime</h2>
+      <div class="plan-price"><span class="original-price">₹1700</span> <span class="discounted-price">₹599</span><span style="font-size: 0.85rem; font-weight: 400;">/Month</span> <span class="discount-badge">65% OFF</span></div>
+      <div class="plan-period">Smart Edge</div>
+      <div class="value-boost">Unlock 25x More Power</div>
+      <p class="plan-description">Intelligence, refined for those who create.</p>
+      <ul class="features">
+        <li><img src="PricingGateway/static/Access_50+_Premium_Models.svg" class="feature-icon" alt="Access 50+ Premium Models">Access 50+ Premium Models</li>
+        <li><img src="PricingGateway/static/Extended_Premium_Conversations.svg" class="feature-icon" alt="Extended Premium Conversations">Extended Premium Conversations</li>
+        <li><img src="PricingGateway/static/Enhanced_Memory_&_Context.svg" class="feature-icon" alt="Enhanced Memory & Context">Enhanced Memory & Context</li>
+        <li><img src="PricingGateway/static/Extended_Deep-End_Research.svg" class="feature-icon" style="fill: #9b9b9b;" alt="Extended Deep-End Research">Extended Deep-End Research</li>
+        <li><img src="PricingGateway/static/Extended_File_Uploads.svg" class="feature-icon" alt="Extended File Uploads">Extended File Uploads</li>
+        <li><img src="PricingGateway/static/Fast_Image_Generation.svg" class="feature-icon" alt="Fast Image Generation">Fast Image Generation</li>
+        <li><img src="PricingGateway/static/Unlimited_Custom_GPTs.svg" class="feature-icon" alt="Unlimited Custom GPTs">Unlimited Custom GPTs</li>
+        <li><img src="PricingGateway/static/Priority_Support.svg" class="feature-icon" alt="Priority Support">Priority Support</li>
+      </ul>
+      <button class="cta-button" data-plan="Prime" data-amount-monthly="599" data-amount-yearly="6999">Elevate Now</button>
+    </div>
+    <div class="plan">
+      <h2 class="plan-name">Ultimate Power</h2>
+      <div class="plan-price"><span class="original-price">₹3000</span> <span class="discounted-price">₹2300</span><span style="font-size: 0.85rem; font-weight: 400;">/Month</span> <span class="discount-badge">23% OFF</span></div>
+      <div class="plan-period">Unmatched Value</div>
+      <div class="value-boost">Unlock 250x Greater Impact</div>
+      <p class="plan-description">Nothing between you and possibility.</p>
+      <ul class="features">
+        <li><img src="PricingGateway/static/Access_All_Premium_Models.svg" class="feature-icon" alt="Access All Premium Models">Access All Premium Models</li>
+        <li><img src="PricingGateway/static/Unlimited_Premium_Conversations.svg" class="feature-icon" alt="Unlimited Premium Conversations">Unlimited Premium Conversations</li>
+        <li><img src="PricingGateway/static/Full_Memory_&_Context_Access.svg" class="feature-icon" alt="Full Memory & Context Access">Full Memory & Context Access</li>
+        <li><img src="PricingGateway/static/Unlimited_Deep-End_Research.svg" class="feature-icon" style="fill: #9b9b9b;" alt="Unlimited Deep-End Research">Unlimited Deep-End Research</li>
+        <li><img src="PricingGateway/static/Unlimited_File_Uploads.svg" class="feature-icon" alt="Unlimited File Uploads">Unlimited File Uploads</li>
+        <li><img src="PricingGateway/static/Higher_Image_Generation.svg" class="feature-icon" alt="Higher Image Generation">Higher Image Generation</li>
+        <li><img src="PricingGateway/static/Unlimited_Custom_GPTs.svg" class="feature-icon" alt="Unlimited Custom GPTs">Unlimited Custom GPTs</li>
+        <li><img src="PricingGateway/static/VIP_Support.svg" class="feature-icon" alt="VIP Support">VIP Support</li>
+      </ul>
+      <button class="cta-button" data-plan="Ultimate Power" data-amount-monthly="2300" data-amount-yearly="27599">Unlock Pro</button>
+    </div>
+  </div>
+</div>
+<div class="payment-modal" id="paymentModal">
+  <div class="payment-modal-content">
+    <span class="close-modal">&times;</span>
+    <h2>Complete Your Payment</h2>
+    <p id="paymentPlan"></p>
+    <p id="paymentAmount"></p>
+    <div class="payment-options">
+      <div class="qr-code">
+        <h3>Scan QR Code</h3>
+        <img id="qrCodeImage" src="PricingGateway/static/QR.jpg" alt="UPI QR Code">
+      </div>
+      <div class="upi-id">
+        <h3>Or Enter UPI ID</h3>
+        <input type="text" class="upi-id-input" id="upiIdInput" placeholder="Enter your UPI ID (e.g., name@upi)">
+        <button class="payment-button" id="payWithUpi">Pay Now</button>
+      </div>
+    </div>
+    <p class="payment-status" id="paymentStatus"></p>
+  </div>
+</div>
+<div class="footer">
+  <div>© 2024 XiteAI. All Rights Reserved.</div>
+  <div class="location">India</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleSwitch = document.querySelector('.toggle-switch');
+  const toggleOptions = toggleSwitch.querySelectorAll('.toggle-option');
+  const plans = document.querySelectorAll('.plan');
+  const paymentModal = document.getElementById('paymentModal');
+  const closeModal = document.querySelector('.close-modal');
+  const paymentPlan = document.getElementById('paymentPlan');
+  const paymentAmount = document.getElementById('paymentAmount');
+  const qrCodeImage = document.getElementById('qrCodeImage');
+  const upiIdInput = document.getElementById('upiIdInput');
+  const payWithUpi = document.getElementById('payWithUpi');
+  const paymentStatus = document.getElementById('paymentStatus');
+
+  // Razorpay configuration
+  const razorpayKey = 'YOUR_RAZORPAY_KEY_ID'; // Replace with your Razorpay Key ID
+  const merchantVpa = 'sv9052788@oksbi'; // Your UPI ID
+
+  // Toggle between monthly and yearly pricing
+  toggleSwitch.addEventListener('click', () => {
+    toggleSwitch.classList.toggle('active');
+    toggleOptions.forEach(option => option.classList.remove('active'));
+    if (toggleSwitch.classList.contains('active')) {
+      toggleOptions[1].classList.add('active');
+    } else {
+      toggleOptions[0].classList.add('active');
+    }
+
+    const isYearly = toggleSwitch.classList.contains('active');
+
+    plans.forEach(plan => {
+      const planPrice = plan.querySelector('.plan-price');
+      const originalPrice = plan.querySelector('.original-price');
+      const discountedPrice = plan.querySelector('.discounted-price');
+      const discountBadge = plan.querySelector('.discount-badge');
+      const periodSpan = plan.querySelector('.plan-price span[style]');
+      const ctaButton = plan.querySelector('.cta-button');
+
+      if (plan.querySelector('.plan-name').textContent === 'Prime') {
+        if (isYearly) {
+          originalPrice.textContent = '₹20400';
+          discountedPrice.textContent = '₹6999';
+          periodSpan.textContent = '/Year';
+          discountBadge.textContent = '65% OFF';
+          ctaButton.setAttribute('data-amount-yearly', '6999');
+        } else {
+          originalPrice.textContent = '₹1700';
+          discountedPrice.textContent = '₹599';
+          periodSpan.textContent = '/Month';
+          discountBadge.textContent = '65% OFF';
+          ctaButton.setAttribute('data-amount-yearly', '6999');
+        }
+      } else if (plan.querySelector('.plan-name').textContent === 'Ultimate Power') {
+        if (isYearly) {
+          originalPrice.textContent = '₹36000';
+          discountedPrice.textContent = '₹27599';
+          periodSpan.textContent = '/Year';
+          discountBadge.textContent = '23% OFF';
+          ctaButton.setAttribute('data-amount-yearly', '27599');
+        } else {
+          originalPrice.textContent = '₹3000';
+          discountedPrice.textContent = '₹2300';
+          periodSpan.textContent = '/Month';
+          discountBadge.textContent = '23% OFF';
+          ctaButton.setAttribute('data-amount-yearly', '27599');
+        }
+      }
+    });
+  });
+
+  toggleOptions[0].classList.add('active');
+
+  // Handle plan selection
+  document.querySelectorAll('.cta-button').forEach(button => {
+    button.addEventListener('click', async () => {
+      const plan = button.getAttribute('data-plan');
+      const isYearly = toggleSwitch.classList.contains('active');
+      const amount = isYearly ? button.getAttribute('data-amount-yearly') : button.getAttribute('data-amount-monthly');
+
+      if (plan === 'Essentials') {
+        // Free plan, grant access directly
+        alert('Essentials plan activated! Access granted.');
+        return;
+      }
+
+      paymentPlan.textContent = `Plan: ${plan}`;
+      paymentAmount.textContent = `Amount: ₹${amount}${isYearly ? '/Year' : '/Month'}`;
+      paymentModal.style.display = 'flex';
+      paymentStatus.textContent = '';
+
+      // Generate dynamic QR code using Razorpay API
+      try {
+        const response = await fetch('/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: parseInt(amount) * 100, // Razorpay expects amount in paisa
+            currency: 'INR',
+            plan: plan
+          })
+        });
+        const order = await response.json();
+
+        // Update QR code
+        qrCodeImage.src = `PricingGateway/static/QR.jpg`; // Fallback to static QR for testing
+        // In production, use dynamic QR from Razorpay API
+        // qrCodeImage.src = order.qrCodeUrl; // Assuming API returns QR URL
+
+        // Handle UPI payment
+        payWithUpi.onclick = async () => {
+          const upiId = upiIdInput.value;
+          if (!upiId) {
+            paymentStatus.textContent = 'Please enter a valid UPI ID.';
+            return;
+          }
+
+          const options = {
+            key: razorpayKey,
+            amount: order.amount,
+            currency: 'INR',
+            order_id: order.id,
+            name: 'XiteAI',
+            description: `Payment for ${plan} plan`,
+            handler: async function (response) {
+              // Verify payment
+              const verifyResponse = await fetch('/verify-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  order_id: order.id,
+                  payment_id: response.razorpay_payment_id,
+                  signature: response.razorpay_signature
+                })
+              });
+              const verifyResult = await verifyResponse.json();
+
+              if (verifyResult.status === 'success') {
+                paymentStatus.textContent = 'Payment successful! Access granted.';
+                paymentModal.style.display = 'none';
+                alert(`${plan} plan activated!`);
+                // Implement logic to grant access (e.g., update user account)
+              } else {
+                paymentStatus.textContent = 'Payment verification failed. Please try again.';
+              }
+            },
+            prefill: {
+              method: 'upi',
+              vpa: upiId
+            },
+            notes: { plan: plan },
+            theme: { color: '#ffffff' }
+          };
+
+          const rzp = new Razorpay(options);
+          rzp.open();
+        };
+      } catch (error) {
+        paymentStatus.textContent = 'Error initiating payment. Please try again.';
+        console.error(error);
+      }
+    });
+  });
+
+  // Close modal
+  closeModal.addEventListener('click', () => {
+    paymentModal.style.display = 'none';
+  });
+});
+</script>
+</body>
+</html>

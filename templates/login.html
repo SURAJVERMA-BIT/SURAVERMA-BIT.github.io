@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - XiteAI Chat</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+
+        body {
+            background-color: #0e0d0d;
+            min-height: 100vh;
+            display: flex;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Light Mode */
+        @media (prefers-color-scheme: light) {
+            body {
+                background-color: #ffffff;
+                color: #000000;
+            }
+
+            .auth-container {
+                background-color: transparent; /* remove faded overlay */
+                border: none;
+            }
+
+            .social-login-btn {
+                background-color: #f3f3f3;
+                color: #4b4b4b;
+                border: 0px solid #d9d9d9;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            .social-login-btn:hover {
+                background-color: #e4e4e4;
+            }
+
+            .divider span {
+                color: rgba(84, 84, 84, 0.94);
+                font-size: 12px;
+                font-weight: 700;
+            }
+
+            .divider::before,
+            .divider::after {
+                background-color: rgba(0, 0, 0, 0.2);
+                height: 0.5px;
+            }
+
+            .form-group label {
+                color: #000000;
+                font-size: 8.5px;
+            }
+
+            .form-group input {
+                background-color: #ffffff;
+                color: #000000;
+                border: 1px solid #d9d9d9;
+            }
+
+            .form-group input::placeholder {
+                color: rgba(0,0,0,0.6) !important;
+            }
+
+            .form-group input::-webkit-input-placeholder {
+                color: rgba(84, 84, 84, 0.94);
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            .form-group input::-moz-placeholder {
+                color: rgba(84, 84, 84, 0.94);
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            .form-group input:-ms-input-placeholder {
+                color: rgba(84, 84, 84, 0.94);
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            .form-group input:focus {
+                border: 1px solid #000000;
+                box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+                outline: none;
+            }
+
+            button {
+                background-color: #000000; /* black button */
+                color: #ffffff;
+                font-size: 12px;
+            }
+
+            button:hover {
+                background-color: #222222;
+            }
+
+            .login-text {
+                color: #000000;
+            }
+
+            .already-user {
+                color: #000000;
+                font-size: 12px;
+                font-weight: 700;
+            }
+
+            .already-user a {
+                color: #000000;
+            }
+
+            .flash-error {
+                background: #f8d7da;
+                color: #721c24;
+            }
+
+            .options-container a {
+                color: #7e56c1;
+            }
+
+            /* Logo swap */
+            .logo-dark { display: none !important; }
+            .logo-light { display: block !important; }
+            .logo-mobile-dark { display: none !important; } /* New: hide dark mobile logo in light mode */
+            .logo-mobile-light { display: block !important; } /* New: show black mobile logo in light mode */
+        }
+
+        /* Dark Mode (default) */
+        body {
+            color: #d9d9d9;
+        }
+
+        /* Ensure logo visibility in dark mode */
+        .logo-dark { display: block; }
+        .logo-light { display: none; }
+        .logo-mobile-dark { display: block; } /* New: show white mobile logo in dark mode */
+        .logo-mobile-light { display: none; } /* New: hide black mobile logo in dark mode */
+
+        .container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .auth-container {
+            background-color: rgba(14, 13, 13, 0.49);
+            border: none;
+            width: 50%;
+            max-width: 100vw;
+            min-width: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-container > .auth-content {
+            width: 100%;
+            max-width: 660px;
+            padding: 68px 56px 68px 96px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 0 auto;
+            background: none;
+        }
+
+        .image-container {
+            display: none;
+        }
+
+        .logo-placeholder {
+            display: none;
+        }
+
+        h2 {
+            font-size: 34px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: #f9f7fb;
+            line-height: 1.2;
+            text-align: center;
+            margin-left: 0;
+        }
+
+        .sub-heading {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(249, 247, 251, 0.75);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        h2 span {
+            display: block;
+        }
+
+        .login-text {
+            text-align: left;
+            font-size: 13px;
+            font-weight: 400;
+            margin-bottom: 28px;
+            color: #f9f7fb;
+            margin-left: 15%;
+        }
+
+        .social-login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70%;
+            margin: 0 auto 12px;
+            padding: 12px;
+            border: 0px solid #444;
+            border-radius: 30px;
+            background-color: #1a1a1a;
+            color: #9b9b9b;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-login-btn:hover {
+            background-color: #3f3f3f;
+            transform: translateY(-2px);
+        }
+
+        .social-login-btn img {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 0.5px;
+            background-color: rgba(84, 84, 84, 0.94);
+        }
+
+        .divider span {
+            padding: 0 15px;
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(249, 247, 251, 0.59);
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 25px;
+            margin-left: 15%;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            margin-left: 0.9%;
+            color: #f9f7fb;
+        }
+
+        .form-group label .required {
+            color: #e44f26;
+        }
+
+        .form-group input {
+            width: 82.35%; /* Adjusted to align right edge with buttons (70% / 85%) * 100% */
+            margin-left: 10px;
+            display: block;
+            border-radius: 8px;
+            font-size: 18px;
+            background-color: #141414;
+            color: #d9d9d9;
+            border: 1px solid #444;
+            transition: box-shadow 0.2s, border 0.2s;
+            padding-right: 40px; /* space for eye icon */
+        }
+
+        .form-group input#email {
+            padding: 14px 15px;
+        }
+
+        .form-group input#password {
+            padding: 14px 40px 14px 12px;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(249, 247, 251, 0.59);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .form-group input::-webkit-input-placeholder {
+            color: rgba(249, 247, 251, 0.59);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .form-group input::-moz-placeholder {
+            color: rgba(249, 247, 251, 0.59);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .form-group input:-ms-input-placeholder {
+            color: rgba(249, 247, 251, 0.59);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .form-group input:focus {
+            border: 1px solid #7e56c1;
+            box-shadow: 0 0 0 2px rgba(126, 86, 193, 0.3);
+            outline: none;
+        }
+
+        .form-group .eye-icon {
+            /* All positioning is now inline for the SVG, but keep for fallback */
+        }
+
+        .options-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 9px;
+            color: #f9f7fb;
+            margin-left: 15%;
+            width: 70%;
+        }
+
+        .options-container label {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .options-container input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .options-container a {
+            color: #7e56c1;
+            text-decoration: none;
+        }
+
+        .options-container a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            width: 70%;
+            margin: 0 auto;
+            padding: 18px;
+            background-color: #1a1c1e;
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 24px;
+            transition: background-color 0.2s, transform 0.1s;
+            display: block;
+        }
+
+        button:hover {
+            background-color: #23272b;
+            transform: translateY(-2px);
+        }
+
+        .already-user {
+            text-align: left;
+            margin-top: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #f9f7fb;
+            margin-left: 15%;
+        }
+
+        .already-user a {
+            color: #7e56c1;
+            text-decoration: none;
+        }
+
+        .already-user a:hover {
+            text-decoration: underline;
+        }
+
+        .flash-error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .auth-container {
+                flex: none;
+                width: 100%;
+                max-width: 100vw;
+                padding: 18px 6px;
+                margin: 0 auto;
+                border-radius: 0;
+            }
+            .auth-container > .auth-content {
+                width: 90%;
+                max-width: 400px;
+                padding: 24px 16px;
+            }
+            /* Show mobile logo, hide corner logos */
+            .logo-mobile-dark { display: block !important; }
+            .logo-mobile-light { display: none !important; }
+            .logo-dark, .logo-light { display: none !important; }
+
+            h2 {
+                font-size: 30px;
+                margin-bottom: 18px;
+            }
+            .social-login-btn, button {
+                width: 100%;
+                font-size: 18px;
+            }
+            .divider { width: 100%; }
+            .form-group { margin-left: 0; width: 100%; }
+            .form-group input { padding: 18px 12px; font-size: 20px; width: 100%; }
+            .form-group input#password { padding: 14px 40px 14px 12px; }
+            .form-group .eye-icon { right: 16px; }
+            /* Ensure password wrapper takes full width like email */
+            .password-wrapper { width: 100% !important; margin-left: 0 !important; }
+            /* Align email field with password field on mobile */
+            .form-group input#email { width: 100% !important; margin-left: 0 !important; }
+        }
+        /* Tablet screens (769px-1024px): show image smaller */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .auth-container {
+                width: 70%;
+                flex: 1 1 70%;
+                padding: 40px 20px;
+            }
+            .image-container {
+                width: 30%;
+                flex: 1 1 30%;
+                min-width: 180px;
+                display: block;
+            }
+        }
+        /* PC/Large screens: 50-50 split, show image */
+        @media (min-width: 1025px) {
+            .auth-container {
+                width: 50%;
+                flex: 1 1 50%;
+                max-width: none;
+            }
+            .image-container {
+                width: 50%;
+                flex: 1 1 50%;
+                display: block;
+            }
+        }
+        /* Hide image by default, only show on >=769px */
+        @media (max-width: 1024px) {
+            .image-container {
+                display: none;
+            }
+        }
+        @media (min-width: 769px) {
+            .image-container {
+                display: block;
+            }
+        }
+        .hidden-trick {
+            display: none;
+            visibility: hidden;
+            position: absolute;
+            left: -9999px;
+        }
+        /* FINAL light-mode overrides */
+        @media (prefers-color-scheme: light) {
+            body { background-color: #ffffff !important; color: #000000 !important; }
+            .auth-container { background: transparent !important; }
+            .social-login-btn {
+                background-color: #f3f3f3 !important;
+                color: #4b4b4b !important;
+            }
+            .social-login-btn:hover { background-color: #e4e4e4 !important; }
+            .form-group input {
+                background-color: #f5f5f5 !important; /* light grey */
+                color: #000000 !important;
+                border: 1px solid #d9d9d9 !important;
+            }
+            .form-group input:focus {
+                border: 1px solid #000000 !important;
+                box-shadow: 0 0 0 2px rgba(0,0,0,0.2) !important;
+            }
+            button {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+            }
+            button:hover { background-color: #222222 !important; }
+            .divider span { color: rgba(0,0,0,0.7) !important; }
+            h2 { color: #000000 !important; }
+            .already-user { color: #000000 !important; }
+            .already-user a { color: #7e56c1 !important; }
+            .divider::before,
+            .divider::after { background-color: rgba(0,0,0,0.2) !important; }
+            /* Force black placeholder in all browsers */
+            .form-group input::placeholder,
+            .form-group input::-webkit-input-placeholder,
+            .form-group input::-moz-placeholder,
+            .form-group input:-ms-input-placeholder {
+                 color: #000000 !important;
+                 opacity: 1 !important;
+            }
+            .form-group label { color: #000000 !important; }
+            /* Swap mobile logo variants */
+            .logo-mobile-dark { display: none !important; }
+            .logo-mobile-light { display: block !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-container">
+            <div class="auth-content">
+                <!-- Dark mode logo -->
+                <!-- Top-corner logos removed -->
+                <!-- Mobile/center logo (visible on all screens) -->
+                <img src="{{ url_for('static', filename='logossignup/xiteai.png') }}" class="logo-mobile logo-mobile-dark" alt="XiteAI Logo Dark" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; margin: 0 auto 16px;" />
+                <!-- Light mode centered logo -->
+                <img src="{{ url_for('static', filename='logossignup/blackxiteai.png') }}" class="logo-mobile logo-mobile-light" alt="XiteAI Logo Light" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; margin: 0 auto 16px;" />
+                <div class="logo-placeholder"></div>
+                <h2>Welcome Back</h2>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="flash-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <button class="social-login-btn" onclick="showComingSoon()">
+                    <img src="{{ url_for('static', filename='logossignup/googleicon.svg') }}" alt="Google Icon">
+                    Sign in with Google
+                </button>
+                <button class="social-login-btn" onclick="showComingSoon()">
+                    <img src="{{ url_for('static', filename='logossignup/xlogoicon.webp') }}" alt="Twitter Icon">
+                    Sign in with Twitter
+                </button>
+                <button class="social-login-btn" onclick="showComingSoon()">
+                    <img src="{{ url_for('static', filename='logossignup/apple.svg') }}" alt="Apple Icon">
+                    Sign in with Apple
+                </button>
+                <div class="divider">
+                    <span>or sign in with email</span>
+                </div>
+                <form method="POST" action="{{ url_for('login') }}" autocomplete="off">
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="your@gmail.com" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" readonly onfocus="this.removeAttribute('readonly');">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password <span class="required">*</span></label>
+                        <!-- Hidden fields to prevent autofill -->
+                        <div class="hidden-trick">
+                            <input type="text" id="fakeusername" name="fakeusername" tabindex="-1">
+                            <input type="password" id="fakepassword" name="fakepassword" tabindex="-1">
+                        </div>
+                        <div style="position: relative; width: 82.35%; margin-left: 10px; display: inline-block;" 
+                        class="password-wrapper"
+                        >
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                required 
+                                placeholder="Your Password" 
+                                autocomplete="new-password" 
+                                autocorrect="off" 
+                                autocapitalize="off" 
+                                spellcheck="false" 
+                                style="width: 100%; margin-left: 0;"
+                                data-lpignore="true"
+                                data-form-type="other"
+                                readonly onfocus="this.removeAttribute('readonly');">
+                            <svg class="eye-icon" id="togglePassword" viewBox="0 0 24 24" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; width: 22px; height: 22px; fill: #d9d9d9; z-index: 2;">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <p class="already-user">Not registered yet? <a href="{{ url_for('signup') }}">Create an Account</a></p>
+            </div>
+        </div>
+        <!-- image-container removed -->
+    </div>
+
+    <script>
+        function showComingSoon() {
+            alert("This feature is coming soon!");
+        }
+
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.style.fill = type === 'password' ? '#d9d9d9' : '#7e56c1';
+        });
+    </script>
+</body>
+</html>
