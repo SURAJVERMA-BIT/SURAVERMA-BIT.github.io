@@ -3,83 +3,298 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XiteAI.com</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Baskerville&family=Garamond&family=Avenir&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    html, body { margin: 0; padding: 0; width: 100vw; overflow-x: hidden; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none; background-color: #060606; }
-    html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
-    .page { width: 100vw; display: none; position: relative; }
-    .page.active { display: block; }
-    header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: rgba(255, 255, 255, 0.005); z-index: 1000; box-sizing: border-box; transition: transform 0.8s ease, opacity 1s ease; opacity: 0; }
-    header.show { opacity: 1; transform: translateY(0); }
-    header.hide { transform: translateY(-100%); }
-    header img.logo { width: 28px; height: auto; }
-    header nav { display: flex; gap: 35px; }
-    header nav a { color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 400; font-family: "Helvetica World", "Helvetica Neue", Arial, sans-serif; transition: color 0.3s; }
-    header nav a:hover { color: #7c7c7c; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1100; }
-    .hamburger span { width: 25px; height: 3px; background: white; border-radius: 2px; transition: all 0.4s ease; }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-    @media (max-width: 756px) { header nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; max-width: 300px; background: rgba(20, 20, 20, 0.95); flex-direction: column; justify-content: center; align-items: center; gap: 30px; transition: right 0.5s ease, opacity 0.5s ease; opacity: 0; z-index: 1000; } }
-    @media (max-width: 756px) { header nav.open { right: 0; opacity: 1; } }
-    @media (max-width: 756px) { header .join-waitlist { margin-top: 20px; } }
-    @media (max-width: 756px) { .hamburger { display: flex; } }
-  </style>
-</head>
-<body>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      document.body.style.overflowX = 'hidden';
-      const header = document.querySelector('header');
-      setTimeout(() => header.classList.add('show'), 300);
-      let lastScroll = 0;
-      window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-        if (currentScroll > lastScroll) {
-          header.classList.add('hide');
-        } else {
-          header.classList.remove('hide');
+  <title>Waitlist | XiteAI</title>
+  <meta name="description" content="Join the XiteAI waitlist to get early access to GPT-5, Claude 4, and Grok 4 with 100K tokens/day for ₹599/mo. Enjoy persona chats, deep research, image generation, and a free tier.">
+  <meta name="keywords" content="XiteAI waitlist, AI chat, GPT-5, Claude 4, Grok 4, persona chat, deep research, image generation, AI productivity">
+  <meta name="author" content="XiteAI Technologies">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <!-- Open Graph for Social Sharing -->
+  <meta property="og:title" content="Waitlist | XiteAI: Join for GPT-5, Claude 4, Grok 4">
+  <meta property="og:description" content="Sign up for the XiteAI waitlist: Access GPT-5, Claude 4, Grok 4 with 100K tokens/day (₹599/mo), persona chats, deep research, and image generation. Free tier available.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xiteai.com/waitlist">
+  <meta property="og:image" content="https://xiteai.com/images/Header/xiteai-og.png">
+  <meta property="og:image:alt" content="XiteAI Logo">
+  <meta property="og:site_name" content="XiteAI">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Waitlist | XiteAI: Join for GPT-5, Claude 4, Grok 4">
+  <meta name="twitter:description" content="Join the XiteAI waitlist for GPT-5, Claude 4, Grok 4, 100K tokens/day (₹599/mo), persona chats, deep research, and more. Free tier available.">
+  <meta name="twitter:image" content="https://xiteai.com/images/Header/xiteai-og.png">
+  <meta name="twitter:image:alt" content="XiteAI Logo">
+  <!-- Canonical and Alternate -->
+  <link rel="canonical" href="https://xiteai.com/waitlist">
+  <link rel="alternate" hreflang="en" href="https://xiteai.com/waitlist">
+  <link rel="alternate" hreflang="x-default" href="https://xiteai.com/waitlist">
+  <!-- Sitemap, Manifest, and Favicons -->
+  <link rel="sitemap" href="https://xiteai.com/sitemap.xml">
+  <link rel="manifest" href="/images/Header/site.webmanifest">
+  <link rel="icon" href="/images/Header/xiteai.ico" type="image/x-icon">
+  <link rel="icon" href="/images/Header/xiteai-16.png" sizes="16x16" type="image/png">
+  <link rel="icon" href="/images/Header/xiteai-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/images/Header/xiteai-64.png" sizes="64x64" type="image/png">
+  <link rel="apple-touch-icon" href="/images/Header/xiteai-180.png">
+  <link rel="icon" href="/images/Header/xiteai.png" type="image/png">
+  <!-- Preload and Preconnect Critical Assets -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;500;600&display=swap" as="style">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;500;600&display=swap">
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "XiteAI",
+    "description": "Join the XiteAI waitlist for early access to a premium AI chat platform featuring GPT-5, Claude 4, and Grok 4 with 100K tokens/day, persona chats, deep research, and image generation.",
+    "applicationCategory": "ArtificialIntelligenceApplication",
+    "operatingSystem": "Web, iOS, Android",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Prime Plan",
+        "price": "599",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://xiteai.com/pricing"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pay As You Go",
+        "price": "79",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://xiteai.com/pricing"
+      }
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "XiteAI Technologies Pvt. Ltd.",
+      "url": "https://xiteai.com",
+      "logo": "https://xiteai.com/images/Header/xiteai.png"
+    },
+    "featureList": [
+      "Premium AI Models (GPT-5, Claude 4, Grok 4)",
+      "Persona Chat Mode",
+      "Deep Research & Web Searches",
+      "File Uploads with High Limits",
+      "Image Generation (100 images/week)",
+      "Unlimited Mini Models",
+      "SuperXite Lite Multi-Agent System"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Waitlist | XiteAI",
+    "url": "https://xiteai.com/waitlist",
+    "description": "Sign up for the XiteAI waitlist to gain early access to advanced AI chat features including GPT-5, Claude 4, and Grok 4.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "XiteAI Technologies",
+      "url": "https://xiteai.com"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://xiteai.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Waitlist",
+          "item": "https://xiteai.com/waitlist"
         }
-        lastScroll = currentScroll;
-      });
-      const hamburger = document.querySelector('.hamburger');
-      const nav = document.querySelector('header nav');
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        nav.classList.toggle('open');
-      });
-
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-            entry.target.classList.add('animated');
-            entry.target.style.animation = 'fadeInUp 2.5s cubic-bezier(0.33, 0, 0, 1) forwards';
-          }
-        });
-      }, { threshold: 0.5 });
-
-      document.querySelectorAll('.page .heading-text, .page .subheading-text, .page .Page3-heading, .page .Page3-subheading, .page .Features-heading, .page .Features-subheading, .page .Page5-heading, .page .Page5-subheading, .page .Page5-column-heading, .Page5-column-subheading, .page .Page6-heading, .page .Page6-subheading, .page .Page7-heading, .page .Page7-subheading, .page .Page8-heading, .page .Page8-subheading, .page .Page9-heading, .page .Page9-subheading, .page .Page10-heading, .page .Page10-subheading, .page .Page11-heading, .page .Page11-subheading').forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(25px)';
-        observer.observe(element);
-      });
-    });
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I join the XiteAI waitlist?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To join the XiteAI waitlist, enter your email address in the form below and submit to get early access notifications."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do I get with early access?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Early access provides priority entry to XiteAI's premium features, including GPT-5, Claude 4, Grok 4, and 100K tokens/day."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a cost to join the waitlist?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, joining the waitlist is free. Plans like the Prime Plan (₹599/mo) and Pay As You Go (₹79) are available after access."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "XiteAI Technologies",
+    "url": "https://xiteai.com",
+    "logo": "https://xiteai.com/images/Header/xiteai.png",
+    "sameAs": [
+      "https://x.com/XiteAI",
+      "https://www.linkedin.com/company/xiteai-technologies-pvt-ltd/",
+      "https://www.facebook.com/profile.php?id=61579296371742"
+    ]
+  }
   </script>
 
-  <header>
-  <img src="static/images/Header/xiteai.png" alt="XiteAI Logo" class="logo">
-  <nav class="nav-menu">
-    <a href="home.html">Home</a>
-    <a href="home.html#Features">Features</a>
-    <a href="home.html#Page7">Pricing</a>
-    <a href="home.html#Page8">Company</a>
-    <!-- <a href="#Blogs">Blog</a> -->
+
+<!-- Header Section (Unchanged Button) -->
+<header>
+  <img src="images/Header/xiteai.png" alt="XiteAI Logo" class="logo">
+  <nav>
+    <a href="Home.html#Page1">Home</a>
+    <a href="Home.html#Features">Features</a>
+    <a href="Home.html#Page7">Pricing</a>
+    <a href="Home.html#Page8">Company</a>
   </nav>
-  <div class="hamburger"><span></span><span></span><span></span></div>
+  <button class="menu" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
+    <svg width="100" height="100" viewBox="0 0 100 100">
+      <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+      <path class="line line2" d="M 20,50 H 80" />
+      <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+    </svg>
+  </button>
+  <div class="nav-overlay"></div>
 </header>
+
+<!-- Global and Header Styles (Updated Scale for Size) -->
+<style>
+  /* Global Styles (Unchanged) */
+  html, body { margin: 0; padding: 0; width: 100vw; overflow-x: hidden; overflow-y: auto; -ms-overflow-style: none; background-color: #060606; }
+  html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+  .page { width: 100vw; display: none; position: relative; }
+  .page.active { display: block; }
+
+  /* Header Styles (Unchanged) */
+  header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: rgba(255, 255, 255, 0.005); z-index: 1000; box-sizing: border-box; transition: transform 0.8s ease, opacity 1s ease; opacity: 0; }
+  header.show { opacity: 1; transform: translateY(0); }
+  header.hide { transform: translateY(-100%); }
+  header img.logo { width: 28px; height: auto; }
+  header nav { display: flex; gap: 35px; }
+  header nav a { color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 400; font-family: "Helvetica World", "Helvetica Neue", Arial, sans-serif; transition: color 0.3s; }
+  header nav a:hover { color: #7c7c7c; }
+  .menu { background-color: transparent; border: none; cursor: pointer; display: none; padding: 0; }
+  .line { fill: none; stroke: black; stroke-width: 6; transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1); }
+  .line1 { stroke-dasharray: 60 207; stroke-width: 6; }
+  .line2 { stroke-dasharray: 60 60; stroke-width: 6; }
+  .line3 { stroke-dasharray: 60 207; stroke-width: 6; }
+  .opened .line1 { stroke-dasharray: 90 207; stroke-dashoffset: -134; stroke-width: 6; }
+  .opened .line2 { stroke-dasharray: 1 60; stroke-dashoffset: -30; stroke-width: 6; }
+  .opened .line3 { stroke-dasharray: 90 207; stroke-dashoffset: -134; stroke-width: 6; }
+
+  /* Overlay for dimming background */
+  .nav-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.7); opacity: 0; pointer-events: none; transition: opacity 0.8s cubic-bezier(0.33, 0.04, 0.33, 1); z-index: 999; }
+  .nav-overlay.active { opacity: 1; pointer-events: auto; }
+
+  /* Header Responsive Styles (Increased Scale for Size) */
+  @media (max-width: 756px) {
+    header nav { position: fixed; top: 0; left: 0; height: 100vh; width: 100%; background: rgba(18, 18, 18, 1); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); flex-direction: column; justify-content: flex-start; align-items: center; gap: 45px; padding: 80px 0 20px; transform: translateY(-100%); transition: transform 0.9s cubic-bezier(0.33, 0.04, 0.33, 1), opacity 0.9s cubic-bezier(0.33, 0.04, 0.33, 1); opacity: 0; z-index: 1001; overflow-y: auto; -webkit-overflow-scrolling: touch; max-height: 100vh; }
+    header nav.open { transform: translateY(0); opacity: 1; }
+    header nav a { font-size: 26px; font-weight: 300; padding: 15px; color: #ffffff; opacity: 0; transform: translateY(30px); transition: opacity 0.6s cubic-bezier(0.33, 0.04, 0.33, 1), transform 0.6s cubic-bezier(0.33, 0.04, 0.33, 1), box-shadow 0.4s ease, color 0.4s ease; }
+    header nav.open a { opacity: 1; transform: translateY(0); }
+    header nav.open a:nth-child(1) { transition-delay: 0.15s; }
+    header nav.open a:nth-child(2) { transition-delay: 0.25s; }
+    header nav.open a:nth-child(3) { transition-delay: 0.35s; }
+    header nav.open a:nth-child(4) { transition-delay: 0.45s; }
+    header nav a:hover, header nav a:active { transform: translateY(-4px); color: #e0e0e0; }
+    header nav a::after { content: none; }
+    header nav a:hover::after, header nav a:active::after { width: 100%; }
+    header .join-waitlist { margin-top: 35px; }
+    .menu { display: flex; transform: scale(1.0); z-index: 1002; }
+    .menu svg { width: 28px; height: 28px; }
+    .menu .line { stroke: #ffffff; }
+    body.nav-open { overflow-y: hidden; touch-action: none; }
+  }
+</style>
+
+<!-- Global JavaScript for Header and Animations (Unchanged) -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.body.style.overflowX = 'hidden';
+    const header = document.querySelector('header');
+    setTimeout(() => header.classList.add('show'), 300);
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > lastScroll) {
+        header.classList.add('hide');
+      } else {
+        header.classList.remove('hide');
+      }
+      lastScroll = currentScroll;
+    });
+    const menu = document.querySelector('.menu');
+    const nav = document.querySelector('header nav');
+    const overlay = document.querySelector('.nav-overlay');
+    menu.addEventListener('click', () => {
+      const isOpened = menu.classList.contains('opened');
+      nav.classList.toggle('open', isOpened);
+      overlay.classList.toggle('active', isOpened);
+      document.body.classList.toggle('nav-open', isOpened);
+    });
+
+    // Close mobile nav when clicking overlay
+    overlay.addEventListener('click', () => {
+      menu.classList.remove('opened');
+      menu.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+      overlay.classList.remove('active');
+      document.body.classList.remove('nav-open');
+    });
+
+    // Close mobile nav when clicking a nav link
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('opened');
+        menu.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('open');
+        overlay.classList.remove('active');
+        document.body.classList.remove('nav-open');
+      });
+    });
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+          entry.target.classList.add('animated');
+          entry.target.style.animation = 'fadeInUp 2.5s cubic-bezier(0.33, 0, 0, 1) forwards';
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.page .heading-text, .page .subheading-text, .page .Page11-heading, .page .Page11-subheading').forEach(element => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(25px)';
+      observer.observe(element);
+    });
+  });
+</script>
 
 <!-- Waitlist Page -->
 <div id="page1" class="page active">
@@ -88,263 +303,222 @@
       <h1 class="heading-text">Join the XiteAI Revolution</h1>
     </div>
     <div class="subheading-box">
-      <p class="subheading-text">Be among the first to experience the future of AI-powered productivity. Get early access to XiteAI.</p>
+      <p class="subheading-text">Be among the first to experience the future of Premium AI-powered productivity. Get early access to XiteAI.</p>
     </div>
     <div class="input-container">
-<form id="waitlist-form" action="/.netlify/functions/subscribe" method="POST">
-git commit -m "Delete all files"        <input type="email" name="email" class="email-input" placeholder="Enter your email address" required>
-        <button type="submit" class="btn">Get Early Access</button>
-    </form>
-    <p id="response-message" style="color:#fff; margin-top:10px;"></p>
-
+      <form id="waitlist-form" action="https://formbold.com/s/6rpBA" method="POST" data-last-submit="0">
+        <input type="email" name="email" class="email-input" placeholder="Enter your email address" required>
+        <button type="submit" class="btn" id="submit-btn">Get Early Access</button>
+      </form>
+      <p id="response-message" style="color:#fff; margin-top:10px;"></p>
     </div>
   </div>
 </div>
 
 <style>
-#page1 { height: 100vh; background-image: url('static/images/Page1/page1_background.png'); background-size: cover; background-position: center; width: 100vw; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; animation: fadeInCorners 1s ease-in forwards; min-height: 600px; }
-.page1-flex-box { position: relative; width: 100%; max-width: 520px; display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 0 20px; }
-.heading-box, .subheading-box { position: relative; width: 100%; display: flex; justify-content: center; align-items: center; text-align: center; }
-.heading-text { font-family: 'Inter', sans-serif; font-weight: 700; color: #ffffff; font-size: clamp(32px, 4.5vw, 48px); letter-spacing: -0.04em; line-height: 1.2em; margin: 0; }
-.subheading-text { font-family: 'Inter', sans-serif; font-weight: 400; color: #cccccc; font-size: clamp(16px, 2.2vw, 20px); letter-spacing: -0.02em; line-height: 1.5em; margin: 0; }
-.input-container { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 420px; }
-.email-input { font-family: 'Inter', sans-serif; font-size: 16px; padding: 18px 24px; border: 1px solid #2a2a2a; border-radius: 4px; background: #0a0a0a; color: #ffffff; outline: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1); }
-.email-input::placeholder { color: #666666; font-weight: 300; }
-.email-input:focus { border-color: #444444; background: #111111; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1); }
-.btn { background-color: transparent; color: #ffffff; border: 1px solid #333333; text-transform: uppercase; text-decoration: none; padding: 18px 36px; font-size: 16px; cursor: pointer; font-weight: 500; position: relative; transition: all 1s; overflow: hidden; border-radius: 4px; font-family: 'Inter', sans-serif; }
-.btn:hover { color: #ffffff; background-color: #2a2a2a; }
-.btn::before { content: ""; position: absolute; height: 100%; width: 0%; top: 0; left: -40px; transform: skewX(45deg); background-color: #1a1a1a; z-index: -1; transition: all 1s; }
-.btn:hover::before { width: 160%; }
+  /* Page 1 - Waitlist Section */
+  #page1 { height: 100vh; background-image: url('images/Page1/page1_background.jpg'); background-size: cover; background-position: center; width: 100vw; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; animation: fadeInCorners 1s ease-in forwards; min-height: 600px; background-color: #060606; }
+  .page1-flex-box { position: relative; width: 100%; max-width: 520px; display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 0 20px; }
+  .heading-box, .subheading-box { position: relative; width: 100%; display: flex; justify-content: center; align-items: center; text-align: center; }
+  .heading-text { font-family: 'Inter', sans-serif; font-weight: 700; color: #ffffff; font-size: clamp(32px, 4.5vw, 48px); letter-spacing: -0.04em; line-height: 1.2em; margin: 0; }
+  .subheading-text { font-family: 'Inter', sans-serif; font-weight: 400; color: #cccccc; font-size: clamp(16px, 2.2vw, 20px); letter-spacing: -0.02em; line-height: 1.5em; margin: 0; }
+  .input-container { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 20px; width: 100%; max-width: 420px; }
+  .email-input, .btn { font-family: 'Inter', sans-serif; font-size: 16px; padding: 18px 24px; border: 1px solid #2a2a2a; border-radius: 4px; background: #0a0a0a; color: #ffffff; outline: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1); width: 100%; box-sizing: border-box; }
+  .email-input::placeholder { color: #666666; font-weight: 300; }
+  .email-input:focus { border-color: #444444; background: #111111; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1); }
+  .btn { margin-top: 10px; background-color: transparent; text-transform: uppercase; text-decoration: none; cursor: pointer; font-weight: 500; position: relative; transition: all 1s; overflow: hidden; }
+  .btn:hover { color: #ffffff; background-color: #2a2a2a; }
+  .btn::before { content: ""; position: absolute; height: 100%; width: 0%; top: 0; left: -40px; transform: skewX(45deg); background-color: #1a1a1a; z-index: -1; transition: all 1s; }
+  .btn:hover::before { width: 160%; }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  @keyframes fadeInCorners { 0% { background-image: linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/Page1/page1_background.jpg'); opacity: 0; } 100% { background-image: url('images/Page1/page1_background.jpg'); opacity: 1; } }
 
-@keyframes fadeInCorners { 0% { background-image: linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('static/images/Page1/page1_background.png'); opacity: 0; } 100% { background-image: url('static/images/Page1/page1_background.png'); opacity: 1; } }
-
-@media (max-width: 809px) { 
-  #page1 { height: 70vh; min-height: 450px; }
-  .page1-flex-box { max-width: 90%; gap: 24px; }
-  .heading-text { font-size: clamp(28px, 5vw, 36px); }
-  .subheading-text { font-size: clamp(14px, 2.5vw, 18px); }
-  .email-input { font-size: 14px; padding: 14px 16px; }
-  .send-btn { font-size: 14px; padding: 14px 24px; }
-}
-
-@media (max-width: 480px) { 
-  #page1 { height: 80vh; min-height: 500px; }
-  .page1-flex-box { gap: 20px; }
-  .input-container { gap: 12px; }
-  .email-input { padding: 12px 14px; }
-  .send-btn { padding: 12px 20px; }
-}
-</style>
-<script>
-document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const formData = new FormData(form);
-
-  try {
-    const res = await fetch(form.action, {
-      method: "POST",
-      body: formData
-    });
-    const data = await res.json();
-    document.getElementById("response-message").innerText = data.message || data.error;
-  } catch (err) {
-    document.getElementById("response-message").innerText = "Something went wrong!";
-  }
-});
-</script>
-
-
-<!-- Page2 -->
-<section id="Marquee">
-<div class="Marquee-container">
-  <div class="Marquee-content">
-    <div class="Marquee-item"><img src="static/images/page2/ChatGPT.png" alt="ChatGPT"><span>Chatgpt</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Claude.png" alt="Claude"><span>Claude</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Copilot.png" alt="Copilot"><span>Copilot</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Deepseek.png" alt="Deepseek"><span>Deepseek</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Gemini.png" alt="Gemini"><span>Gemini</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Meta.png" alt="Meta"><span>Meta</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Minimax.png" alt="Minimax"><span>Minimax</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Mistral.png" alt="Mistral"><span>Mistral</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Perplexity.png" alt="Perplexity"><span>Perplexity</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Qwen.png" alt="Qwen"><span>Qwen</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Sonar.png" alt="Sonar"><span>Sonar</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/StarCoder.png" alt="StarCoder"><span>Starcoder</span></div>
-    <!-- Duplicate for seamless loop -->
-    <div class="Marquee-item"><img src="static/images/page2/ChatGPT.png" alt="ChatGPT"><span>Chatgpt</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Claude.png" alt="Claude"><span>Claude</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Copilot.png" alt="Copilot"><span>Copilot</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Deepseek.png" alt="Deepseek"><span>Deepseek</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Gemini.png" alt="Gemini"><span>Gemini</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Meta.png" alt="Meta"><span>Meta</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Minimax.png" alt="Minimax"><span>Minimax</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Mistral.png" alt="Mistral"><span>Mistral</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Perplexity.png" alt="Perplexity"><span>Perplexity</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Qwen.png" alt="Qwen"><span>Qwen</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/Sonar.png" alt="Sonar"><span>Sonar</span></div>
-    <div class="Marquee-item"><img src="static/images/page2/StarCoder.png" alt="StarCoder"><span>Starcoder</span></div>
-  </div>
-</div>
-
-<style>
-#Marquee { height: 18.5vh; background: #060606; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-.Marquee-container { width: 65%; max-width: 1200px; height: 90%; background-image: url('static/images/page2/page2_Stars.png'); background-size: cover; background-position: center; border-radius: 12px; display: flex; align-items: center; overflow: hidden; position: relative; }
-.Marquee-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100px; height: 100%; background: linear-gradient(to right, rgba(6,6,6,1) 0%, rgba(6,6,6,0.8) 50%, rgba(6,6,6,0) 100%); z-index: 2; pointer-events: none; }
-.Marquee-container::after { content: ''; position: absolute; top: 0; right: 0; width: 100px; height: 100%; background: linear-gradient(to left, rgba(6,6,6,1) 0%, rgba(6,6,6,0.8) 50%, rgba(6,6,6,0) 100%); z-index: 2; pointer-events: none; }
-.Marquee-content { display: flex; align-items: center; white-space: nowrap; animation: marquee 20s linear infinite; gap: 120px; }
-.Marquee-item { display: flex; align-items: center; }
-.Marquee-item img { width: 40px; height: 40px; margin-right: 10px; }
-.Marquee-item span { color: #ffffff; font-family: 'Arial', sans-serif; font-size: 16px; letter-spacing: 1.5px; font-weight: 500; }
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-@media (max-width: 1279px) and (min-width: 810px) { #Marquee { height: 18.5vh; } .Marquee-container { width: 75%; max-width: 780px; height: 80%; } .Marquee-content { gap: 100px; } }
-@media (max-width: 809px) { #Marquee { height: 16vh; } .Marquee-container { width: 85%; max-width: 100%; height: 80%; padding: 0 10px; } .Marquee-content { gap: 80px; } }
-@media (max-width: 480px) { #Marquee { height: 14vh; min-height: 120px; } .Marquee-container { width: 90%; max-width: 100%; height: 75%; padding: 0 8px; } .Marquee-content { gap: 60px; } .Marquee-item img { width: 32px; height: 32px; } .Marquee-item span { font-size: 14px; } .Marquee-container::before, .Marquee-container::after { width: 50px; } }
-</style>
-</section>
-
-<!-- Page 11 -->
-<section id="Page11" class="page">
-  <div class="Page11-container">
-
-    <!-- Subtle Divider -->
-    <div class="Page11-divider"></div>
-
-    <!-- Grid -->
-    <div class="Page11-content">
-      <div class="Page11-section">
-        <h2>Try XiteAI On</h2>
-        <a href="#" class="Page11-link">Web</a>
-      </div>
-      <div class="Page11-section">
-        <h2>Products</h2>
-        <a href="#" class="Page11-link">XiteAI</a>
-        <a href="#" class="Page11-link">SuperXite</a>
-      </div>
-      <div class="Page11-section">
-        <h2>Company</h2>
-        <a href="#" class="Page11-link">Careers</a>
-        <a href="#" class="Page11-link">Contact</a>
-        <a href="#" class="Page11-link">News</a>
-      </div>
-      <div class="Page11-section">
-        <h2>Resources</h2>
-        <a href="#" class="Page11-link">Documentation</a>
-        <a href="#" class="Page11-link">Privacy Policy</a>
-        <a href="#" class="Page11-link">Security</a>
-        <a href="#" class="Page11-link">Safety</a>
-        <a href="#" class="Page11-link">Legal</a>
-        <a href="#" class="Page11-link">Status</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Footer (true bottom) -->
-  <footer class="Page11-footer">
-    <p>© 2025 XiteAI Inc. All rights reserved.</p>
-  </footer>
-</section>
-
-<style>
-#Page11 {
-  min-height: 60vh;
-  background: #060606;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 80px 0 20px 0; /* bottom padding for breathing space */
-}
-.Page11-container {
-  width: 90%;
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-}
-
-/* Subtle Divider */
-.Page11-divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #333, transparent);
-}
-
-/* Grid */
-.Page11-content {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 80px;
-}
-.Page11-section {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.Page11-section h2 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  color: #fff;
-  font-size: clamp(18px, 2vw, 22px);
-  margin: 0;
-}
-.Page11-link {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  color: #b5b5b5;
-  font-size: clamp(14px, 1.4vw, 16px);
-  text-decoration: none;
-  transition: color 0.25s ease;
-}
-.Page11-link:hover {
-  color: #d0d0d0; /* subtle grey hover */
-}
-
-/* Footer */
-.Page11-footer {
-  text-align: center;
-  color: #777;
-  font-size: 13px;
-  letter-spacing: 0.3px;
-  margin-top: 40px;
-}
-.Page11-footer p {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .Page11-content { grid-template-columns: repeat(2, 1fr); gap: 60px; }
-}
-@media (max-width: 640px) {
-  #Page11 { padding: 60px 0 20px 0; }
-  .Page11-container { gap: 40px; }
-  .Page11-content { grid-template-columns: 1fr; gap: 40px; }
-}
-
-/* Animation */
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(15px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-.animated {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
+  /* Page 1 Responsive Styles */
+  @media (max-width: 809px) { #page1 { height: 70vh; min-height: 450px; } }
+  @media (max-width: 809px) { .page1-flex-box { max-width: 90%; gap: 24px; } }
+  @media (max-width: 809px) { .heading-text { font-size: clamp(28px, 5vw, 36px); } }
+  @media (max-width: 809px) { .subheading-text { font-size: clamp(14px, 2.5vw, 18px); } }
+  @media (max-width: 809px) { .email-input, .btn { font-size: 14px; padding: 14px 16px; } }
+  @media (max-width: 480px) { #page1 { height: 80vh; min-height: 500px; } }
+  @media (max-width: 480px) { .page1-flex-box { gap: 20px; } }
+  @media (max-width: 480px) { .input-container { gap: 12px; } }
+  @media (max-width: 480px) { .email-input, .btn { padding: 12px 14px; } }
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const elements = document.querySelectorAll('.Page11-section h2, .Page11-link');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-        entry.target.classList.add('animated');
-        entry.target.style.animationDelay = `${i * 0.05}s`;
+  const form = document.getElementById("waitlist-form");
+  const submitBtn = document.getElementById("submit-btn");
+  const responseMessage = document.getElementById("response-message");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // Prevent default form submission
+
+    // UI feedback
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+    responseMessage.textContent = "Processing...";
+    responseMessage.style.color = "#fff";
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch("https://formbold.com/s/6rpBA", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        // Redirect to thankyou.html after success
+        window.location.href = "thankyou.html";
+      } else {
+        throw new Error("Submission failed");
       }
-    });
-  }, { threshold: 0.3 });
-  elements.forEach(el => { el.style.opacity = '0'; observer.observe(el); });
-});
+    } catch (error) {
+      responseMessage.textContent = "Oops! Something went wrong. Try again.";
+      responseMessage.style.color = "#f87171";
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Get Early Access";
+    }
+  });
 </script>
+
+
+  <!-- Page 2 - Marquee Section -->
+  <section id="Marquee">
+    <div class="Marquee-container">
+      <div class="Marquee-content">
+        <div class="Marquee-item"><img src="images/page2/ChatGPT.png" alt="ChatGPT"><span>Chatgpt</span></div>
+        <div class="Marquee-item"><img src="images/page2/Claude.png" alt="Claude"><span>Claude</span></div>
+        <div class="Marquee-item"><img src="images/page2/Copilot.png" alt="Copilot"><span>Copilot</span></div>
+        <div class="Marquee-item"><img src="images/page2/Deepseek.png" alt="Deepseek"><span>Deepseek</span></div>
+        <div class="Marquee-item"><img src="images/page2/Gemini.png" alt="Gemini"><span>Gemini</span></div>
+        <div class="Marquee-item"><img src="images/page2/Meta.png" alt="Meta"><span>Meta</span></div>
+        <div class="Marquee-item"><img src="images/page2/Minimax.png" alt="Minimax"><span>Minimax</span></div>
+        <div class="Marquee-item"><img src="images/page2/Mistral.png" alt="Mistral"><span>Mistral</span></div>
+        <div class="Marquee-item"><img src="images/page2/Perplexity.png" alt="Perplexity"><span>Perplexity</span></div>
+        <div class="Marquee-item"><img src="images/page2/Qwen.png" alt="Qwen"><span>Qwen</span></div>
+        <div class="Marquee-item"><img src="images/page2/Sonar.png" alt="Sonar"><span>Sonar</span></div>
+        <div class="Marquee-item"><img src="images/page2/StarCoder.png" alt="StarCoder"><span>Starcoder</span></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="Marquee-item"><img src="images/page2/ChatGPT.png" alt="ChatGPT"><span>Chatgpt</span></div>
+        <div class="Marquee-item"><img src="images/page2/Claude.png" alt="Claude"><span>Claude</span></div>
+        <div class="Marquee-item"><img src="images/page2/Copilot.png" alt="Copilot"><span>Copilot</span></div>
+        <div class="Marquee-item"><img src="images/page2/Deepseek.png" alt="Deepseek"><span>Deepseek</span></div>
+        <div class="Marquee-item"><img src="images/page2/Gemini.png" alt="Gemini"><span>Gemini</span></div>
+        <div class="Marquee-item"><img src="images/page2/Meta.png" alt="Meta"><span>Meta</span></div>
+        <div class="Marquee-item"><img src="images/page2/Minimax.png" alt="Minimax"><span>Minimax</span></div>
+        <div class="Marquee-item"><img src="images/page2/Mistral.png" alt="Mistral"><span>Mistral</span></div>
+        <div class="Marquee-item"><img src="images/page2/Perplexity.png" alt="Perplexity"><span>Perplexity</span></div>
+        <div class="Marquee-item"><img src="images/page2/Qwen.png" alt="Qwen"><span>Qwen</span></div>
+        <div class="Marquee-item"><img src="images/page2/Sonar.png" alt="Sonar"><span>Sonar</span></div>
+        <div class="Marquee-item"><img src="images/page2/StarCoder.png" alt="StarCoder"><span>Starcoder</span></div>
+      </div>
+    </div>
+    <style>
+      /* Page 2 - Marquee Styles */
+      #Marquee { height: 18.5vh; background: #060606; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+      .Marquee-container { width: 65%; max-width: 1200px; height: 90%; background-image: url('images/page2/page2_Stars.png'); background-size: cover; background-position: center; border-radius: 12px; display: flex; align-items: center; overflow: hidden; position: relative; }
+      .Marquee-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100px; height: 100%; background: linear-gradient(to right, rgba(6,6,6,1) 0%, rgba(6,6,6,0.8) 50%, rgba(6,6,6,0) 100%); z-index: 2; pointer-events: none; }
+      .Marquee-container::after { content: ''; position: absolute; top: 0; right: 0; width: 100px; height: 100%; background: linear-gradient(to left, rgba(6,6,6,1) 0%, rgba(6,6,6,0.8) 50%, rgba(6,6,6,0) 100%); z-index: 2; pointer-events: none; }
+      .Marquee-content { display: flex; align-items: center; white-space: nowrap; animation: marquee 20s linear infinite; gap: 120px; }
+      .Marquee-item { display: flex; align-items: center; }
+      .Marquee-item img { width: 40px; height: 40px; margin-right: 10px; }
+      .Marquee-item span { color: #ffffff; font-family: 'Arial', sans-serif; font-size: 16px; letter-spacing: 1.5px; font-weight: 500; }
+      @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+      /* Page 2 Responsive Styles */
+      @media (max-width: 1279px) and (min-width: 810px) { #Marquee { height: 18.5vh; } }
+      @media (max-width: 1279px) and (min-width: 810px) { .Marquee-container { width: 75%; max-width: 780px; height: 80%; } }
+      @media (max-width: 1279px) and (min-width: 810px) { .Marquee-content { gap: 100px; } }
+      @media (max-width: 809px) { #Marquee { height: 16vh; } }
+      @media (max-width: 809px) { .Marquee-container { width: 85%; max-width: 100%; height: 80%; padding: 0 10px; } }
+      @media (max-width: 809px) { .Marquee-content { gap: 80px; } }
+      @media (max-width: 480px) { #Marquee { height: 14vh; min-height: 120px; } }
+      @media (max-width: 480px) { .Marquee-container { width: 90%; max-width: 100%; height: 75%; padding: 0 8px; } }
+      @media (max-width: 480px) { .Marquee-content { gap: 60px; } }
+      @media (max-width: 480px) { .Marquee-item img { width: 32px; height: 32px; } }
+      @media (max-width: 480px) { .Marquee-item span { font-size: 14px; } }
+      @media (max-width: 480px) { .Marquee-container::before, .Marquee-container::after { width: 50px; } }
+    </style>
+  </section>
+
+  <!-- Page 11 - Footer Section -->
+  <section id="Page11" class="page">
+        <div class="Page11-container">
+          <div class="Page11-divider"></div>
+          <div class="Page11-content">
+            <div class="Page11-section">
+              <h2>Try XiteAI On</h2>
+              <a href="waitlist.html" class="Page11-link">Web</a>
+              <a href="waitlist.html" class="Page11-link">iOS</a>
+              <a href="waitlist.html" class="Page11-link">Android</a>
+            </div>
+            <div class="Page11-section">
+              <h2>Products</h2>
+              <a href="waitlist.html" class="Page11-link">XiteAI</a>
+              <a href="waitlist.html" class="Page11-link">SuperXite</a>
+              <a href="waitlist.html" class="Page11-link">Maestro</a>
+            </div>
+            <div class="Page11-section">
+              <h2>Company</h2>
+              <a href="Home.html#page1" class="Page11-link">Home</a>
+            <!--  <a href="waitlist.html" class="Page11-link">Contact</a>
+              <a href="waitlist.html" class="Page11-link">News</a>-->
+            </div>
+            <div class="Page11-section">
+              <h2>Resources</h2>
+              <a href="document.html" class="Page11-link">Documentation</a>
+              <a href="privacypolicy.html" class="Page11-link">Privacy Policy</a>
+              <a href="security.html" class="Page11-link">Security</a>
+              <a href="legal.html" class="Page11-link">Legal</a>
+              <a href="status.html" class="Page11-link">Status</a>
+            </div>
+          </div>
+        </div>
+        <footer class="Page11-footer">
+          <p>© 2026 XiteAI Technologies All rights reserved.</p>
+        </footer>
+      </section>
+
+  <style>
+    /* Page 11 - Footer Styles */
+    #Page11 { min-height: 60vh; background: #060606; display: flex; flex-direction: column; justify-content: space-between; padding: 80px 0 20px 0; }
+    .Page11-container { width: 90%; max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 60px; }
+    .Page11-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, #333, transparent); }
+    .Page11-content { display: grid; grid-template-columns: repeat(4, 1fr); gap: 80px; }
+    .Page11-section { display: flex; flex-direction: column; gap: 18px; }
+    .Page11-link:hover { color: #d0d0d0; }
+.Page11-section h2 { font-family: 'Inter', sans-serif; font-weight: 200; color: #7c7c7c; font-size: clamp(14px, 1.6vw, 18px); margin: 0; }
+    .Page11-link { font-family: 'Inter', sans-serif; font-weight: 400; color: #ffffff; font-size: clamp(12px, 1.2vw, 14px); text-decoration: none; transition: color 0.25s ease; }
+.Page11-footer { text-align: center; color: #777; font-size: 12px; letter-spacing: 0.3px; margin-top: 40px; }
+    .Page11-footer p { margin: 0; font-family: 'Inter', sans-serif; }
+
+    /* Page 11 Responsive Styles */
+    @media (max-width: 1024px) { .Page11-content { grid-template-columns: repeat(2, 1fr); gap: 60px; } }
+    @media (max-width: 640px) { #Page11 { padding: 60px 0 20px 0; } }
+    @media (max-width: 640px) { .Page11-container { gap: 40px; } }
+    @media (max-width: 640px) { .Page11-content { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* Animation for Page 11 */
+    @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+    .animated { animation: fadeInUp 0.6s ease-out forwards; }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.Page11-section h2, .Page11-link');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+            entry.target.classList.add('animated');
+            entry.target.style.animationDelay = `${i * 0.05}s`;
+          }
+        });
+      }, { threshold: 0.3 });
+      elements.forEach(el => { el.style.opacity = '0'; observer.observe(el); });
+    });
+  </script>
+</body>
+</html>
