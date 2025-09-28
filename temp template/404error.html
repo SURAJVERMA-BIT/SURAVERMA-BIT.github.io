@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- Header Section (Unchanged Button) -->
+<header>
+  <img src="images/Header/xiteai.png" alt="XiteAI Logo" class="logo">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#Features">Features</a>
+    <a href="index.html#Page7">Pricing</a>
+    <a href="index.html#Page8">Company</a>
+  </nav>
+  <button class="menu" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
+    <svg width="100" height="100" viewBox="0 0 100 100">
+      <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+      <path class="line line2" d="M 20,50 H 80" />
+      <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+    </svg>
+  </button>
+  <div class="nav-overlay"></div>
+</header>
+
+<!-- Global and Header Styles (Updated Scale for Size) -->
+<style>
+  /* Global Styles (Unchanged) */
+  html, body { margin: 0; padding: 0; width: 100vw; overflow-x: hidden; overflow-y: auto; -ms-overflow-style: none; background-color: #060606; }
+  html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+  .page { width: 100vw; display: none; position: relative; }
+  .page.active { display: block; }
+
+  /* Header Styles (Unchanged) */
+  header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: rgba(255, 255, 255, 0.005); z-index: 1000; box-sizing: border-box; transition: transform 0.8s ease, opacity 1s ease; opacity: 0; }
+  header.show { opacity: 1; transform: translateY(0); }
+  header.hide { transform: translateY(-100%); }
+  header img.logo { width: 28px; height: auto; }
+  header nav { display: flex; gap: 35px; }
+  header nav a { color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 400; font-family: "Helvetica World", "Helvetica Neue", Arial, sans-serif; transition: color 0.3s; }
+  header nav a:hover { color: #7c7c7c; }
+  .menu { background-color: transparent; border: none; cursor: pointer; display: none; padding: 0; }
+  .line { fill: none; stroke: black; stroke-width: 6; transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1); }
+  .line1 { stroke-dasharray: 60 207; stroke-width: 6; }
+  .line2 { stroke-dasharray: 60 60; stroke-width: 6; }
+  .line3 { stroke-dasharray: 60 207; stroke-width: 6; }
+  .opened .line1 { stroke-dasharray: 90 207; stroke-dashoffset: -134; stroke-width: 6; }
+  .opened .line2 { stroke-dasharray: 1 60; stroke-dashoffset: -30; stroke-width: 6; }
+  .opened .line3 { stroke-dasharray: 90 207; stroke-dashoffset: -134; stroke-width: 6; }
+
+  /* Overlay for dimming background */
+  .nav-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.7); opacity: 0; pointer-events: none; transition: opacity 0.8s cubic-bezier(0.33, 0.04, 0.33, 1); z-index: 999; }
+  .nav-overlay.active { opacity: 1; pointer-events: auto; }
+
+  /* Header Responsive Styles (Increased Scale for Size) */
+  @media (max-width: 756px) {
+    header nav { position: fixed; top: 0; left: 0; height: 100vh; width: 100%; background: rgba(18, 18, 18, 1); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); flex-direction: column; justify-content: flex-start; align-items: center; gap: 45px; padding: 80px 0 20px; transform: translateY(-100%); transition: transform 0.9s cubic-bezier(0.33, 0.04, 0.33, 1), opacity 0.9s cubic-bezier(0.33, 0.04, 0.33, 1); opacity: 0; z-index: 1001; overflow-y: auto; -webkit-overflow-scrolling: touch; max-height: 100vh; }
+    header nav.open { transform: translateY(0); opacity: 1; }
+    header nav a { font-size: 26px; font-weight: 300; padding: 15px; color: #ffffff; opacity: 0; transform: translateY(30px); transition: opacity 0.6s cubic-bezier(0.33, 0.04, 0.33, 1), transform 0.6s cubic-bezier(0.33, 0.04, 0.33, 1), box-shadow 0.4s ease, color 0.4s ease; }
+    header nav.open a { opacity: 1; transform: translateY(0); }
+    header nav.open a:nth-child(1) { transition-delay: 0.15s; }
+    header nav.open a:nth-child(2) { transition-delay: 0.25s; }
+    header nav.open a:nth-child(3) { transition-delay: 0.35s; }
+    header nav.open a:nth-child(4) { transition-delay: 0.45s; }
+    header nav a:hover, header nav a:active { transform: translateY(-4px); color: #f0f0f0; box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2); }
+    header nav a::after { content: ''; position: absolute; width: 0; height: 1.5px; bottom: -10px; left: 0; background: linear-gradient(to right, #ffffff, #d9d9d9); transition: width 0.5s cubic-bezier(0.33, 0.04, 0.33, 1); }
+    header nav a:hover::after, header nav a:active::after { width: 100%; }
+    header .join-waitlist { margin-top: 35px; }
+    .menu { display: flex; transform: scale(1.0); z-index: 1002; }
+    .menu svg { width: 28px; height: 28px; }
+    .menu .line { stroke: #ffffff; }
+    body.nav-open { overflow-y: hidden; touch-action: none; }
+  }
+</style>
+
+<!-- Global JavaScript for Header and Animations (Unchanged) -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.body.style.overflowX = 'hidden';
+    const header = document.querySelector('header');
+    setTimeout(() => header.classList.add('show'), 300);
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > lastScroll) {
+        header.classList.add('hide');
+      } else {
+        header.classList.remove('hide');
+      }
+      lastScroll = currentScroll;
+    });
+    const menu = document.querySelector('.menu');
+    const nav = document.querySelector('header nav');
+    const overlay = document.querySelector('.nav-overlay');
+    menu.addEventListener('click', () => {
+      const isOpened = menu.classList.contains('opened');
+      nav.classList.toggle('open', isOpened);
+      overlay.classList.toggle('active', isOpened);
+      document.body.classList.toggle('nav-open', isOpened);
+    });
+
+    // Close mobile nav when clicking overlay
+    overlay.addEventListener('click', () => {
+      menu.classList.remove('opened');
+      menu.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+      overlay.classList.remove('active');
+      document.body.classList.remove('nav-open');
+    });
+
+    // Close mobile nav when clicking a nav link
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('opened');
+        menu.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('open');
+        overlay.classList.remove('active');
+        document.body.classList.remove('nav-open');
+      });
+    });
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+          entry.target.classList.add('animated');
+          entry.target.style.animation = 'fadeInUp 2.5s cubic-bezier(0.33, 0, 0, 1) forwards';
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.page .heading-text, .page .subheading-text, .page .Page3-heading, .page .Page3-subheading, .page .Features-heading, .page .Features-subheading, .page .Page5-heading, .page .Page5-subheading, .page .Page5-column-heading, .Page5-column-subheading, .page .Page6-heading, .page .Page6-subheading, .page .Page7-heading, .page .Page7-subheading, .page .Page8-heading, .page .Page8-subheading, .page .Page9-heading, .page .Page9-subheading, .page .Page10-heading, .page .Page10-subheading, .page .Page11-heading, .page .Page11-subheading').forEach(element => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(25px)';
+      observer.observe(element);
+    });
+  });
+</script>
+
+
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #060606;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  font-family: inter;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+}
+
+.falling-404 {
+  font-size: 8rem;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+}
+
+.fall-digit {
+  display: inline-block;
+  margin: auto;
+  animation: fallEffect 3s var(--delay) infinite ease-in-out;
+}
+
+@keyframes fallEffect {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(20px) rotate(-10deg);
+    opacity: 0.8;
+  }
+  70% {
+    transform: translateY(95px) rotate(45deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(200px) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+.message {
+  font-size: 2rem;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.instructions {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+</style>
+    <div class="container">
+  <div class="falling-404">
+    <span class="fall-digit" style="--delay: 0s;">4</span>
+    <span class="fall-digit" style="--delay: 0.2s;">0</span>
+    <span class="fall-digit" style="--delay: 0.4s;">4</span>
+  </div>
+  <div class="message">Page Dropped Off</div>
+  <div class="instructions">It appears we lost our grip on this page.</div>
+</div>
+
+
+
+
+</body>
+</html>
