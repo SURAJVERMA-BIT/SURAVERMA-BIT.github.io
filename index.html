@@ -477,34 +477,37 @@
 
   <!-- Page 3: Styles -->
   <style>
-    /* Page 3: AI Models Section Styles */
-    #Page3 { height: 90vh; background: #060606 url('') no-repeat fixed center; background-size: cover; display: flex; justify-content: center; align-items: center; position: relative; }
-    .Page3-container { width: 65%; max-width: 960px; background-image: url('images/page3/earth_stars.png'); background-size: cover; background-position: center; height: 80%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding-top: 60px; }
-    .Page3-earth-image { width: 320px; height: 320px; object-fit: contain; margin-bottom: 20px; }
-    .Page3-heading { font-family: 'Inter', sans-serif; font-weight: 700; color: #ffffff; font-size: clamp(28px, 4vw, 48px); letter-spacing: -0.02em; line-height: 1.2em; text-align: center; margin: 0; }
-    .Page3-subheading { font-family: 'Inter', sans-serif; font-weight: 400; color: #ffffff; font-size: clamp(14px, 2vw, 18px); letter-spacing: -0.01em; line-height: 1.8em; text-align: center; max-width: 720px; margin: 0; }
-    .btn { background-color: transparent; color: #ffffff; border: 1px solid #4a4a4a; text-transform: uppercase; text-decoration: none; padding: 10px 20px; font-size: 17px; cursor: pointer; font-weight: bold; position: relative; transition: all 1s; overflow: hidden; border-radius: 7px; }
-    .btn:hover { color: #ffffff; background-color: #5a5a5a; }
-    .btn::before { content: ""; position: absolute; height: 100%; width: 0%; top: 0; left: -40px; transform: skewX(45deg); background-color: #4a4a4a; z-index: -1; transition: all 1s; }
-    .btn:hover::before { width: 160%; }
-    @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(25px); } 100% { opacity: 1; transform: translateY(0); } }
-
-    /* Page 3: Responsive Styles */
-    @media (max-width: 1279px) and (min-width: 810px) { #Page3 { height: 76vh; } }
-    @media (max-width: 1279px) and (min-width: 810px) { .Page3-container { width: 75%; max-width: 780px; height: 80%; padding-top: 50px; } }
-    @media (max-width: 1279px) and (min-width: 810px) { .Page3-earth-image { width: 200px; height: 200px; } }
-    @media (max-width: 1279px) and (min-width: 810px) { .Page3-heading { font-size: clamp(24px, 4vw, 40px); } }
-    @media (max-width: 1279px) and (min-width: 810px) { .Page3-subheading { font-size: clamp(12px, 2vw, 16px); line-height: 1.8em; } }
-    @media (max-width: 809px) { #Page3 { height: 70vh; min-height: 400px; } }
-    @media (max-width: 809px) { .Page3-container { width: 85%; max-width: 100%; height: 75%; padding: 0 10px; gap: 16px; padding-top: 40px; } }
-    @media (max-width: 809px) { .Page3-earth-image { width: 200px; height: 200px; } }
-    @media (max-width: 809px) { .Page3-heading { font-size: clamp(20px, 4vw, 32px); } }
-    @media (max-width: 809px) { .Page3-subheading { font-size: clamp(12px, 2vw, 14px); line-height: 1.8em; } }
-    @media (max-width: 480px) { #Page3 { height: 65vh; min-height: 350px; } }
-    @media (max-width: 480px) { .Page3-container { width: 90%; max-width: 100%; height: 70%; padding: 0 8px; gap: 12px; padding-top: 30px; } }
-    @media (max-width: 480px) { .Page3-earth-image { width: 130px; height: 130px; } }
-    @media (max-width: 480px) { .Page3-heading { font-size: clamp(18px, 4vw, 28px); } }
-    @media (max-width: 480px) { .Page3-subheading { font-size: clamp(10px, 2vw, 12px); line-height: 1.8em; } }
+#Page3 { min-height: clamp(70vh, 80rem, 100vh); margin-top: clamp(1rem, 2vw, 2rem); background: #060606 url('') no-repeat fixed center; background-size: cover; display: flex; justify-content: center; align-items: center; position: relative; }
+.Page3-container { width: clamp(60%, 65vw, 960px); max-width: 960px; background-image: url('images/page3/earth_stars.png'); background-size: cover; background-position: center; height: 80%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(1rem, 1.5vw, 1.5rem); padding-top: clamp(2rem, 4vw, 3.75rem); }
+.Page3-earth-image { width: clamp(200px, 25vw, 320px); height: clamp(200px, 25vw, 320px); object-fit: contain; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); }
+.Page3-heading { font-family: 'Inter', sans-serif; font-weight: 700; color: #ffffff; font-size: clamp(1.75rem, 4vw, 3rem); letter-spacing: -0.02em; line-height: 1.2em; text-align: center; margin: 0; }
+.Page3-subheading { font-family: 'Inter', sans-serif; font-weight: 400; color: #ffffff; font-size: clamp(0.875rem, 2vw, 1.125rem); letter-spacing: -0.01em; line-height: 1.8em; text-align: center; max-width: clamp(500px, 50vw, 720px); margin: 0; }
+.btn { background-color: transparent; color: #ffffff; border: 1px solid #4a4a4a; text-transform: uppercase; text-decoration: none; padding: clamp(0.5rem, 1vw, 0.625rem) clamp(1rem, 2vw, 1.25rem); font-size: clamp(0.9375rem, 1.5vw, 1.0625rem); cursor: pointer; font-weight: bold; position: relative; transition: all 1s; overflow: hidden; border-radius: clamp(0.375rem, 0.8vw, 0.4375rem); }
+.btn:hover { color: #ffffff; background-color: #5a5a5a; }
+.btn::before { content: ""; position: absolute; height: 100%; width: 0%; top: 0; left: -40px; transform: skewX(45deg); background-color: #4a4a4a; z-index: -1; transition: all 1s; }
+.btn:hover::before { width: 160%; }
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(25px); } 100% { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1279px) and (min-width: 810px) {
+  #Page3 { min-height: clamp(60vh, 70rem, 80vh); }
+  .Page3-container { width: clamp(70%, 75vw, 780px); max-width: 780px; height: 80%; padding-top: clamp(1.75rem, 3.5vw, 3.125rem); }
+  .Page3-earth-image { width: clamp(150px, 20vw, 200px); height: clamp(150px, 20vw, 200px); }
+  .Page3-heading { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
+  .Page3-subheading { font-size: clamp(0.75rem, 1.8vw, 1rem); line-height: 1.8em; }
+}
+@media (max-width: 809px) {
+  #Page3 { min-height: clamp(60vh, 65rem, 80vh); }
+  .Page3-container { width: clamp(80%, 85vw, 90%); max-width: 100%; height: 75%; padding: 0 clamp(0.5rem, 1vw, 0.625rem); gap: clamp(0.75rem, 1.2vw, 1rem); padding-top: clamp(1.5rem, 3vw, 2.5rem); }
+  .Page3-earth-image { width: clamp(150px, 20vw, 200px); height: clamp(150px, 20vw, 200px); }
+  .Page3-heading { font-size: clamp(1.25rem, 3.5vw, 2rem); }
+  .Page3-subheading { font-size: clamp(0.75rem, 1.8vw, 0.875rem); line-height: 1.8em; }
+}
+@media (max-width: 480px) {
+  #Page3 { min-height: clamp(50vh, 60rem, 70vh); }
+  .Page3-container { width: clamp(85%, 90vw, 95%); max-width: 100%; height: 70%; padding: 0 clamp(0.375rem, 0.8vw, 0.5rem); gap: clamp(0.5rem, 1vw, 0.75rem); padding-top: clamp(1.25rem, 2.5vw, 1.875rem); }
+  .Page3-earth-image { width: clamp(100px, 15vw, 130px); height: clamp(100px, 15vw, 130px); }
+  .Page3-heading { font-size: clamp(1.125rem, 3vw, 1.75rem); }
+  .Page3-subheading { font-size: clamp(0.625rem, 1.5vw, 0.75rem); line-height: 1.8em; }
+}
   </style>
 </body>
 </html>
@@ -569,61 +572,141 @@
 
 <!-- Features Section Styles -->
 <style>
-#Features { height: clamp(100vh, 141vh, 160vh); background: #060606 url('') no-repeat fixed center; background-size: cover; display: flex; justify-content: center; align-items: center; position: relative; }
-.Features-container { width: 75%; max-width: 1210px; height: 80%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
-.Features-button { font-family: 'Inter', sans-serif; font-weight: 600; color: #ffffff; font-size: clamp(12px, 1.5vw, 14px); background: #333333; border-radius: 24px; padding: 8px 16px; text-align: center; pointer-events: none; -webkit-user-select: none; user-select: none; }
-.Features-heading { font-family: 'Inter', sans-serif; font-weight: 700; color: #ffffff; font-size: clamp(28px, 3.5vw, 36px); letter-spacing: -0.02em; line-height: 1; text-align: center; margin: 0; }
-.Features-subheading { font-family: 'Inter', sans-serif; font-weight: 400; color: #ffffff; font-size: clamp(16px, 2vw, 18px); letter-spacing: -0.01em; line-height: 1.5; text-align: center; max-width: 720px; margin: 0; }
-.Features-cards { width: 100%; display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
-.Features-card-row { display: flex; justify-content: center; align-items: center; gap: 6px; width: 100%; }
-.Features-card { width: clamp(580px, 62vw, 720px); height: clamp(400px, 50vw, 460px); background: #111111; border: 1px solid #151516; border-radius: 22px; display: flex; flex-direction: column; justify-content: space-between; }
-.Features-card-image { flex: 0 0 auto; height: clamp(200px, 25vw, 230px); background: #111111; border-radius: 22px 22px 0 0; background-size: contain; background-position: center; background-repeat: no-repeat; margin: 16px; }
-.Features-card-content { padding: 16px; display: flex; flex-direction: column; gap: 8px; justify-content: flex-end; }
-.Features-card-heading { font-family: 'Inter', sans-serif; font-weight: 600; color: #ffffff; font-size: clamp(14px, 1.8vw, 16px); letter-spacing: -0.01em; line-height: 1.4; text-align: left; margin: 0; }
-.Features-card-subheading { font-family: 'Inter', sans-serif; font-weight: 400; color: #cccccc; font-size: clamp(12px, 1.5vw, 14px); letter-spacing: -0.01em; line-height: 1.4; text-align: left; margin: 0; }
-
-/* Features Responsive Styles */
-@media (max-width: 1279px) and (min-width: 810px) { 
-  #Features { height: clamp(80vh, 90vh, 100vh); } 
-  .Features-container { width: 80%; max-width: 960px; height: 80%; gap: 16px; } 
-  .Features-button { font-size: clamp(10px, 1.3vw, 12px); padding: 6px 12px; }
-  .Features-heading { font-size: clamp(26px, 3vw, 32px); } 
-  .Features-subheading { font-size: clamp(14px, 1.8vw, 16px); } 
-  .Features-cards { gap: 6px; }
-  .Features-card-row { gap: 6px; }
-  .Features-card { width: clamp(460px, 52vw, 580px); height: clamp(340px, 42vw, 390px); } 
-  .Features-card-image { height: clamp(170px, 22vw, 200px); margin: 12px; }
-  .Features-card-heading { font-size: clamp(12px, 1.6vw, 14px); } 
-  .Features-card-subheading { font-size: clamp(10px, 1.3vw, 12px); } 
+#Features { min-height: clamp(80vh, 120rem, 150vh); margin-top: clamp(1rem, 2vw, 2rem); background: #060606 url('') no-repeat fixed center; background-size: cover; display: flex; justify-content: center; align-items: center; position: relative; }
+.Features-container { width: clamp(70%, 75vw, 1210px); max-width: 1210px; height: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(1rem, 1.5vw, 1.5rem); padding: clamp(1.5rem, 3vw, 2rem) 0; }
+.Features-button { font-family: 'Inter', sans-serif; font-weight: 600; color: #ffffff; font-size: clamp(0.75rem, 1.5vw, 0.875rem); background: #333333; border-radius: clamp(1rem, 2vw, 1.5rem); padding: clamp(0.375rem, 0.8vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem); text-align: center; pointer-events: none; -webkit-user-select: none; user-select: none; }
+.Features-heading { font-family: 'Inter', sans-serif; font-weight: 700; color: #ffffff; font-size: clamp(1.75rem, 3.5vw, 2.25rem); letter-spacing: -0.02em; line-height: 1; text-align: center; margin: 0; }
+.Features-subheading { font-family: 'Inter', sans-serif; font-weight: 400; color: #ffffff; font-size: clamp(1rem, 2vw, 1.125rem); letter-spacing: -0.01em; line-height: 1.5; text-align: center; max-width: clamp(500px, 50vw, 720px); margin: 0; }
+.Features-cards { width: 100%; display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.75rem); margin-top: clamp(0.5rem, 1vw, 0.75rem); }
+.Features-card-row { display: flex; justify-content: center; align-items: center; gap: clamp(0.5rem, 1vw, 0.75rem); width: 100%; }
+.Features-card { width: clamp(340px, 35vw, 460px); height: clamp(340px, 40vw, 520px); background: #111111; border: 1px solid #151516; border-radius: clamp(1rem, 2vw, 1.375rem); display: flex; flex-direction: column; justify-content: space-between; }
+.Features-card-image { flex: 0 0 auto; height: clamp(170px, 22vw, 260px); background: #111111; border-radius: clamp(1rem, 2vw, 1.375rem) clamp(1rem, 2vw, 1.375rem) 0 0; background-size: contain; background-position: center; background-repeat: no-repeat; margin: clamp(0.75rem, 1.5vw, 1rem); }
+.Features-card-content { padding: clamp(0.75rem, 1.5vw, 1rem); display: flex; flex-direction: column; gap: clamp(0.375rem, 0.8vw, 0.5rem); justify-content: flex-end; }
+.Features-card-heading { font-family: 'Inter', sans-serif; font-weight: 600; color: #ffffff; font-size: clamp(0.875rem, 1.8vw, 1rem); letter-spacing: -0.01em; line-height: 1.4; text-align: left; margin: 0; }
+.Features-card-subheading { font-family: 'Inter', sans-serif; font-weight: 400; color: #cccccc; font-size: clamp(0.75rem, 1.5vw, 0.875rem); letter-spacing: -0.01em; line-height: 1.4; text-align: left; margin: 0; }
+@media (max-width: 1279px) and (min-width: 810px) {
+  #Features { min-height: clamp(70vh, 100rem, 120vh); }
+  .Features-container { width: clamp(75%, 80vw, 960px); max-width: 960px; gap: clamp(0.75rem, 1.2vw, 1rem); }
+  .Features-button { font-size: clamp(0.625rem, 1.3vw, 0.75rem); padding: clamp(0.25rem, 0.6vw, 0.375rem) clamp(0.5rem, 1vw, 0.75rem); }
+  .Features-heading { font-size: clamp(1.625rem, 3vw, 2rem); }
+  .Features-subheading { font-size: clamp(0.875rem, 1.8vw, 1rem); }
+  .Features-cards { gap: clamp(0.375rem, 0.8vw, 0.5rem); }
+  .Features-card-row { gap: clamp(0.375rem, 0.8vw, 0.5rem); }
+  .Features-card { width: clamp(320px, 32vw, 420px); height: clamp(320px, 35vw, 450px); }
+  .Features-card-image { height: clamp(160px, 20vw, 230px); margin: clamp(0.5rem, 1vw, 0.75rem); }
+  .Features-card-heading { font-size: clamp(0.75rem, 1.6vw, 0.875rem); }
+  .Features-card-subheading { font-size: clamp(0.625rem, 1.3vw, 0.75rem); }
 }
-@media (max-width: 809px) { 
-  #Features { height: auto; min-height: clamp(400px, 50vw, 600px); padding: 40px 0; } 
-  .Features-container { width: 90%; max-width: 100%; height: auto; padding: 0 10px; gap: 12px; } 
-  .Features-button { font-size: clamp(10px, 1.3vw, 12px); padding: 6px 12px; }
-  .Features-heading { font-size: clamp(22px, 4vw, 28px); } 
-  .Features-subheading { font-size: clamp(12px, 2vw, 14px); } 
-  .Features-cards { flex-direction: column; gap: 6px; } 
-  .Features-card-row { flex-direction: column; align-items: center; gap: 6px; } 
-  .Features-card { width: clamp(580px, 68vw, 720px); height: clamp(400px, 50vw, 460px); } 
-  .Features-card-image { height: clamp(200px, 25vw, 230px); margin: 12px; }
-  .Features-card-heading { font-size: clamp(12px, 1.6vw, 14px); } 
-  .Features-card-subheading { font-size: clamp(10px, 1.3vw, 12px); } 
+@media (max-width: 809px) {
+  #Features { min-height: clamp(70vh, 100rem, 120vh); padding: clamp(1.5rem, 3vw, 2.5rem) 0; }
+  .Features-container { width: clamp(85%, 90vw, 95%); max-width: 100%; height: auto; padding: 0 clamp(0.5rem, 1vw, 0.625rem); gap: clamp(0.5rem, 1vw, 0.75rem); }
+  .Features-button { font-size: clamp(0.625rem, 1.3vw, 0.75rem); padding: clamp(0.25rem, 0.6vw, 0.375rem) clamp(0.5rem, 1vw, 0.75rem); }
+  .Features-heading { font-size: clamp(1.375rem, 3.5vw, 1.75rem); }
+  .Features-subheading { font-size: clamp(0.75rem, 1.8vw, 0.875rem); }
+  .Features-cards { flex-direction: column; gap: clamp(0.375rem, 0.8vw, 0.5rem); }
+  .Features-card-row { flex-direction: column; align-items: center; gap: clamp(0.375rem, 0.8vw, 0.5rem); }
+  .Features-card { width: clamp(340px, 40vw, 460px); height: clamp(340px, 40vw, 520px); }
+  .Features-card-image { height: clamp(170px, 22vw, 260px); margin: clamp(0.5rem, 1vw, 0.75rem); }
+  .Features-card-heading { font-size: clamp(0.75rem, 1.6vw, 0.875rem); }
+  .Features-card-subheading { font-size: clamp(0.625rem, 1.3vw, 0.75rem); }
 }
-@media (max-width: 480px) { 
-  #Features { height: auto; min-height: clamp(350px, 45vw, 500px); padding: 32px 0; } 
-  .Features-container { width: 95%; max-width: 100%; height: auto; padding: 0 8px; gap: 10px; } 
-  .Features-button { font-size: clamp(8px, 1.2vw, 10px); padding: 6px 10px; }
-  .Features-heading { font-size: clamp(20px, 3.5vw, 24px); } 
-  .Features-subheading { font-size: clamp(10px, 2vw, 12px); } 
-  .Features-cards { gap: 6px; }
-  .Features-card-row { gap: 6px; }
-  .Features-card { width: 100%; max-width: clamp(580px, 62vw, 720px); height: clamp(400px, 50vw, 460px); } 
-  .Features-card-image { height: clamp(200px, 25vw, 230px); margin: 10px; }
-  .Features-card-heading { font-size: clamp(12px, 1.6vw, 14px); } 
-  .Features-card-subheading { font-size: clamp(10px, 1.3vw, 12px); } 
+@media (max-width: 480px) {
+  #Features { min-height: clamp(60vh, 90rem, 100vh); padding: clamp(1.25rem, 2.5vw, 2rem) 0; }
+  .Features-container { width: clamp(90%, 95vw, 100%); max-width: 100%; height: auto; padding: 0 clamp(0.375rem, 0.8vw, 0.5rem); gap: clamp(0.375rem, 0.8vw, 0.5rem); }
+  .Features-button { font-size: clamp(0.5rem, 1.2vw, 0.625rem); padding: clamp(0.25rem, 0.5vw, 0.375rem) clamp(0.5rem, 1vw, 0.625rem); }
+  .Features-heading { font-size: clamp(1.25rem, 3vw, 1.5rem); }
+  .Features-subheading { font-size: clamp(0.625rem, 1.5vw, 0.75rem); }
+  .Features-cards { gap: clamp(0.375rem, 0.8vw, 0.5rem); }
+  .Features-card-row { gap: clamp(0.375rem, 0.8vw, 0.5rem); }
+  .Features-card { width: clamp(320px, 35vw, 420px); height: clamp(320px, 35vw, 460px); }
+  .Features-card-image { height: clamp(160px, 20vw, 230px); margin: clamp(0.375rem, 0.8vw, 0.625rem); }
+  .Features-card-heading { font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
+  .Features-card-subheading { font-size: clamp(0.625rem, 1.2vw, 0.75rem); }
 }
 </style>
 
+<!-- Page 5: SuperXite Lite Section -->
+<section id="Page5" class="page">
+  <div class="Page5-vertical-container">
+    <img src="images/SuperXite/main.jpg" alt="PDF Image" class="Page5-image">
+  </div>
+  <div class="Page5-container">
+    <h1 class="Page5-heading">SuperXite Lite: Unbaised. More Accurate</h1>
+    <p class="Page5-subheading">Elite AI performance, masterfully orchestrated for unmatched accuracy at minimal cost.</p>
+    <div class="Page5-columns">
+      <div class="Page5-row">
+        <div class="Page5-column">
+          <h2 class="Page5-column-heading">Prompt Perfection</h2>
+          <p class="Page5-column-subheading">SuperXite Lite refines your queries for deeper, more precise responses.</p>
+          <img src="images/SuperXite/prompter.jpg" alt="Feature 1" class="Page5-column-image">
+        </div>
+        <div class="Page5-column">
+          <h2 class="Page5-column-heading">Collaborative Excellence</h2>
+          <p class="Page5-column-subheading">Five curated models unite, delivering elite results with effortless precision.</p>
+          <img src="images/SuperXite/SUPER.jpg" alt="Feature 2" class="Page5-column-image">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 5: SuperXite Lite Styles -->
+<style>
+  #Page5 { min-height: clamp(100vh, 120rem, 150vh); background: #060606 url('') no-repeat fixed center; background-size: cover; display: flex; justify-content: center; align-items: center; position: relative; }
+.Page5-vertical-container { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: clamp(900px, 80vw, 1282px); height: 100%; z-index: 1; }
+.Page5-container { width: clamp(60%, 65vw, 960px); max-width: 960px; height: 80%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: clamp(1.5rem, 2vw, 2rem); z-index: 2; }
+.Page5-heading { font-family: 'Inter', sans-serif; font-weight: 700; color: #ffffff; font-size: clamp(1.75rem, 3.5vw, 2.25rem); letter-spacing: -0.02em; line-height: 1; text-align: center; margin: 0; }
+.Page5-subheading { font-family: 'Inter', sans-serif; font-weight: 400; color: #ffffff; font-size: clamp(1rem, 2vw, 1.125rem); letter-spacing: -0.01em; line-height: 1.5; text-align: center; max-width: clamp(500px, 50vw, 720px); margin: 0; }
+.Page5-image { position: absolute; top: clamp(15%, 18vw, 20%); left: 50%; transform: translateX(-50%); width: 100%; max-width: clamp(700px, 80vw, 1200px); height: auto; z-index: 1; border-radius: clamp(1rem, 2vw, 1.375rem); }
+.Page5-columns { display: flex; flex-direction: column; gap: clamp(1.5rem, 2vw, 2rem); width: clamp(100%, 120vw, 200%); max-width: clamp(900px, 100vw, 1200px); margin-top: clamp(80%, 90vw, 90%); }
+.Page5-row { display: flex; justify-content: space-between; gap: clamp(1.5rem, 2vw, 2rem); width: 100%; }
+.Page5-column { flex: 1; display: flex; flex-direction: column; align-items: left; text-align: left; }
+.Page5-column-image { width: 100%; max-width: clamp(500px, 80vw, 750px); height: auto; margin-bottom: clamp(1rem, 2vw, 1.5rem); border-radius: clamp(1rem, 2vw, 1.375rem); }
+.Page5-column-heading { font-family: 'Inter', sans-serif; font-weight: 600; color: #ffffff; font-size: clamp(1.25rem, 2vw, 1.375rem); letter-spacing: -0.01em; line-height: 1.4em; text-align: left; margin: 0 0 clamp(0.5rem, 1vw, 0.75rem) 0; }
+.Page5-column-subheading { font-family: 'Inter', sans-serif; font-weight: 400; color: #ffffff; font-size: clamp(0.875rem, 1.5vw, 1rem); letter-spacing: -0.01em; line-height: 1.5em; text-align: left; margin: 0 0 clamp(1rem, 2vw, 1.5rem) 0; }
+@media (max-width: 1279px) and (min-width: 768px) {
+  #Page5 { min-height: clamp(80vh, 100rem, 120vh); }
+  .Page5-vertical-container { width: clamp(80%, 85vw, 900px); max-width: 900px; }
+  .Page5-container { width: clamp(70%, 75vw, 80%); max-width: 800px; height: 85%; gap: clamp(1rem, 1.5vw, 1.5rem); }
+  .Page5-heading { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.3em; margin-bottom: clamp(0.75rem, 1.5vw, 1rem); }
+  .Page5-subheading { font-size: clamp(0.875rem, 1.8vw, 1.125rem); line-height: 1.5em; max-width: clamp(400px, 45vw, 600px); margin-bottom: clamp(1rem, 2vw, 1.5rem); }
+  .Page5-image { top: clamp(18%, 20vw, 22%); max-width: clamp(600px, 75vw, 750px); border-radius: clamp(0.75rem, 1.5vw, 1rem); }
+  .Page5-columns { width: 100%; max-width: clamp(700px, 80vw, 800px); margin-top: clamp(80%, 85vw, 88%); gap: clamp(1.25rem, 1.8vw, 1.75rem); }
+  .Page5-row { gap: clamp(1rem, 1.5vw, 1.5rem); }
+  .Page5-column-image { max-width: clamp(500px, 75vw, 750px); border-radius: clamp(0.75rem, 1.5vw, 1rem); margin-top: clamp(1rem, 2vw, 1.5rem); }
+  .Page5-column-heading { font-size: clamp(1.125rem, 1.8vw, 1.25rem); line-height: 1.3em; }
+  .Page5-column-subheading { font-size: clamp(0.75rem, 1.3vw, 0.9375rem); line-height: 1.4em; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); }
+}
+@media (max-width: 767px) {
+  #Page5 { min-height: clamp(80vh, 100rem, 150vh); }
+  .Page5-vertical-container { width: 100%; max-width: 100%; }
+  .Page5-container { width: clamp(85%, 90vw, 90%); max-width: 100%; height: 90%; padding: clamp(0.75rem, 1.5vw, 1rem); gap: clamp(1rem, 1.5vw, 1.25rem); }
+  .Page5-heading { font-size: clamp(1.375rem, 3vw, 1.75rem); line-height: 1.25em; margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem); }
+  .Page5-subheading { font-size: clamp(0.75rem, 1.5vw, 1rem); line-height: 1.45em; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+  .Page5-image { top: clamp(20%, 25vw, 25%); max-width: clamp(80%, 85vw, 90%); border-radius: clamp(0.5rem, 1vw, 0.75rem); }
+  .Page5-columns { width: 100%; max-width: 100%; margin-top: clamp(60%, 65vw, 70%); gap: clamp(1.5rem, 2vw, 2rem); }
+  .Page5-row { flex-direction: column; gap: clamp(0.75rem, 1.5vw, 1.25rem); }
+  .Page5-column { margin-top: clamp(0.75rem, 1.5vw, 1.25rem); }
+  .Page5-column-image { max-width: 100%; border-radius: clamp(0.5rem, 1vw, 0.75rem); margin-bottom: clamp(1rem, 2vw, 1.5rem); }
+  .Page5-column-heading { font-size: clamp(1rem, 1.5vw, 1.125rem); }
+  .Page5-column-subheading { font-size: clamp(0.75rem, 1.2vw, 0.875rem); margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); }
+}
+@media (max-width: 480px) {
+  #Page5 { min-height: clamp(80vh, 90rem, 150vh); }
+  .Page5-vertical-container { width: 100%; max-width: 100%; }
+  .Page5-container { width: clamp(90%, 95vw, 95%); max-width: 100%; height: 90%; padding: clamp(0.5rem, 1vw, 0.5rem); gap: clamp(0.75rem, 1.2vw, 1rem); }
+  .Page5-heading { font-size: clamp(1.125rem, 2.5vw, 1.375rem); line-height: 1.25em; margin-bottom: clamp(1rem, 2vw, 1.5rem); }
+  .Page5-subheading { font-size: clamp(0.75rem, 1.5vw, 0.875rem); line-height: 1.4em; margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
+  .Page5-image { top: clamp(15%, 20vw, 18%); max-width: clamp(80%, 85vw, 90%); border-radius: clamp(0.5rem, 1vw, 0.625rem); }
+  .Page5-columns { width: 100%; max-width: 100%; margin-top: clamp(60%, 65vw, 68%); gap: clamp(1rem, 1.5vw, 1.5rem); }
+  .Page5-row { flex-direction: column; gap: clamp(0.5rem, 1vw, 1rem); }
+  .Page5-column { margin-top: clamp(0.5rem, 1vw, 1rem); }
+  .Page5-column-image { max-width: 100%; border-radius: clamp(0.5rem, 1vw, 0.625rem); margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); }
+  .Page5-column-heading { font-size: clamp(0.875rem, 1.3vw, 1rem); }
+  .Page5-column-subheading { font-size: clamp(0.75rem, 1.2vw, 0.875rem); margin-bottom: clamp(0.75rem, 1.2vw, 1.125rem); }
+}
+</style>
+  
 <!-- Page 5: SuperXite Lite Section -->
 <section id="Page5" class="page">
   <div class="Page5-vertical-container">
