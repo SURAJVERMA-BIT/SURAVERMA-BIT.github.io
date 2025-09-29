@@ -178,7 +178,6 @@
   </script>
 </head>
 
-
 <!-- Header Section (Unchanged Button) -->
 <header>
   <img src="images/Header/xiteai.png" alt="XiteAI Logo" class="logo">
@@ -198,10 +197,19 @@
   <div class="nav-overlay"></div>
 </header>
 
-<!-- Global and Header Styles (Updated Scale for Size) -->
+<!-- Global and Header Styles (Updated with Smooth Scroll) -->
 <style>
-  /* Global Styles (Unchanged) */
-  html, body { margin: 0; padding: 0; width: 100vw; overflow-x: hidden; overflow-y: auto; -ms-overflow-style: none; background-color: #060606; }
+  /* Global Styles (Updated for Smooth Scroll) */
+  html, body { 
+    margin: 0; 
+    padding: 0; 
+    width: 100vw; 
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    -ms-overflow-style: none; 
+    background-color: #060606; 
+    scroll-behavior: smooth; 
+  }
   html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
   .page { width: 100vw; display: none; position: relative; }
   .page.active { display: block; }
@@ -248,7 +256,7 @@
   }
 </style>
 
-<!-- Global JavaScript for Header and Animations (Unchanged) -->
+<!-- Global JavaScript for Header, Animations, and Smooth Scroll -->
 <script>
   window.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflowX = 'hidden';
@@ -283,9 +291,16 @@
       document.body.classList.remove('nav-open');
     });
 
-    // Close mobile nav when clicking a nav link
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+    // Smooth scroll for nav links
+    nav.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+        // Close mobile nav
         menu.classList.remove('opened');
         menu.setAttribute('aria-expanded', 'false');
         nav.classList.remove('open');
@@ -310,7 +325,7 @@
     });
   });
 </script>
-
+  
   <style>
     /* Page 1: Hero Section Styles */
     #page1 { height: 128.9vh; background-image: url('images/Page1/page1_background.jpg'); background-size: cover; background-position: center; width: 100vw; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; animation: fadeInCorners 1s ease-in forwards; }
