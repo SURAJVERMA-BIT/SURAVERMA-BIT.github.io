@@ -227,158 +227,94 @@
   });
 </script>
 
-<div id="page1" class="page active">
-  <div class="page1-flex-box">
-    <div class="heading-box">
-      <h1 class="heading-text">Thank You for Joining XiteAI!</h1>
-    </div>
-    <div class="subheading-box">
-      <p class="subheading-text">Your email has been successfully added to our waiting list. You're now part of the XiteAI revolution, and we'll notify you as soon as early access is available!</p>
+  
+<style>
+    /* Page 1: Thank You Section */
+    #page1 { height: 100vh; background-image: url('images/page1/page1_background.png'); background-size: cover; background-position: center; width: 100vw; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; animation: fadeInCorners 1s ease-in forwards; min-height: 600px; background-color: #060606; }
+    .page1-flex-box { position: relative; width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 0 24px; }
+    .heading-box, .subheading-box, .info-box, .cta-box { position: relative; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .heading-text { font-family: 'Inter', sans-serif; font-weight: 700; color: #ffffff; font-size: clamp(36px, 5vw, 56px); letter-spacing: -0.04em; line-height: 1.2em; margin: 0; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
+    .subheading-text { font-family: 'Inter', sans-serif; font-weight: 400; color: #cccccc; font-size: clamp(18px, 2.5vw, 22px); letter-spacing: -0.02em; line-height: 1.5em; margin: 0; }
+    .info-text { font-family: 'Inter', sans-serif; font-weight: 500; color: #ffffff; font-size: clamp(16px, 2vw, 20px); margin: 0 0 16px 0; }
+    .info-list { list-style: none; padding: 0; margin: 0; color: #cccccc; font-family: 'Inter', sans-serif; font-size: clamp(14px, 2vw, 18px); line-height: 1.6em; text-align: left; max-width: 500px; }
+    .info-list li { position: relative; padding-left: 24px; margin-bottom: 12px; }
+    .info-list li::before { content: "✔"; position: absolute; left: 0; color: #00cc88; font-size: 18px; }
+    .cta-text { font-family: 'Inter', sans-serif; font-weight: 500; color: #ffffff; font-size: clamp(16px, 2vw, 20px); margin: 0 0 16px 0; }
+    .social-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .social-link { font-family: 'Inter', sans-serif; font-size: 16px; color: #ffffff; background-color: #1a1a1a; padding: 12px 24px; border-radius: 4px; text-decoration: none; transition: all 0.3s ease; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1); }
+    .social-link:hover { background-color: #2a2a2a; color: #00cc88; transform: translateY(-2px); }
+    @keyframes fadeInCorners { 0% { background-image: linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/page1/page1_background.png'); opacity: 0; } 100% { background-image: url('images/page1/page1_background.png'); opacity: 1; } }
+    @keyframes mobileFadeInUp { 0% { opacity: 0; transform: translateY(-20px); } 100% { opacity: 1; transform: translateY(0); } }
+
+    /* Responsive Styles */
+    @media (max-width: 809px) { #page1 { height: 70vh; min-height: 450px; } }
+    @media (max-width: 809px) { .page1-flex-box { max-width: 90%; gap: 32px; } }
+    @media (max-width: 809px) { .heading-text { font-size: clamp(32px, 5vw, 48px); } }
+    @media (max-width: 809px) { .subheading-text { font-size: clamp(16px, 2.5vw, 20px); } }
+    @media (max-width: 809px) { .info-text, .cta-text { font-size: clamp(14px, 2vw, 18px); } }
+    @media (max-width: 809px) { .info-list { font-size: clamp(14px, 2vw, 16px); } }
+    @media (max-width: 809px) { .social-link { font-size: 14px; padding: 10px 20px; } }
+    @media (max-width: 480px) { #page1 { height: 80vh; min-height: 500px; } }
+    @media (max-width: 480px) { .page1-flex-box { gap: 24px; } }
+    @media (max-width: 480px) { .heading-text { font-size: clamp(28px, 5vw, 40px); } }
+    @media (max-width: 480px) { .subheading-text { font-size: clamp(14px, 2.5vw, 18px); } }
+    @media (max-width: 480px) { .info-list { font-size: clamp(12px, 2vw, 14px); } }
+    @media (max-width: 480px) { .social-links { flex-direction: column; gap: 12px; } }
+    @media (max-width: 480px) { .social-link { padding: 10px 16px; } }
+  </style>
+</head>
+<body>
+  <!-- Thank You Page -->
+  <div id="page1" class="page active">
+    <div class="page1-flex-box">
+      <div class="heading-box">
+        <h1 class="heading-text">Thank You for Joining XiteAI!</h1>
+      </div>
+      <div class="subheading-box">
+        <p class="subheading-text">You're now part of the future of AI-powered productivity. We'll keep you updated on your early access to XiteAI.</p>
+      </div>
+      <div class="info-box">
+        <p class="info-text">What to expect next:</p>
+        <ul class="info-list">
+          <li>Exclusive updates on XiteAI’s launch</li>
+          <li>Early access to our Premium AI features</li>
+          <li>Special invites to XiteAI community events</li>
+        </ul>
+      </div>
+      <div class="cta-box">
+        <p class="cta-text">Follow us for the latest news and updates:</p>
+        <div class="social-links">
+          <a href="https://x.com/XiteAI" class="social-link">X</a>
+          <a href="https://linkedin.com/company/XiteAI" class="social-link">LinkedIn</a>
+          <a href="https://instagram.com/XiteAI" class="social-link">Instagram</a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const page1 = document.getElementById('page1');
+      const desktopImg = new Image();
+      const mobileImg = new Image();
+      desktopImg.src = 'images/page1/page1_background.png';
+      mobileImg.src = 'images/page1/mobile.jpg';
+      
+      desktopImg.onerror = () => console.error('Failed to load desktop image: images/page1/page1_background.png');
+      mobileImg.onerror = () => console.error('Failed to load mobile image: images/page1/mobile.jpg');
 
-<style>
-  /* Page 1 - Thank You Section */
-  #page1 { 
-    height: 100vh; 
-    background-image: url('images/page1/page1_background.png'); 
-    background-size: cover; 
-    background-position: center; 
-    width: 100vw; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    position: relative; 
-    animation: fadeInCorners 1s ease-in forwards; 
-    min-height: 600px; 
-    background-color: #060606; 
-  }
-  .page1-flex-box { 
-    position: relative; 
-    width: 100%; 
-    max-width: 600px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 40px; 
-    padding: 0 24px; 
-  }
-  .heading-box, .subheading-box, .info-box, .cta-box { 
-    position: relative; 
-    width: 100%; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    text-align: center; 
-  }
-  .heading-text { 
-    font-family: 'Inter', sans-serif; 
-    font-weight: 700; 
-    color: #ffffff; 
-    font-size: clamp(36px, 5vw, 56px); 
-    letter-spacing: -0.04em; 
-    line-height: 1.2em; 
-    margin: 0; 
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
-  }
-  .subheading-text { 
-    font-family: 'Inter', sans-serif; 
-    font-weight: 400; 
-    color: #cccccc; 
-    font-size: clamp(18px, 2.5vw, 22px); 
-    letter-spacing: -0.02em; 
-    line-height: 1.5em; 
-    margin: 0; 
-  }
-  .info-text { 
-    font-family: 'Inter', sans-serif; 
-    font-weight: 500; 
-    color: #ffffff; 
-    font-size: clamp(16px, 2vw, 20px); 
-    margin: 0 0 16px 0; 
-  }
-  .info-list { 
-    list-style: none; 
-    padding: 0; 
-    margin: 0; 
-    color: #cccccc; 
-    font-family: 'Inter', sans-serif; 
-    font-size: clamp(14px, 2vw, 18px); 
-    line-height: 1.6em; 
-    text-align: left; 
-    max-width: 500px; 
-  }
-  .info-list li { 
-    position: relative; 
-    padding-left: 24px; 
-    margin-bottom: 12px; 
-  }
-  .info-list li::before { 
-    content: "✔"; 
-    position: absolute; 
-    left: 0; 
-    color: #00cc88; 
-    font-size: 18px; 
-  }
-  .cta-text { 
-    font-family: 'Inter', sans-serif; 
-    font-weight: 500; 
-    color: #ffffff; 
-    font-size: clamp(16px, 2vw, 20px); 
-    margin: 0 0 16px 0; 
-  }
-  .social-links { 
-    display: flex; 
-    gap: 20px; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-  }
-  .social-link { 
-    font-family: 'Inter', sans-serif; 
-    font-size: 16px; 
-    color: #ffffff; 
-    background-color: #1a1a1a; 
-    padding: 12px 24px; 
-    border-radius: 4px; 
-    text-decoration: none; 
-    transition: all 0.3s ease; 
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1); 
-  }
-  .social-link:hover { 
-    background-color: #2a2a2a; 
-    color: #00cc88; 
-    transform: translateY(-2px); 
-  }
-
-  /* Animation */
-  @keyframes fadeInCorners { 
-    0% { background-image: linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/page1/page1_background.png'); opacity: 0; } 
-    100% { background-image: url('images/page1/page1_background.png'); opacity: 1; } 
-  }
-
-  /* Responsive Styles */
-  @media (max-width: 809px) { 
-    #page1 { height: 70vh; min-height: 450px; } 
-    .page1-flex-box { max-width: 90%; gap: 32px; } 
-    .heading-text { font-size: clamp(32px, 5vw, 48px); } 
-    .subheading-text { font-size: clamp(16px, 2.5vw, 20px); } 
-    .info-text, .cta-text { font-size: clamp(14px, 2vw, 18px); } 
-    .info-list { font-size: clamp(14px, 2vw, 16px); } 
-    .social-link { font-size: 14px; padding: 10px 20px; } 
-  }
-  @media (max-width: 480px) { 
-    #page1 { height: 80vh; min-height: 500px; } 
-    .page1-flex-box { gap: 24px; } 
-    .heading-text { font-size: clamp(28px, 5vw, 40px); } 
-    .subheading-text { font-size: clamp(14px, 2.5vw, 18px); } 
-    .info-list { font-size: clamp(12px, 2vw, 14px); } 
-    .social-links { flex-direction: column; gap: 12px; } 
-    .social-link { padding: 10px 16px; } 
-  }
-</style>
+      const updateBackground = () => {
+        const width = window.innerWidth;
+        const isMobile = width <= 1279;
+        page1.style.background = isMobile 
+          ? `url('images/page1/mobile.jpg') no-repeat center/cover`
+          : `url('images/page1/page1_background.png') no-repeat center/cover`;
+        page1.style.animation = isMobile ? 'mobileFadeInUp 1s ease-in forwards' : 'fadeInCorners 1s ease-in forwards';
+      };
+      
+      updateBackground();
+      window.addEventListener('resize', updateBackground);
+    });
+  </script>
 
 
 
