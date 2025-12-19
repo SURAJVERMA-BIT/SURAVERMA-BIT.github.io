@@ -327,6 +327,18 @@
     @media (max-width: 480px) { .input-container { gap: 12px; } }
     @media (max-width: 480px) { .email-input, .btn { padding: 12px 14px; } }
   </style>
+
+  <style id="antiClickjack">
+    body { display:none !important; }
+  </style>
+  <script type="text/javascript">
+    if (self === top) {
+      var antiClickjack = document.getElementById("antiClickjack");
+      antiClickjack.parentNode.removeChild(antiClickjack);
+    } else {
+      top.location = self.location;
+    }
+  </script>
 </head>
 <body>
   <!-- Waitlist Page -->
