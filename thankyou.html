@@ -262,6 +262,18 @@
     @media (max-width: 480px) { .social-links { flex-direction: column; gap: 12px; } }
     @media (max-width: 480px) { .social-link { padding: 10px 16px; } }
   </style>
+  <style id="antiClickjack">
+    body { display:none !important; }
+</style>
+
+<script type="text/javascript">
+    if (self === top) {
+        var antiClickjack = document.getElementById("antiClickjack");
+        antiClickjack.parentNode.removeChild(antiClickjack);
+    } else {
+        top.location = self.location;
+    }
+</script>
 </head>
 <body>
   <!-- Thank You Page -->
