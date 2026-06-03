@@ -1953,6 +1953,38 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
   });
 });
 
+/* ── Video lifecycle: pause off-screen and on tab switch ── */
+(function() {
+  var videos = document.querySelectorAll('.stu-vid-chrome video');
+  if (!videos.length) return;
+
+  var vidObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      var v = entry.target;
+      if (entry.isIntersecting) {
+        v.play().catch(function(){});
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.15 });
+
+  videos.forEach(function(v) { vidObserver.observe(v); });
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      videos.forEach(function(v) { v.pause(); });
+    } else {
+      videos.forEach(function(v) {
+        var r = v.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+          v.play().catch(function(){});
+        }
+      });
+    }
+  });
+})();
+
 /* ── Marquee ── */
 var models = [
   { name: 'GPT-4o',       logo: 'images/page2/openai.png' },
