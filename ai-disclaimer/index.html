@@ -267,5 +267,8 @@ footer.xai-foot .btn-white:hover{background:#e8e8e8;transform:translateY(-1px);b
   console.log("%cThis site and its contents are protected by copyright.\nUnauthorized use of source code, assets, or design is prohibited.", "color:#666;font-size:12px;");
 })();
 </script>
+<script id="nav-section-routing">
+(function(){var _m={'/features/':'/#student','/pricing/':'/#pricing','/company/':'/#company'};var _p=window.location.pathname;var _isH=_p==='/'||_p==='/index.html';document.querySelectorAll('.nav-links a,.mobile-link').forEach(function(a){var _hr=a.getAttribute('href');if(!_m[_hr])return;a.addEventListener('click',function(e){e.preventDefault();if(_isH){var _el=document.querySelector(_m[_hr].slice(1));if(_el)window.scrollTo({top:_el.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});var _mb=document.getElementById('nav-mobile');var _tg=document.getElementById('nav-toggle');if(_mb)_mb.classList.remove('open');if(_tg)_tg.classList.remove('open');}else{window.location.href=_m[_hr];}});});})();
+</script>
 </body>
 </html>

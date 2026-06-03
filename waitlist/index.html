@@ -285,17 +285,17 @@ header nav a:hover { color: var(--t1); }
 }
 .email-input {
   width: 100%; padding: 14px 18px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border-2);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.22);
   border-radius: 8px;
   font-family: var(--font); font-size: 15px; font-weight: 400;
   color: var(--t1); outline: none;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
-.email-input::placeholder { color: var(--t3); }
+.email-input::placeholder { color: rgba(255,255,255,0.38); }
 .email-input:focus {
-  border-color: rgba(255,255,255,0.3);
-  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.42);
+  background: rgba(255,255,255,0.1);
 }
 
 .btn-primary {
@@ -314,7 +314,7 @@ header nav a:hover { color: var(--t1); }
 .response-msg { font-size: 13px; text-align: center; min-height: 20px; }
 
 .hero-note {
-  font-size: 12px; color: var(--t3);
+  font-size: 12px; color: rgba(255,255,255,0.38);
   display: flex; align-items: center; gap: 6px;
 }
 
@@ -657,6 +657,9 @@ footer.xai-foot .btn-white:hover{background:#e8e8e8;transform:translateY(-1px);b
   console.log.apply(console, s);
   console.log("%cThis site and its contents are protected by copyright.\nUnauthorized use of source code, assets, or design is prohibited.", "color:#666;font-size:12px;");
 })();
+</script>
+<script id="nav-section-routing">
+(function(){var _m={'/features/':'/#student','/pricing/':'/#pricing','/company/':'/#company'};var _p=window.location.pathname;var _isH=_p==='/'||_p==='/index.html';document.querySelectorAll('.nav-links a,.mobile-link').forEach(function(a){var _hr=a.getAttribute('href');if(!_m[_hr])return;a.addEventListener('click',function(e){e.preventDefault();if(_isH){var _el=document.querySelector(_m[_hr].slice(1));if(_el)window.scrollTo({top:_el.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});var _mb=document.getElementById('nav-mobile');var _tg=document.getElementById('nav-toggle');if(_mb)_mb.classList.remove('open');if(_tg)_tg.classList.remove('open');}else{window.location.href=_m[_hr];}});});})();
 </script>
 </body>
 </html>
