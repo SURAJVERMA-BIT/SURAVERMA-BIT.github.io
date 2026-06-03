@@ -1953,19 +1953,31 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
   });
 });
 
-/* ── Video lifecycle: pause off-screen and on tab switch ── */
+/* ── Video lifecycle: unload buffer when off-screen, reload from cache when visible ── */
 (function() {
   var videos = document.querySelectorAll('.stu-vid-chrome video');
   if (!videos.length) return;
 
+  videos.forEach(function(v) {
+    v.dataset.src = v.getAttribute('src');
+  });
+
+  function unload(v) {
+    v.pause();
+    v.removeAttribute('src');
+    v.load();
+  }
+
+  function reload(v) {
+    if (!v.getAttribute('src') && v.dataset.src) {
+      v.src = v.dataset.src;
+    }
+    v.play().catch(function(){});
+  }
+
   var vidObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
-      var v = entry.target;
-      if (entry.isIntersecting) {
-        v.play().catch(function(){});
-      } else {
-        v.pause();
-      }
+      entry.isIntersecting ? reload(entry.target) : unload(entry.target);
     });
   }, { threshold: 0.15 });
 
@@ -1973,13 +1985,11 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
 
   document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
-      videos.forEach(function(v) { v.pause(); });
+      videos.forEach(unload);
     } else {
       videos.forEach(function(v) {
         var r = v.getBoundingClientRect();
-        if (r.top < window.innerHeight && r.bottom > 0) {
-          v.play().catch(function(){});
-        }
+        if (r.top < window.innerHeight && r.bottom > 0) reload(v);
       });
     }
   });
