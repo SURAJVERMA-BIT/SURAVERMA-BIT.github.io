@@ -106,6 +106,37 @@ assets/images/founder/     — founder photo
 - Form backend: FormBold
 - Hosting: static (deploy any folder to Netlify / Vercel / GitHub Pages)
 
+## Deployment
+
+Point any static host at the root folder. No build step, no config needed.
+
+- Netlify / Vercel: connect repo, set publish directory to `/`
+- GitHub Pages: serve from `main` branch root
+
+## Branches
+
+| Branch | Purpose |
+|---|---|
+| `main` | Production |
+| `clean-empty` | Active development |
+
+## Changing the form
+
+FormBold form ID is in `waitlist/index.html` — `action` attribute on the `<form>` tag.  
+To redirect elsewhere after submit, change the `_next` hidden field value on the same line.
+
+## Contact emails
+
+| Purpose | Address |
+|---|---|
+| Support | `support@xiteai.com` |
+| General | `hello@xiteai.com` |
+| Legal | `legal@xiteai.com` |
+| Privacy | `privacy@xiteai.com` |
+| Security | `security@xiteai.com` |
+| Enterprise | `enterprise@xiteai.com` |
+| Abuse | `abuse@xiteai.com` |
+
 ---
 
 ## Pricing
