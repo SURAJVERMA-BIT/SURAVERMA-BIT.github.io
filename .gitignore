@@ -1,0 +1,19 @@
+# Environment variables and secrets
+.env
+.env.*
+*.env
+
+# Temp/draft folders
+temp template/
+temp/
+draft/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/settings.json
+*.swp
+*.swo
